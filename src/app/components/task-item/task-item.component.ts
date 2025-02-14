@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Task } from '../../models/task.model';
 
 @Component({
   selector: 'app-task-item',
-  // imports: [], // no need to import additional Angular modules
+  imports: [CommonModule],
   templateUrl: './task-item.component.html',
   styleUrl: './task-item.component.scss'
 })
