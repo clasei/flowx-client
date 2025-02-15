@@ -1,0 +1,48 @@
+.task-card {
+  background: white;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: 0.3s;
+
+  &.completed {
+    opacity: 0.6;
+    text-decoration: line-through;
+  }
+
+  .task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .priority-tag {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+
+    &.high {
+      background: red;
+      color: white;
+    }
+    &.medium {
+      background: orange;
+      color: white;
+    }
+    &.low {
+      background: green;
+      color: white;
+    }
+  }
+
+  .task-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+  }
+}
