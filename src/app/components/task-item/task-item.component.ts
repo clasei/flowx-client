@@ -17,18 +17,18 @@ export class TaskItemComponent {
 
   getPriorityClass(priority: number): string {
     switch (priority) {
-      case 1: return 'low';
-      case 2: return 'medium';
-      case 3: return 'high';
+      case 1: return 'critical';
+      case 2: return 'focus';
+      case 3: return 'pipeline';
       default: return 'unknown';
     }
   }
 
   getPriorityText(priority: number): string {
     switch (priority) {
-      case 1: return 'Low';
-      case 2: return 'Medium';
-      case 3: return 'High';
+      case 1: return 'critical';
+      case 2: return 'focus';
+      case 3: return 'pipeline';
       default: return 'Unknown';
     }
   }

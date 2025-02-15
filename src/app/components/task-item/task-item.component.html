@@ -9,8 +9,12 @@
     </div>
     <p class="task-description">{{ task.description }}</p>
     <div class="task-footer">
-      <span class="task-date">Created: {{ task.createdAt | date:'short' }}</span>
-      <input type="checkbox" [(ngModel)]="task.completed">
+      <span class="task-date">created: {{ task.createdAt | date:'short' }}</span>
+      <!-- <input type="checkbox" [(ngModel)]="task.completed"> -->
+      <label class="checkbox-container">
+        <input type="checkbox" [(ngModel)]="task.completed">
+        <span class="checkmark"></span>
+      </label>
     </div>
   </div>
 </div>

@@ -9,7 +9,6 @@ import { TaskItemComponent } from '../task-item/task-item.component';
   standalone: true,
   imports: [CommonModule, TaskItemComponent],
   providers: [TaskService],
-  // providers: [], // TEST
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.scss'
 })
@@ -25,7 +24,8 @@ export class TaskListComponent implements OnInit {
   fetchTasks(): void {
     this.taskService.getTasks().subscribe({
       next: (tasks) => {
-        this.tasks = tasks;
+        // this.tasks = tasks;
+        this.tasks = tasks.sort((a, b) => a.priority - b.priority); // sort tasks by priority
         console.log('Tasks loaded:', tasks);
       },
       error: (err) => console.error('Error fetching tasks:', err)
