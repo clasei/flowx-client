@@ -1,1 +1,8 @@
 <p>task-list works!</p>
+<div *ngIf="(tasks ?? []).length > 0; else noTasks">
+  <app-task-item *ngFor="let task of tasks" [task]="task"></app-task-item>
+</div>
+
+<ng-template #noTasks>
+  <p>No tasks found.</p>
+</ng-template>

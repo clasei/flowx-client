@@ -1,6 +1,7 @@
 <div class="task-item">
   <h3>{{ task.title }}</h3>
   <p>{{ task.description }}</p>
-  <p *ngIf="task.completed" class="completed">completed</p>
-  <p *ngIf="!task.completed" class="pending">pending</p>
+  <p [ngClass]="{ 'completed': task.completed, 'pending': !task.completed }">
+    {{ task.completed ? 'Completed' : 'Pending' }}
+  </p>
 </div>
