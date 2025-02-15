@@ -1,8 +1,17 @@
-<h3>stuff to do starts here</h3>
-<div *ngIf="(tasks ?? []).length > 0; else noTasks">
-  <app-task-item *ngFor="let task of tasks" [task]="task"></app-task-item>
-</div>
+<div class="task-list">
 
-<ng-template #noTasks>
-  <p>No tasks found.</p>
-</ng-template>
+  <h3>stuff to do starts here</h3>
+
+  <button class="sort-btn" (click)="toggleSortOrder()">
+    sort by priority {{ isAscending ? ' ⬆️' : ' ⬇️' }}
+  </button>
+
+  <div *ngIf="(tasks ?? []).length > 0; else noTasks">
+    <app-task-item *ngFor="let task of tasks" [task]="task"></app-task-item>
+  </div>
+
+  <ng-template #noTasks>
+    <p>No tasks found.</p>
+  </ng-template>
+  
+</div>

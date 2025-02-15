@@ -1,0 +1,17 @@
+.task-list {
+  margin: 1rem;
+}
+
+.sort-btn {
+  background: #007bff5d;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  
+  &:hover {
+    background: darken(#007bff, 10%);
+  }
+}

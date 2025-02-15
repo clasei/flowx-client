@@ -14,6 +14,7 @@ import { TaskItemComponent } from '../task-item/task-item.component';
 })
 export class TaskListComponent implements OnInit {
   tasks: Task[] = []; // store feched tasks
+  isAscending: boolean = true; // sort order
 
   constructor(private taskService: TaskService) {}
   
@@ -30,6 +31,11 @@ export class TaskListComponent implements OnInit {
       },
       error: (err) => console.error('Error fetching tasks:', err)
     });
+  }
+
+  toggleSortOrder(): void {
+    this.isAscending = !this.isAscending;
+    this.tasks.reverse();
   }
 
 }
