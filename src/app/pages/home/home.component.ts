@@ -3,6 +3,7 @@ import { TaskListComponent } from '../../components/task-list/task-list.componen
 
 @Component({
   selector: 'app-home',
+  standalone: true,
   imports: [TaskListComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router'; // provides routing functionalities + RouterOutlet directive
-import { TasksModule } from './tasks/tasks.module';
 import { routes } from './app.routes';
+import { TasksModule } from './tasks/tasks.module';
 
 @NgModule({
   declarations: [
