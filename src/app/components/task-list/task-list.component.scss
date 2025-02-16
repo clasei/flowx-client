@@ -127,7 +127,7 @@ input:checked + .slider:before {
   transition: 0.3s;
   
   &:hover {
-    background: #efff61;
+    background: #0fb5a5;
   }
 
   &:disabled {
@@ -194,7 +194,7 @@ input, textarea, select {
   transition: 0.3s;
   
   &:hover {
-    background: #efff61;
+    background: #0fb5a5;
   }
 
   &:disabled {
