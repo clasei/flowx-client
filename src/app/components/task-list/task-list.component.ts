@@ -20,6 +20,7 @@ export class TaskListComponent implements OnInit {
   isDateAscending: boolean = true; // date sort order
   selectedFilter: string = 'all'; // active filter
   showTopTasks: boolean = false; // slider for "show only 3 tasks"
+  showCompleted: boolean = true; // default: show all
 
   // modal + form fields
   showModal: boolean = false;
@@ -72,6 +73,11 @@ export class TaskListComponent implements OnInit {
       );
     }
 
+    // filter out completed tasks
+    if (!this.showCompleted) {
+      filteredTasks = filteredTasks.filter(task => !task.completed);
+    }
+
     // // PENDING: implement user settings
     // // HEY! limit the number of tasks
     //   const maxTasks = this.userSettings.maxTasks || 10; // default to 23
@@ -106,14 +112,22 @@ export class TaskListComponent implements OnInit {
     this.applyFilters();
   }
 
+  toggleShowCompleted(): void {
+    this.showCompleted = !this.showCompleted;
+    this.applyFilters();
+  }
+
+
+  // -------------------- task item starts here
+
   toggleTaskCompletion(task: Task): void {
     const updatedTask = { ...task, completed: !task.completed };
 
-    console.log("🟡 sending toggled task:", updatedTask); 
+    // console.log("🟡 sending toggled task:", updatedTask); 
   
     this.taskService.toggleTaskCompletion(updatedTask).subscribe({
       next: (taskUpdated) => {
-        console.log("✅ task toggled:", taskUpdated);
+        // console.log("✅ task toggled:", taskUpdated);
 
         this.allTasks = this.allTasks.map(t => t.id === taskUpdated.id ? taskUpdated : t);
         this.applyFilters();
@@ -168,7 +182,7 @@ export class TaskListComponent implements OnInit {
       next: (createdTask) => {
         this.allTasks.push(createdTask);
         this.applyFilters();
-        console.log("task created:", createdTask);
+        // console.log("task created:", createdTask);
       },
       error: (err) => console.error("error creating task:", err),
     });
@@ -190,11 +204,11 @@ export class TaskListComponent implements OnInit {
       // updatedAt: new Date(),
     };
   
-    console.log("📤 sending task to backend:", newTask);
+    console.log("📤 sending new task to backend:", newTask);
   
     this.taskService.createTask(newTask).subscribe({
       next: (createdTask) => {
-        console.log("✅ task successfully created:", createdTask);
+        // console.log("✅ task successfully created:", createdTask);
 
         this.allTasks = [...this.allTasks, createdTask]; // create new array
         this.applyFilters(); // reapply filters to refresh

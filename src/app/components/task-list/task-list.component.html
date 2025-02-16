@@ -40,6 +40,15 @@
       </label>
     </div>
 
+    <!-- slider for "show comlpleted" -->
+    <div class="sort-container">
+      <span>hide done </span>
+      <label class="switch">
+        <input id="completedTasksToggle" type="checkbox" (change)="toggleShowCompleted()">
+        <span class="slider"></span>
+      </label>
+    </div>
+
     <!-- new task button -->
     <button class="new-task-btn" (click)="openNewTaskModal()">
       ➕ new
@@ -54,7 +63,7 @@
       [task]="task"
       (toggleCompleted)="toggleTaskCompletion($event)">
     </app-task-item>
-    
+
   </div>
 
   <ng-template #noTasks>
