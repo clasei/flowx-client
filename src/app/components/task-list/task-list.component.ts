@@ -13,10 +13,13 @@ import { TaskItemComponent } from '../task-item/task-item.component';
   styleUrl: './task-list.component.scss'
 })
 export class TaskListComponent implements OnInit {
-  tasks: Task[] = []; // store feched tasks
-  allTasks: Task[] = []; // store all tasks to reset filtering
-  isAscending: boolean = true; // sort order
-  selectedFilter: string = 'all';
+  tasks: Task[] = []; // current tasks
+  allTasks: Task[] = []; // store full list to reset filtering
+  isPriorityAscending: boolean = true; // priority sort order
+  isDateAscending: boolean = true; // date sort order
+  selectedFilter: string = 'all'; // active filter
+  showTopTasks: boolean = false; // slider for "show only 3 tasks"
+  currentPage: number = 1; // track current page for pagination
 
   constructor(private taskService: TaskService) {}
   
@@ -27,50 +30,54 @@ export class TaskListComponent implements OnInit {
   fetchTasks(): void {
     this.taskService.getTasks().subscribe({
       next: (tasks) => {
-        // this.tasks = tasks;
-        this.allTasks = tasks; // store all tasks to reset filtering
-        // this.tasks = tasks.sort((a, b) => a.priority - b.priority); // sort tasks by priority
-        this.tasks = [...this.allTasks].sort((a, b) => a.priority - b.priority);
-        console.log('Tasks loaded:', tasks);
+        this.allTasks = tasks; // store original list + server sorts oldest first by default
+        this.applyFilters(); // apply default filtering & sorting
+        console.log('tasks loaded:', tasks);
       },
-      error: (err) => console.error('Error fetching tasks:', err)
+      error: (err) => console.error('error fetching tasks:', err)
     });
   }
 
-  toggleSortOrder(): void {
-    this.isAscending = !this.isAscending;
-    this.tasks.reverse();
+  applyFilters(): void {
+    let filteredTasks = [...this.allTasks];
+
+    // apply filtering
+    if (this.selectedFilter !== 'all') {
+      filteredTasks = filteredTasks.filter(
+        (task) => this.getPriorityLabel(task.priority) === this.selectedFilter
+      );
+    }
+
+    // apply priority sorting (only if all is selected)
+    if (this.selectedFilter === 'all') {
+      filteredTasks.sort((a, b) => 
+        this.isPriorityAscending ? a.priority - b.priority : b.priority - a.priority
+      );
+    }
+
+    // apply "show top 3 tasks" filter
+    this.tasks = this.showTopTasks ? filteredTasks.slice(0, 3) : filteredTasks;
   }
 
+  toggleSortOrder(): void {
+    if (this.selectedFilter === 'all') {
+      this.isPriorityAscending = !this.isPriorityAscending;
+      this.applyFilters();
+    }
+  }
 
   getPriorityLabel(priority: number): string {
     const labels: Record<number, string> = { 1: "critical", 2: "focus", 3: "pipeline" };
-    return labels[priority] || "queue"; // default to queue if not found
+    return labels[priority] || "queue";
   }
 
   filterTasks(event: Event) {
-    const selectedFilter = (event.target as HTMLSelectElement).value;
-  
-    // full list first
-    if (selectedFilter === "all") {
-      this.tasks = [...this.allTasks];
-  
-      // reset sorting to default (priority ascending)
-      this.isAscending = true;
-      this.tasks.sort((a, b) => a.priority - b.priority);
-    } else {
-      this.tasks = this.allTasks.filter(
-        (task) => this.getPriorityLabel(task.priority) === selectedFilter
-      );
-    }
-  
-    // // make the sort order consistent
-    // if (!this.isAscending) {
-    //   this.tasks.reverse();
-    // }
-
-    // disable sorting when a filter is applied
-    this.isAscending = false;
+    this.selectedFilter = (event.target as HTMLSelectElement).value;
+    this.applyFilters();
   }
 
+  toggleTopTasks(): void {
+    this.showTopTasks = !this.showTopTasks;
+    this.applyFilters();
+  }
 }

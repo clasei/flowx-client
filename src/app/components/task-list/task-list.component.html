@@ -4,60 +4,40 @@
 
   <div class="controls-panel">
     
-    <!-- <button class="sort-btn" (click)="toggleSortOrder()">
-      sort by priority {{ isAscending ? ' ⬇️' : ' ⬆️' }}
+    <!-- priority sort button -->
+    <button 
+      class="sort-btn" 
+      (click)="toggleSortOrder()"
+      [disabled]="selectedFilter !== 'all'">
+      <!-- priority {{ isPriorityAscending ? '⬇️' : '⬆️' }} -->
+       priority ↑↓ 
+    </button>
+
+    <!-- date sort button PENDING -->
+    <!-- <button 
+      class="sort-btn" 
+      (click)="toggleDateSort()">
+      date {{ isDateAscending ? '⬇️' : '⬆️' }}
     </button> -->
 
-    <!-- <div class="sort-container">
-      <label for="sortToggle">priority up</label>
-      <label class="switch">
-        <input id="sortToggle" type="checkbox" (change)="toggleSortOrder()">
-        <span class="slider"></span>
-      </label>
-      <label for="sortToggle">down</label>
-    </div> -->
-
-    <!-- <div class="sort-container">
-      <span>priority</span>
-      <span *ngIf="isAscending"> ↓ </span>
-      <span *ngIf="!isAscending"> ↑ </span>
-      <label class="switch">
-        <input id="sortToggle" type="checkbox" (change)="toggleSortOrder()">
-        <span class="slider"></span>
-      </label>
-    </div> -->
-    
-    <div class="sort-container">
-      <span>priority</span>
-      <label class="switch">
-        <input 
-          id="sortToggle" 
-          type="checkbox" 
-          (change)="toggleSortOrder()"
-          [disabled]="selectedFilter !== 'all'">
-
-        <span class="slider">
-          <!-- <span class="arrow">{{ isAscending ? '↓' : '↑' }}</span> -->
-        </span>
-      </label>
-    </div>
-
-    <!-- <div class="sort-container">
-      <span>date</span>
-      <label class="switch">
-        <input id="sortDate" type="checkbox" (change)="toggleDateSort()">
-        <span class="slider"></span>
-      </label>
-    </div> -->
-
+    <!-- filter dropdown -->
     <div class="filter-container">
-      <label>filter </label>
+      <label>filter</label>
       <select (change)="filterTasks($event)">
         <option value="all">all</option>
         <option value="critical">critical</option>
         <option value="focus">focus</option>
         <option value="pipeline">pipeline</option>
       </select>
+    </div>
+
+    <!-- slider for "show only top 3 tasks" -->
+    <div class="sort-container">
+      <span>top 3 </span>
+      <label class="switch">
+        <input id="topTasksToggle" type="checkbox" (change)="toggleTopTasks()">
+        <span class="slider"></span>
+      </label>
     </div>
 
   </div>
