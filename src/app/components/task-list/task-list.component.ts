@@ -107,26 +107,14 @@ export class TaskListComponent implements OnInit {
 
   closeModal(): void {
     this.showModal = false;
+    
+    // ✅ Ensure input fields are reset
     this.newTaskTitle = "";
     this.newTaskDescription = "";
     this.newTaskPriority = 3;
-  }
-
-  saveTask(): void {
-    if (!this.newTaskTitle.trim()) return;
-
-    const newTask: Task = {
-      id: Math.floor(Math.random() * 1000), // temporary ID
-      title: this.newTaskTitle,
-      description: this.newTaskDescription,
-      priority: this.newTaskPriority,
-      completed: false,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    };
-
-    this.createTask(newTask);
-    this.closeModal();
+  
+    // ✅ Force UI refresh (triggers change detection)
+    setTimeout(() => {}, 10);
   }
 
   createTask(task: Task): void {
@@ -139,4 +127,39 @@ export class TaskListComponent implements OnInit {
       error: (err) => console.error("error creating task:", err),
     });
   }
+
+  saveTask(): void {
+    if (!this.newTaskTitle.trim()) {
+      console.error("❌ Title cannot be empty!");
+      return;
+    }
+  
+    const newTask: Task = {
+      // id: 0, // backend generates the ID
+      title: this.newTaskTitle,
+      description: this.newTaskDescription,
+      priority: this.newTaskPriority
+      // completed: false,
+      // createdAt: new Date(),
+      // updatedAt: new Date(),
+    };
+  
+    console.log("📤 Sending task to backend:", newTask); // ✅ Log before sending
+  
+    this.taskService.createTask(newTask).subscribe({
+      next: (createdTask) => {
+        console.log("✅ Task successfully created:", createdTask);
+  
+        // ✅ Ensure the task appears in the list immediately
+        this.allTasks = [...this.allTasks, createdTask]; // Create new array to trigger change detection
+        this.applyFilters(); // Reapply filters to refresh UI
+  
+        // ✅ Close the modal AFTER updating UI
+        this.closeModal();
+      },
+      error: (err) => console.error("❌ Error creating task:", err),
+    });
+  }  
+
+
 }

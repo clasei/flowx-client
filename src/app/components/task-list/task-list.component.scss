@@ -116,7 +116,7 @@ input:checked + .slider:before {
 }
 
 .new-task-btn {
-  background: #36e4ff;
+  background: #fff;
   font-family: 'Inter', sans-serif;
   font-weight: 700 !important;
   color: #444444 !important;
@@ -127,7 +127,7 @@ input:checked + .slider:before {
   transition: 0.3s;
   
   &:hover {
-    background: #0076bb;
+    background: #efff61;
   }
 
   &:disabled {
@@ -176,7 +176,7 @@ input, textarea, select {
   }
 
   &:disabled {
-    background: #333;
+    background: #131313;
     cursor: not-allowed;
     opacity: 0.5;
   }
@@ -194,7 +194,7 @@ input, textarea, select {
   transition: 0.3s;
   
   &:hover {
-    background: #0fb5a5;
+    background: #efff61;
   }
 
   &:disabled {
