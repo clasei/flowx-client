@@ -20,15 +20,17 @@ export class TaskListComponent implements OnInit {
   isDateAscending: boolean = true; // date sort order
   selectedFilter: string = 'all'; // active filter
   showTopTasks: boolean = false; // slider for "show only 3 tasks"
-  showCompleted: boolean = true; // default: show all
+  showCompleted: boolean = false; // default: hide all
 
   // modal + form fields
   showModal: boolean = false;
+  showDiscardModal: boolean = false;
   newTaskTitle: string = "";
   newTaskDescription: string = "";
   newTaskPriority: number = 3; // default priority (pipeline)
 
   // form validation states
+  // typingTimeout: any; // debounce timeout if needed
   titleError: string = "";
   descriptionError: string = "";
   isFormValid: boolean = false;
@@ -132,7 +134,7 @@ export class TaskListComponent implements OnInit {
         this.allTasks = this.allTasks.map(t => t.id === taskUpdated.id ? taskUpdated : t);
         this.applyFilters();
       },
-      error: (err) => console.error("❌ Error updating task:", err),
+      error: (err) => console.error("❌ error toggling task:", err),
     });
   }
   
@@ -144,6 +146,7 @@ export class TaskListComponent implements OnInit {
     this.titleError = "";
     this.descriptionError = "";
     this.isFormValid = true; 
+    // clearTimeout(this.typingTimeout); // reset timeout on each keypress
 
     if (this.newTaskTitle.trim().length < 3) {
       this.titleError = "title must be at least 3 characters";
@@ -163,18 +166,41 @@ export class TaskListComponent implements OnInit {
     this.showModal = true; // just opens the modal
   }
 
-  closeModal(): void {
-    this.showModal = false;
+  // closeModal(): void {
+  //   this.showModal = false;
     
+  //   this.newTaskTitle = "";
+  //   this.newTaskDescription = "";
+  //   this.newTaskPriority = 3;
+
+  //   this.titleError = "";
+  //   this.descriptionError = "";
+  //   this.isFormValid = false;
+  
+  //   // setTimeout(() => {}, 10);
+  // }
+
+  closeModal(): void {
+    if (this.newTaskTitle || this.newTaskDescription) {
+      this.showDiscardModal = true; // 🚀 Trigger discard confirmation modal
+    } else {
+      this.resetFormAndClose();
+    }
+  }
+  
+  confirmDiscard(): void {
+    this.showDiscardModal = false;
+    this.resetFormAndClose();
+  }
+  
+  resetFormAndClose(): void {
+    this.showModal = false;
     this.newTaskTitle = "";
     this.newTaskDescription = "";
     this.newTaskPriority = 3;
-
     this.titleError = "";
     this.descriptionError = "";
     this.isFormValid = false;
-  
-    // setTimeout(() => {}, 10);
   }
 
   createTask(task: Task): void {

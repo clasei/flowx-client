@@ -42,7 +42,7 @@
 
     <!-- slider for "show comlpleted" -->
     <div class="sort-container">
-      <span>hide done </span>
+      <span>view done </span>
       <label class="switch">
         <input id="completedTasksToggle" type="checkbox" (change)="toggleShowCompleted()">
         <span class="slider"></span>
@@ -67,7 +67,7 @@
   </div>
 
   <ng-template #noTasks>
-    <p>create a new to-do</p>
+    <p>it's flowx time — find the perfect moment to create your new to-do</p>
   </ng-template>
 
   <!-- new task modal -->
@@ -97,6 +97,19 @@
     </div>
   </div>
 </div>
+
+<!-- Discard changes modal -->
+<div *ngIf="showDiscardModal" class="modal-overlay">
+  <div class="modal">
+    <h3>let's pause</h3>
+    <p>are you sure you want to close without saving?</p>
+    <div class="modal-actions">
+      <button class="cancel-btn" (click)="showDiscardModal = false">keep editing</button>
+      <button class="cancel-btn" (click)="confirmDiscard()">discard</button>
+    </div>
+  </div>
+</div>
+
 
 
 </div>
