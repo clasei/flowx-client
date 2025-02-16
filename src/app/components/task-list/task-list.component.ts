@@ -20,11 +20,17 @@ export class TaskListComponent implements OnInit {
   isDateAscending: boolean = true; // date sort order
   selectedFilter: string = 'all'; // active filter
   showTopTasks: boolean = false; // slider for "show only 3 tasks"
-  // currentPage: number = 1; // track current page for pagination
+
+  // modal + form fields
   showModal: boolean = false;
   newTaskTitle: string = "";
   newTaskDescription: string = "";
   newTaskPriority: number = 3; // default priority (pipeline)
+
+  // form validation states
+  titleError: string = "";
+  descriptionError: string = "";
+  isFormValid: boolean = false;
 
   constructor(private taskService: TaskService) {}
   
@@ -101,6 +107,26 @@ export class TaskListComponent implements OnInit {
   }
 
   // -------------------- modal starts here
+
+  validateForm(): void {
+    this.titleError = "";
+    this.descriptionError = "";
+    this.isFormValid = true; 
+
+    if (this.newTaskTitle.trim().length < 3) {
+      this.titleError = "title must be at least 3 characters";
+      this.isFormValid = false;
+    } else if (this.newTaskTitle.trim().length > 120) {
+      this.titleError = "title must be less than 120 characters";
+      this.isFormValid = false;
+    }
+
+    if (this.newTaskDescription.trim().length > 490) {
+      this.descriptionError = "description must be less than 490 characters";
+      this.isFormValid = false;
+    }
+  }
+
   openNewTaskModal(): void {
     this.showModal = true; // just opens the modal
   }
@@ -108,13 +134,15 @@ export class TaskListComponent implements OnInit {
   closeModal(): void {
     this.showModal = false;
     
-    // ✅ Ensure input fields are reset
     this.newTaskTitle = "";
     this.newTaskDescription = "";
     this.newTaskPriority = 3;
+
+    this.titleError = "";
+    this.descriptionError = "";
+    this.isFormValid = false;
   
-    // ✅ Force UI refresh (triggers change detection)
-    setTimeout(() => {}, 10);
+    // setTimeout(() => {}, 10);
   }
 
   createTask(task: Task): void {
@@ -130,7 +158,7 @@ export class TaskListComponent implements OnInit {
 
   saveTask(): void {
     if (!this.newTaskTitle.trim()) {
-      console.error("❌ Title cannot be empty!");
+      console.error("title cannot be empty!");
       return;
     }
   
@@ -144,20 +172,18 @@ export class TaskListComponent implements OnInit {
       // updatedAt: new Date(),
     };
   
-    console.log("📤 Sending task to backend:", newTask); // ✅ Log before sending
+    console.log("📤 sending task to backend:", newTask);
   
     this.taskService.createTask(newTask).subscribe({
       next: (createdTask) => {
-        console.log("✅ Task successfully created:", createdTask);
-  
-        // ✅ Ensure the task appears in the list immediately
-        this.allTasks = [...this.allTasks, createdTask]; // Create new array to trigger change detection
-        this.applyFilters(); // Reapply filters to refresh UI
-  
-        // ✅ Close the modal AFTER updating UI
+        console.log("✅ task successfully created:", createdTask);
+
+        this.allTasks = [...this.allTasks, createdTask]; // create new array
+        this.applyFilters(); // reapply filters to refresh
+
         this.closeModal();
       },
-      error: (err) => console.error("❌ Error creating task:", err),
+      error: (err) => console.error("❌ error creating task:", err),
     });
   }  
 

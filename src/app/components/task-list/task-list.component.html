@@ -61,10 +61,13 @@
     <h3>new stuff</h3>
 
     <label>what are you gonna do?</label>
-    <input type="text" [(ngModel)]="newTaskTitle" placeholder="Task title">
+    <input type="text" [(ngModel)]="newTaskTitle" placeholder="choose a title" (input)="validateForm()">
+    <p class="error" *ngIf="titleError">{{ titleError }}</p>
+
 
     <label>add some info if needed</label>
-    <textarea [(ngModel)]="newTaskDescription" placeholder="Task description"></textarea>
+    <textarea [(ngModel)]="newTaskDescription" placeholder="description" (input)="validateForm()"></textarea>
+    <p class="error" *ngIf="descriptionError">{{ descriptionError }}</p>
 
     <label>choose priority</label>
     <select [(ngModel)]="newTaskPriority">
@@ -75,7 +78,7 @@
 
     <div class="modal-actions">
       <button class="cancel-btn" (click)="closeModal()">cancel</button>
-      <button class="save-btn" (click)="saveTask()">create</button>
+      <button class="save-btn" (click)="saveTask()" [disabled]="!isFormValid">create</button>
     </div>
   </div>
 </div>

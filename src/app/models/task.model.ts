@@ -1,5 +1,5 @@
 export interface Task {
-  id?: number;
+  id?: number; // added in the backend
   title: string;
   description: string;
   priority: number;
