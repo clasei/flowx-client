@@ -1,20 +1,25 @@
 <div class="task-item">
   <div class="task-card" [ngClass]="{'completed': task.completed}">
+
     <div class="task-header">
       <h3>{{ task.title }}</h3>
+
       <span class="priority-tag" [ngClass]="getPriorityClass(task.priority)">
         {{ getPriorityText(task.priority) }}
       </span>
-      
     </div>
+
     <p class="task-description">{{ task.description }}</p>
+
     <div class="task-footer">
       <span class="task-date">created: {{ task.createdAt | date:'short' }}</span>
+
       <!-- <input type="checkbox" [(ngModel)]="task.completed"> -->
       <label class="checkbox-container">
-        <input type="checkbox" [(ngModel)]="task.completed">
+        <input type="checkbox" [checked]="task.completed" (change)="onCheckboxChange()">
         <span class="checkmark"></span>
       </label>
+
     </div>
   </div>
 </div>

@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Task } from '../../models/task.model';
 import { FormsModule } from '@angular/forms';
+import { Task } from '../../models/task.model';
+
 
 @Component({
   selector: 'app-task-item',
@@ -14,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 
 export class TaskItemComponent {
   @Input() task!: Task; // receives data from parent component (task-list)
+  @Output() toggleCompleted = new EventEmitter<Task>(); // emits event to parent (task-list)
 
   getPriorityClass(priority: number): string {
     switch (priority) {
@@ -32,4 +34,10 @@ export class TaskItemComponent {
       default: return 'Unknown';
     }
   }
+
+  onCheckboxChange() {
+    this.task.completed = !this.task.completed; // update local ui
+    this.toggleCompleted.emit(this.task); // send update to parent
+  }
+  
 }

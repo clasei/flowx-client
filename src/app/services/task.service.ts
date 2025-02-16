@@ -21,5 +21,11 @@ export class TaskService {
     console.log("sending task to backend:", task);
     return this.http.post<Task>(this.apiUrl, task);
   }
-  
+
+  // toggle comlpetion status
+  toggleTaskCompletion(task: Task): Observable<Task> {
+    console.log("sending task to backend:", task);
+    return this.http.put<Task>(`${this.apiUrl}/${task.id}/toggle`, {}); 
+  }
+
 }

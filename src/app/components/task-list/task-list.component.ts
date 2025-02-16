@@ -106,6 +106,24 @@ export class TaskListComponent implements OnInit {
     this.applyFilters();
   }
 
+  toggleTaskCompletion(task: Task): void {
+    const updatedTask = { ...task, completed: !task.completed };
+
+    console.log("🟡 sending toggled task:", updatedTask); 
+  
+    this.taskService.toggleTaskCompletion(updatedTask).subscribe({
+      next: (taskUpdated) => {
+        console.log("✅ task toggled:", taskUpdated);
+
+        this.allTasks = this.allTasks.map(t => t.id === taskUpdated.id ? taskUpdated : t);
+        this.applyFilters();
+      },
+      error: (err) => console.error("❌ Error updating task:", err),
+    });
+  }
+  
+  
+
   // -------------------- modal starts here
 
   validateForm(): void {
