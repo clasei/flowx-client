@@ -62,7 +62,7 @@
       *ngFor="let task of tasks" 
       [task]="task"
       (toggleCompleted)="toggleTaskCompletion($event)"
-      (deleteTask)="confirmDeleteTask($event)">      
+      (deleteTask)="openDeleteModal($event)">      
     </app-task-item>
 
   </div>
@@ -111,6 +111,16 @@
   </div>
 </div>
 
+<!-- Delete Confirmation Modal -->
+<div class="modal" *ngIf="showDeleteModal">
+  <div class="modal-content">
+    <h3>Delete Task</h3>
+    <p>Are you sure you want to delete "{{ taskToDelete?.title }}"?</p>
+    
+    <button class="cancel-btn" (click)="showDeleteModal = false">Cancel</button>
+    <button class="delete-btn" (click)="confirmDelete()">Delete</button>
+  </div>
+</div>
 
 
 </div>
