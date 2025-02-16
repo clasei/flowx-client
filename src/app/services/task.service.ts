@@ -14,8 +14,6 @@ export class TaskService {
 
   // fetch all tasks
   getTasks(): Observable<Task[]> {
-    return this.http.get<{ content: Task[] }>(this.apiUrl).pipe(
-      map(response => response.content) // extract the content -- array of tasks
-    );
+    return this.http.get<Task[]>(this.apiUrl); // return the array of tasks
   }
 }

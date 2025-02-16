@@ -9,8 +9,9 @@ import { DeletedTasksComponent } from './pages/deleted-tasks/deleted-tasks.compo
 export const routes: Routes = [
   { path: '', component: HomeComponent }, // landing page -- public
   { path: 'login', component: LoginComponent }, // login page
-  { path: 'dashboard', component: DashboardComponent }, // main page after login
+  { path: 'taskboard', component: DashboardComponent }, // main page after login
   { path: 'settings', component: SettingsComponent }, // settings
   { path: 'done', component: DoneTasksComponent }, // completed Tasks
-  { path: 'deleted', component: DeletedTasksComponent } // deleted tasks
+  { path: 'deleted', component: DeletedTasksComponent }, // deleted tasks
+  { path: '**', redirectTo: '' } // redirect unknown routes
 ];

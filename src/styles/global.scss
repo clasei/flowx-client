@@ -2,7 +2,10 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #121212; 
+  font-weight: 700 !important;
+  color: #d2d2d2 !important;
+  background-color: #121212 !important; 
+  min-height: 100vh;
 }
 
 $primary-color: #ff4081;
