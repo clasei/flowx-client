@@ -2,6 +2,16 @@
   margin: 1rem;
 }
 
+.controls-panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #252525;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
 // .sort-btn {
 //   background: #007bff5d;
 //   color: white;
@@ -67,4 +77,27 @@ input:checked + .slider {
 
 input:checked + .slider:before {
   transform: translateX(20px);
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.filter-container,
+.sort-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+select {
+  background: #333;
+  color: #fff;
+  border: 1px solid #555;
+  padding: 0.3rem;
+  border-radius: 5px;
+  cursor: pointer;
 }
