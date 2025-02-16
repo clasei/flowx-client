@@ -28,4 +28,10 @@ export class TaskService {
     return this.http.put<Task>(`${this.apiUrl}/${task.id}/toggle`, {}); 
   }
 
+  // delete a task
+  deleteTask(id: number): Observable<void> {
+    console.log("🔴 deleting task from backend, ID:", id);
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
 }

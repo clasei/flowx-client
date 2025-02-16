@@ -22,6 +22,19 @@
     align-items: center;
   }
 
+  .task-meta-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.1rem;
+    padding-bottom: 0.2rem;
+  }
+
+  .task-date {
+    font-size: 0.75rem;
+    color: #707070; 
+  }
+
   h3 {
     font-size: 1.25rem;
     font-weight: bold;
@@ -35,6 +48,7 @@
 
   .priority-tag {
     padding: 4px 8px;
+    margin-bottom: 0.2rem;
     border-radius: 4px;
     font-size: 12px;
     font-weight: bold;
@@ -70,8 +84,9 @@
     }
   
     .checkmark {
-      width: 2.2rem;
-      height: 2.2rem;
+      background-color: #a7a7a770;
+      width: 2.5rem;
+      height: 2.5rem;
       border-radius: 4px;
       // border: 1.5px solid #2afaaa;      
       border: 1.5px solid #0fb5a5;      
@@ -112,4 +127,34 @@
     font-size: 0.7rem;
     color: #b2b2b2;
   }
+
+  .task-meta-footer {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  
+  .delete-btn {
+    background: #434343; 
+    border: none;
+    color: #707070;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+  
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      transform: scale(1.05);
+    }
+  
+    &:active {
+      transform: scale(1);
+    }
+  }
+
 }

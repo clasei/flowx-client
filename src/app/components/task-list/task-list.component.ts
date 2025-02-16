@@ -58,6 +58,49 @@ export class TaskListComponent implements OnInit {
     });
   }
 
+  showDeleteModal = false;
+  taskToDelete: Task | null = null;
+
+  openDeleteModal(task: Task) {
+    this.taskToDelete = task;
+    this.showDeleteModal = true;
+  }
+
+  confirmDelete() {
+    if (!this.taskToDelete) return;
+  
+    this.taskService.deleteTask(this.taskToDelete.id!).subscribe({
+      next: () => {
+        console.log(`✅ Task deleted: ${this.taskToDelete!.title}`);
+        this.allTasks = this.allTasks.filter(t => t.id !== this.taskToDelete!.id);
+        this.applyFilters();
+        this.showDeleteModal = false; // Close modal after delete
+      },
+      error: (err) => console.error("❌ Error deleting task:", err),
+    });
+  }
+
+  // confirmDeleteTask(task: Task): void {
+  //   console.log("🛠️ Task to delete:", task); // Debugging
+
+  //   if (!task || !task.id) {
+  //     console.error("❌ Task ID is undefined. Cannot delete.");
+  //     return; 
+  //   }
+
+  //   if (confirm(`are you sure you want to delete "${task.title}"?`)) {
+  //     this.taskService.deleteTask(task.id!).subscribe({ // task.id! confirms it's not null
+  //       next: () => {
+  //         console.log(`✅ task deleted: ${task.title}`);
+  //         this.allTasks = this.allTasks.filter(t => t.id !== task.id);
+  //         this.applyFilters();
+  //       },
+  //       error: (err) => console.error("❌ error deleting task:", err),
+  //     });
+  //   }
+  // }
+  
+
   applyFilters(): void {
     let filteredTasks = [...this.allTasks];
 
