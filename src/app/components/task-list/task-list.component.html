@@ -61,7 +61,8 @@
     <app-task-item 
       *ngFor="let task of tasks" 
       [task]="task"
-      (toggleCompleted)="toggleTaskCompletion($event)">
+      (toggleCompleted)="toggleTaskCompletion($event)"
+      (deleteTask)="confirmDeleteTask($event)">      
     </app-task-item>
 
   </div>

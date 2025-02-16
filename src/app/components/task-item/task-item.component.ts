@@ -16,6 +16,8 @@ import { Task } from '../../models/task.model';
 export class TaskItemComponent {
   @Input() task!: Task; // receives data from parent component (task-list)
   @Output() toggleCompleted = new EventEmitter<Task>(); // emits event to parent (task-list)
+  @Output() deleteTask = new EventEmitter<Task>(); // emit the whole task to parent
+
 
   getPriorityClass(priority: number): string {
     switch (priority) {
@@ -31,13 +33,18 @@ export class TaskItemComponent {
       case 1: return 'critical';
       case 2: return 'focus';
       case 3: return 'pipeline';
-      default: return 'Unknown';
+      default: return 'unknown';
     }
   }
 
   onCheckboxChange() {
     this.task.completed = !this.task.completed; // update local ui
     this.toggleCompleted.emit(this.task); // send update to parent
+  }
+
+  onDeleteClick() {
+    console.log("🛠️ deleting task:", this.task); 
+    this.deleteTask.emit(this.task);
   }
   
 }

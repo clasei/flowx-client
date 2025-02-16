@@ -58,6 +58,28 @@ export class TaskListComponent implements OnInit {
     });
   }
 
+  confirmDeleteTask(task: Task): void {
+
+    console.log("🛠️ Task to delete:", task); // Debugging
+
+    if (!task || !task.id) {
+      console.error("❌ Task ID is undefined. Cannot delete.");
+      return; 
+    }
+
+    if (confirm(`are you sure you want to delete "${task.title}"?`)) {
+      this.taskService.deleteTask(task.id!).subscribe({ // task.id! confirms it's not null
+        next: () => {
+          console.log(`✅ task deleted: ${task.title}`);
+          this.allTasks = this.allTasks.filter(t => t.id !== task.id);
+          this.applyFilters();
+        },
+        error: (err) => console.error("❌ error deleting task:", err),
+      });
+    }
+  }
+  
+
   applyFilters(): void {
     let filteredTasks = [...this.allTasks];
 

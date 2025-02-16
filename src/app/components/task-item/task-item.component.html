@@ -14,6 +14,11 @@
     <div class="task-footer">
       <span class="task-date">created: {{ task.createdAt | date:'short' }}</span>
 
+      <button class="delete-btn" (click)="onDeleteClick()">
+        ❌
+      </button>
+      
+
       <!-- <input type="checkbox" [(ngModel)]="task.completed"> -->
       <label class="checkbox-container">
         <input type="checkbox" [checked]="task.completed" (change)="onCheckboxChange()">
