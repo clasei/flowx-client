@@ -20,14 +20,17 @@ export class TaskListComponent implements OnInit {
   isDateAscending: boolean = true; // date sort order
   selectedFilter: string = 'all'; // active filter
   showTopTasks: boolean = false; // slider for "show only 3 tasks"
+  showCompleted: boolean = false; // default: hide all
 
   // modal + form fields
   showModal: boolean = false;
+  showDiscardModal: boolean = false;
   newTaskTitle: string = "";
   newTaskDescription: string = "";
   newTaskPriority: number = 3; // default priority (pipeline)
 
   // form validation states
+  // typingTimeout: any; // debounce timeout if needed
   titleError: string = "";
   descriptionError: string = "";
   isFormValid: boolean = false;
@@ -72,6 +75,11 @@ export class TaskListComponent implements OnInit {
       );
     }
 
+    // filter out completed tasks
+    if (!this.showCompleted) {
+      filteredTasks = filteredTasks.filter(task => !task.completed);
+    }
+
     // // PENDING: implement user settings
     // // HEY! limit the number of tasks
     //   const maxTasks = this.userSettings.maxTasks || 10; // default to 23
@@ -106,12 +114,39 @@ export class TaskListComponent implements OnInit {
     this.applyFilters();
   }
 
+  toggleShowCompleted(): void {
+    this.showCompleted = !this.showCompleted;
+    this.applyFilters();
+  }
+
+
+  // -------------------- task item starts here
+
+  toggleTaskCompletion(task: Task): void {
+    const updatedTask = { ...task, completed: !task.completed };
+
+    // console.log("🟡 sending toggled task:", updatedTask); 
+  
+    this.taskService.toggleTaskCompletion(updatedTask).subscribe({
+      next: (taskUpdated) => {
+        // console.log("✅ task toggled:", taskUpdated);
+
+        this.allTasks = this.allTasks.map(t => t.id === taskUpdated.id ? taskUpdated : t);
+        this.applyFilters();
+      },
+      error: (err) => console.error("❌ error toggling task:", err),
+    });
+  }
+  
+  
+
   // -------------------- modal starts here
 
   validateForm(): void {
     this.titleError = "";
     this.descriptionError = "";
     this.isFormValid = true; 
+    // clearTimeout(this.typingTimeout); // reset timeout on each keypress
 
     if (this.newTaskTitle.trim().length < 3) {
       this.titleError = "title must be at least 3 characters";
@@ -131,18 +166,41 @@ export class TaskListComponent implements OnInit {
     this.showModal = true; // just opens the modal
   }
 
-  closeModal(): void {
-    this.showModal = false;
+  // closeModal(): void {
+  //   this.showModal = false;
     
+  //   this.newTaskTitle = "";
+  //   this.newTaskDescription = "";
+  //   this.newTaskPriority = 3;
+
+  //   this.titleError = "";
+  //   this.descriptionError = "";
+  //   this.isFormValid = false;
+  
+  //   // setTimeout(() => {}, 10);
+  // }
+
+  closeModal(): void {
+    if (this.newTaskTitle || this.newTaskDescription) {
+      this.showDiscardModal = true; // 🚀 Trigger discard confirmation modal
+    } else {
+      this.resetFormAndClose();
+    }
+  }
+  
+  confirmDiscard(): void {
+    this.showDiscardModal = false;
+    this.resetFormAndClose();
+  }
+  
+  resetFormAndClose(): void {
+    this.showModal = false;
     this.newTaskTitle = "";
     this.newTaskDescription = "";
     this.newTaskPriority = 3;
-
     this.titleError = "";
     this.descriptionError = "";
     this.isFormValid = false;
-  
-    // setTimeout(() => {}, 10);
   }
 
   createTask(task: Task): void {
@@ -150,7 +208,7 @@ export class TaskListComponent implements OnInit {
       next: (createdTask) => {
         this.allTasks.push(createdTask);
         this.applyFilters();
-        console.log("task created:", createdTask);
+        // console.log("task created:", createdTask);
       },
       error: (err) => console.error("error creating task:", err),
     });
@@ -172,11 +230,11 @@ export class TaskListComponent implements OnInit {
       // updatedAt: new Date(),
     };
   
-    console.log("📤 sending task to backend:", newTask);
+    console.log("📤 sending new task to backend:", newTask);
   
     this.taskService.createTask(newTask).subscribe({
       next: (createdTask) => {
-        console.log("✅ task successfully created:", createdTask);
+        // console.log("✅ task successfully created:", createdTask);
 
         this.allTasks = [...this.allTasks, createdTask]; // create new array
         this.applyFilters(); // reapply filters to refresh

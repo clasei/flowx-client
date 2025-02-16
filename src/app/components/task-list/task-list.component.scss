@@ -127,7 +127,7 @@ input:checked + .slider:before {
   transition: 0.3s;
   
   &:hover {
-    background: #efff61;
+    background: #0fb5a5;
   }
 
   &:disabled {
@@ -161,7 +161,7 @@ input, textarea, select {
 }
 
 .cancel-btn {
-  background: #444444;
+  background: #313131;
   font-family: 'Inter', sans-serif;
   font-weight: 700 !important;
   color: #bcbcbc !important;
@@ -194,7 +194,7 @@ input, textarea, select {
   transition: 0.3s;
   
   &:hover {
-    background: #efff61;
+    background: #0fb5a5;
   }
 
   &:disabled {

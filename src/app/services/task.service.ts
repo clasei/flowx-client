@@ -18,8 +18,14 @@ export class TaskService {
 
   // create new task
   createTask(task: Task): Observable<Task> {
-    console.log("sending task to backend:", task);
+    console.log("new task to backend:", task);
     return this.http.post<Task>(this.apiUrl, task);
   }
-  
+
+  // toggle comlpetion status
+  toggleTaskCompletion(task: Task): Observable<Task> {
+    console.log("toggled task to backend:", task);
+    return this.http.put<Task>(`${this.apiUrl}/${task.id}/toggle`, {}); 
+  }
+
 }
