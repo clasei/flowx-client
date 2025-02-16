@@ -19,7 +19,7 @@ export class TaskListComponent implements OnInit {
   isDateAscending: boolean = true; // date sort order
   selectedFilter: string = 'all'; // active filter
   showTopTasks: boolean = false; // slider for "show only 3 tasks"
-  currentPage: number = 1; // track current page for pagination
+  // currentPage: number = 1; // track current page for pagination
 
   constructor(private taskService: TaskService) {}
   
@@ -27,16 +27,23 @@ export class TaskListComponent implements OnInit {
     this.fetchTasks();
   }
 
+  // // PENDING: implement user settings
+  // userSettings = {
+  //   maxTasks: 10, // default limit
+  //   defaultSort: 'oldest',
+  // };
+
   fetchTasks(): void {
     this.taskService.getTasks().subscribe({
       next: (tasks) => {
-        this.allTasks = tasks; // store original list + server sorts oldest first by default
-        this.applyFilters(); // apply default filtering & sorting
         console.log('tasks loaded:', tasks);
+        this.allTasks = tasks ?? []; // ensure it's always an array
+        this.applyFilters();
       },
       error: (err) => console.error('error fetching tasks:', err)
     });
   }
+  
 
   applyFilters(): void {
     let filteredTasks = [...this.allTasks];
@@ -54,6 +61,14 @@ export class TaskListComponent implements OnInit {
         this.isPriorityAscending ? a.priority - b.priority : b.priority - a.priority
       );
     }
+
+    // // PENDING: implement user settings
+    // // HEY! limit the number of tasks
+    //   const maxTasks = this.userSettings.maxTasks || 10; // default to 23
+    //   if (filteredTasks.length > maxTasks) {
+    //     console.warn("it looks like you've got enough already, take it easy");
+    //     filteredTasks = filteredTasks.slice(0, maxTasks);
+    //   }
 
     // apply "show top 3 tasks" filter
     this.tasks = this.showTopTasks ? filteredTasks.slice(0, 3) : filteredTasks;
