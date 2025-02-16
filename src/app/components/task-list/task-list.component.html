@@ -40,6 +40,11 @@
       </label>
     </div>
 
+    <!-- new task button -->
+    <button class="new-task-btn" (click)="openNewTaskModal()">
+      ➕ new
+    </button>
+
   </div>
 
   <div *ngIf="(tasks ?? []).length > 0; else noTasks">
@@ -47,7 +52,33 @@
   </div>
 
   <ng-template #noTasks>
-    <p>No tasks found.</p>
+    <p>create a new to-do</p>
   </ng-template>
+
+  <!-- new task modal -->
+<div *ngIf="showModal" class="modal-overlay">
+  <div class="modal">
+    <h3>new stuff</h3>
+
+    <label>what are you gonna do?</label>
+    <input type="text" [(ngModel)]="newTaskTitle" placeholder="Task title">
+
+    <label>add some info if needed</label>
+    <textarea [(ngModel)]="newTaskDescription" placeholder="Task description"></textarea>
+
+    <label>choose priority</label>
+    <select [(ngModel)]="newTaskPriority">
+      <option value="1">critical</option>
+      <option value="2">focus</option>
+      <option value="3">pipeline</option>
+    </select>
+
+    <div class="modal-actions">
+      <button class="cancel-btn" (click)="closeModal()">cancel</button>
+      <button class="save-btn" (click)="saveTask()">create</button>
+    </div>
+  </div>
+</div>
+
 
 </div>

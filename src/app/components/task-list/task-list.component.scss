@@ -102,3 +102,104 @@ input:checked + .slider {
 input:checked + .slider:before {
   transform: translateX(20px);
 }
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.new-task-btn {
+  background: #36e4ff;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700 !important;
+  color: #444444 !important;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  
+  &:hover {
+    background: #0076bb;
+  }
+
+  &:disabled {
+    background: #333;
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.modal {
+  background: #252525;
+  padding: 1.5rem;
+  border-radius: 8px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+input, textarea, select {
+  background: #333;
+  color: white;
+  border: 1px solid #555;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cancel-btn {
+  background: #444444;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700 !important;
+  color: #bcbcbc !important;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  
+  &:hover {
+    background: #1b1b1b;
+  }
+
+  &:disabled {
+    background: #333;
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.save-btn {
+  background: #bcbcbc;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700 !important;
+  color: #444444 !important;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  
+  &:hover {
+    background: #0fb5a5;
+  }
+
+  &:disabled {
+    background: #333;
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}

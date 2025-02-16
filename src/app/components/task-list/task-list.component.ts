@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { TaskService } from '../../services/task.service';
 import { Task } from '../../models/task.model';
 import { TaskItemComponent } from '../task-item/task-item.component';
@@ -7,7 +8,7 @@ import { TaskItemComponent } from '../task-item/task-item.component';
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [CommonModule, TaskItemComponent],
+  imports: [CommonModule, FormsModule, TaskItemComponent],
   providers: [TaskService],
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.scss'
@@ -20,6 +21,10 @@ export class TaskListComponent implements OnInit {
   selectedFilter: string = 'all'; // active filter
   showTopTasks: boolean = false; // slider for "show only 3 tasks"
   // currentPage: number = 1; // track current page for pagination
+  showModal: boolean = false;
+  newTaskTitle: string = "";
+  newTaskDescription: string = "";
+  newTaskPriority: number = 3; // default priority (pipeline)
 
   constructor(private taskService: TaskService) {}
   
@@ -43,7 +48,6 @@ export class TaskListComponent implements OnInit {
       error: (err) => console.error('error fetching tasks:', err)
     });
   }
-  
 
   applyFilters(): void {
     let filteredTasks = [...this.allTasks];
@@ -94,5 +98,45 @@ export class TaskListComponent implements OnInit {
   toggleTopTasks(): void {
     this.showTopTasks = !this.showTopTasks;
     this.applyFilters();
+  }
+
+  // -------------------- modal starts here
+  openNewTaskModal(): void {
+    this.showModal = true; // just opens the modal
+  }
+
+  closeModal(): void {
+    this.showModal = false;
+    this.newTaskTitle = "";
+    this.newTaskDescription = "";
+    this.newTaskPriority = 3;
+  }
+
+  saveTask(): void {
+    if (!this.newTaskTitle.trim()) return;
+
+    const newTask: Task = {
+      id: Math.floor(Math.random() * 1000), // temporary ID
+      title: this.newTaskTitle,
+      description: this.newTaskDescription,
+      priority: this.newTaskPriority,
+      completed: false,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    };
+
+    this.createTask(newTask);
+    this.closeModal();
+  }
+
+  createTask(task: Task): void {
+    this.taskService.createTask(task).subscribe({
+      next: (createdTask) => {
+        this.allTasks.push(createdTask);
+        this.applyFilters();
+        console.log("task created:", createdTask);
+      },
+      error: (err) => console.error("error creating task:", err),
+    });
   }
 }
