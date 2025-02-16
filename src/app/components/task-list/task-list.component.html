@@ -72,7 +72,7 @@
   </ng-template>
 
   <!-- new task modal -->
-<div *ngIf="showModal" class="modal-overlay">
+<div class="modal-overlay" *ngIf="showModal">
   <div class="modal">
     <h3>new stuff</h3>
 
@@ -112,13 +112,15 @@
 </div>
 
 <!-- Delete Confirmation Modal -->
-<div class="modal" *ngIf="showDeleteModal">
-  <div class="modal-content">
-    <h3>Delete Task</h3>
-    <p>Are you sure you want to delete "{{ taskToDelete?.title }}"?</p>
+<div class="modal-overlay" *ngIf="showDeleteModal">
+  <div class="modal">
+    <h3>not into this anymore</h3>
+    <p>are you sure you want to delete "{{ taskToDelete?.title }}"?</p>
     
-    <button class="cancel-btn" (click)="showDeleteModal = false">Cancel</button>
-    <button class="delete-btn" (click)="confirmDelete()">Delete</button>
+    <div class="modal-actions">
+      <button class="cancel-btn" (click)="showDeleteModal = false">cancel</button>
+      <button class="cancel-btn" (click)="confirmDelete()">delete</button>
+    </div>
   </div>
 </div>
 
