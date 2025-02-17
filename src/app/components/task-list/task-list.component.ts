@@ -80,59 +80,40 @@ export class TaskListComponent implements OnInit {
     });
   }
 
-  // confirmDeleteTask(task: Task): void {
-  //   console.log("🛠️ Task to delete:", task); // Debugging
+  // applyFilters(): void {
+  //   let filteredTasks = [...this.allTasks];
 
-  //   if (!task || !task.id) {
-  //     console.error("❌ Task ID is undefined. Cannot delete.");
-  //     return; 
+  //   // apply filtering
+  //   if (this.selectedFilter !== 'all') {
+  //     filteredTasks = filteredTasks.filter(
+  //       (task) => this.getPriorityLabel(task.priority) === this.selectedFilter
+  //     );
   //   }
 
-  //   if (confirm(`are you sure you want to delete "${task.title}"?`)) {
-  //     this.taskService.deleteTask(task.id!).subscribe({ // task.id! confirms it's not null
-  //       next: () => {
-  //         console.log(`✅ task deleted: ${task.title}`);
-  //         this.allTasks = this.allTasks.filter(t => t.id !== task.id);
-  //         this.applyFilters();
-  //       },
-  //       error: (err) => console.error("❌ error deleting task:", err),
-  //     });
+  //   // apply priority sorting (only if all is selected)
+  //   if (this.selectedFilter === 'all') {
+  //     filteredTasks.sort((a, b) => 
+  //       this.isPriorityAscending ? a.priority - b.priority : b.priority - a.priority
+  //     );
   //   }
+
+  //   // filter out completed tasks
+  //   if (!this.showCompleted) {
+  //     filteredTasks = filteredTasks.filter(task => !task.completed);
+  //   }
+
+  //   // apply "show top 3 tasks" filter
+  //   this.tasks = this.showTopTasks ? filteredTasks.slice(0, 3) : filteredTasks;
   // }
-  
 
   applyFilters(): void {
-    let filteredTasks = [...this.allTasks];
-
-    // apply filtering
-    if (this.selectedFilter !== 'all') {
-      filteredTasks = filteredTasks.filter(
-        (task) => this.getPriorityLabel(task.priority) === this.selectedFilter
-      );
-    }
-
-    // apply priority sorting (only if all is selected)
-    if (this.selectedFilter === 'all') {
-      filteredTasks.sort((a, b) => 
-        this.isPriorityAscending ? a.priority - b.priority : b.priority - a.priority
-      );
-    }
-
-    // filter out completed tasks
-    if (!this.showCompleted) {
-      filteredTasks = filteredTasks.filter(task => !task.completed);
-    }
-
-    // // PENDING: implement user settings
-    // // HEY! limit the number of tasks
-    //   const maxTasks = this.userSettings.maxTasks || 10; // default to 23
-    //   if (filteredTasks.length > maxTasks) {
-    //     console.warn("it looks like you've got enough already, take it easy");
-    //     filteredTasks = filteredTasks.slice(0, maxTasks);
-    //   }
-
-    // apply "show top 3 tasks" filter
-    this.tasks = this.showTopTasks ? filteredTasks.slice(0, 3) : filteredTasks;
+    this.tasks = this.taskService.filterAndSortTasks(
+      this.allTasks,
+      this.selectedFilter,
+      this.showCompleted,
+      this.isPriorityAscending,
+      this.showTopTasks
+    );
   }
 
   toggleSortOrder(): void {
@@ -162,27 +143,16 @@ export class TaskListComponent implements OnInit {
     this.applyFilters();
   }
 
-
   // -------------------- task item starts here
-
-  toggleTaskCompletion(task: Task): void {
-    const updatedTask = { ...task, completed: !task.completed };
-
-    // console.log("🟡 sending toggled task:", updatedTask); 
   
-    this.taskService.toggleTaskCompletion(updatedTask).subscribe({
-      next: (taskUpdated) => {
-        // console.log("✅ task toggled:", taskUpdated);
-
-        this.allTasks = this.allTasks.map(t => t.id === taskUpdated.id ? taskUpdated : t);
-        this.applyFilters();
-      },
-      error: (err) => console.error("❌ error toggling task:", err),
+  toggleTaskCompletion(task: Task): void {
+    this.taskService.toggleTaskCompletion(task).subscribe(taskUpdated => {
+      this.allTasks = this.allTasks.map(t => t.id === taskUpdated.id ? taskUpdated : t);
+      this.applyFilters();
     });
   }
+    
   
-  
-
   // -------------------- modal starts here
 
   validateForm(): void {
@@ -209,23 +179,10 @@ export class TaskListComponent implements OnInit {
     this.showModal = true; // just opens the modal
   }
 
-  // closeModal(): void {
-  //   this.showModal = false;
-    
-  //   this.newTaskTitle = "";
-  //   this.newTaskDescription = "";
-  //   this.newTaskPriority = 3;
-
-  //   this.titleError = "";
-  //   this.descriptionError = "";
-  //   this.isFormValid = false;
-  
-  //   // setTimeout(() => {}, 10);
-  // }
 
   closeModal(): void {
     if (this.newTaskTitle || this.newTaskDescription) {
-      this.showDiscardModal = true; // 🚀 Trigger discard confirmation modal
+      this.showDiscardModal = true;
     } else {
       this.resetFormAndClose();
     }

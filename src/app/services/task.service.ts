@@ -34,4 +34,38 @@ export class TaskService {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
+  // -------------- filtering & sorting --------------
+  filterAndSortTasks(
+    tasks: Task[],
+    selectedFilter: string,
+    showCompleted: boolean,
+    isPriorityAscending: boolean,
+    showTopTasks: boolean
+  ): Task[] {
+    let filteredTasks = [...tasks];
+
+    // priority filter
+    if (selectedFilter !== 'all') {
+      filteredTasks = filteredTasks.filter(task => this.getPriorityLabel(task.priority) === selectedFilter);
+    }
+
+    // sort by priority
+    if (selectedFilter === 'all') {
+      filteredTasks.sort((a, b) => isPriorityAscending ? a.priority - b.priority : b.priority - a.priority);
+    }
+
+    // filter out completed tasks
+    if (!showCompleted) {
+      filteredTasks = filteredTasks.filter(task => !task.completed);
+    }
+
+    // "show top 3 tasks" filter
+    return showTopTasks ? filteredTasks.slice(0, 3) : filteredTasks;
+  }
+
+  getPriorityLabel(priority: number): string {
+    const labels: Record<number, string> = { 1: "critical", 2: "focus", 3: "pipeline" };
+    return labels[priority] || "queue";
+  }
+
 }
