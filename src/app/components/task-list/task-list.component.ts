@@ -22,12 +22,16 @@ export class TaskListComponent implements OnInit {
   showTopTasks: boolean = false; // slider for "show only 3 tasks"
   showCompleted: boolean = false; // default: hide all
 
-  // modal + form fields
+  // modals + form fields
   showModal: boolean = false;
   showDiscardModal: boolean = false;
   newTaskTitle: string = "";
   newTaskDescription: string = "";
   newTaskPriority: number = 3; // default priority (pipeline)
+  showEditModal = false;
+  taskToEdit: Task | null = null;
+  taskSaved: boolean = false;
+
 
   // form validation states
   // typingTimeout: any; // debounce timeout if needed
@@ -80,31 +84,7 @@ export class TaskListComponent implements OnInit {
     });
   }
 
-  // applyFilters(): void {
-  //   let filteredTasks = [...this.allTasks];
-
-  //   // apply filtering
-  //   if (this.selectedFilter !== 'all') {
-  //     filteredTasks = filteredTasks.filter(
-  //       (task) => this.getPriorityLabel(task.priority) === this.selectedFilter
-  //     );
-  //   }
-
-  //   // apply priority sorting (only if all is selected)
-  //   if (this.selectedFilter === 'all') {
-  //     filteredTasks.sort((a, b) => 
-  //       this.isPriorityAscending ? a.priority - b.priority : b.priority - a.priority
-  //     );
-  //   }
-
-  //   // filter out completed tasks
-  //   if (!this.showCompleted) {
-  //     filteredTasks = filteredTasks.filter(task => !task.completed);
-  //   }
-
-  //   // apply "show top 3 tasks" filter
-  //   this.tasks = this.showTopTasks ? filteredTasks.slice(0, 3) : filteredTasks;
-  // }
+  // -------------------- filtering & sorting starts here
 
   applyFilters(): void {
     this.tasks = this.taskService.filterAndSortTasks(
@@ -151,6 +131,30 @@ export class TaskListComponent implements OnInit {
       this.applyFilters();
     });
   }
+
+  // -------------------- edit task starts here
+
+  openEditModal(task: Task) {
+    this.taskToEdit = { ...task }; // clone task for editing
+    this.showEditModal = true;
+  }
+
+  saveEditedTask() {
+    if (!this.taskToEdit) return;
+    
+    this.taskService.updateTask(this.taskToEdit).subscribe(updatedTask => {
+      console.log("✅ Task updated:", updatedTask);
+      this.allTasks = this.allTasks.map(t => t.id === updatedTask.id ? updatedTask : t);
+      this.applyFilters();
+      this.showEditModal = false;
+    });
+  }
+
+  closeEditModal() {
+    this.showEditModal = false;
+    this.taskToEdit = null;
+  }
+  
     
   
   // -------------------- modal starts here
@@ -179,9 +183,8 @@ export class TaskListComponent implements OnInit {
     this.showModal = true; // just opens the modal
   }
 
-
   closeModal(): void {
-    if (this.newTaskTitle || this.newTaskDescription) {
+    if (!this.taskSaved && (this.newTaskTitle || this.newTaskDescription)) {
       this.showDiscardModal = true;
     } else {
       this.resetFormAndClose();
@@ -195,6 +198,8 @@ export class TaskListComponent implements OnInit {
   
   resetFormAndClose(): void {
     this.showModal = false;
+    this.showDiscardModal = false;
+    this.taskSaved = false;
     this.newTaskTitle = "";
     this.newTaskDescription = "";
     this.newTaskPriority = 3;
@@ -220,6 +225,7 @@ export class TaskListComponent implements OnInit {
       return;
     }
   
+  
     const newTask: Task = {
       // id: 0, // backend generates the ID
       title: this.newTaskTitle,
@@ -238,6 +244,8 @@ export class TaskListComponent implements OnInit {
 
         this.allTasks = [...this.allTasks, createdTask]; // create new array
         this.applyFilters(); // reapply filters to refresh
+
+        this.taskSaved = true;
 
         this.closeModal();
       },

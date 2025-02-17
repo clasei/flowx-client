@@ -17,6 +17,7 @@ export class TaskItemComponent {
   @Input() task!: Task; // receives data from parent component (task-list)
   @Output() toggleCompleted = new EventEmitter<Task>(); // emits event to parent (task-list)
   @Output() deleteTask = new EventEmitter<Task>(); // emit the whole task to parent
+  @Output() editTask = new EventEmitter<Task>();
 
 
   getPriorityClass(priority: number): string {
@@ -45,6 +46,11 @@ export class TaskItemComponent {
   onDeleteClick() {
     console.log("🛠️ deleting task:", this.task); 
     this.deleteTask.emit(this.task);
+  }
+
+  onEditClick() {
+    console.log("📝 Editing task:", this.task);
+    this.editTask.emit(this.task);
   }
   
 }
