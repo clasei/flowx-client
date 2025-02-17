@@ -34,6 +34,13 @@ export class TaskService {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
+  // update a task
+  updateTask(task: Task): Observable<Task> {
+    console.log("📝 updating task:", task);
+    return this.http.put<Task>(`${this.apiUrl}/${task.id}`, task);
+  }
+  
+
   // -------------- filtering & sorting --------------
   filterAndSortTasks(
     tasks: Task[],

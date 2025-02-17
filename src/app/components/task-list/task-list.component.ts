@@ -22,12 +22,15 @@ export class TaskListComponent implements OnInit {
   showTopTasks: boolean = false; // slider for "show only 3 tasks"
   showCompleted: boolean = false; // default: hide all
 
-  // modal + form fields
+  // modals + form fields
   showModal: boolean = false;
   showDiscardModal: boolean = false;
   newTaskTitle: string = "";
   newTaskDescription: string = "";
   newTaskPriority: number = 3; // default priority (pipeline)
+  showEditModal = false;
+  taskToEdit: Task | null = null;
+
 
   // form validation states
   // typingTimeout: any; // debounce timeout if needed
@@ -127,6 +130,30 @@ export class TaskListComponent implements OnInit {
       this.applyFilters();
     });
   }
+
+  // -------------------- edit task starts here
+
+  openEditModal(task: Task) {
+    this.taskToEdit = { ...task }; // clone task for editing
+    this.showEditModal = true;
+  }
+
+  saveEditedTask() {
+    if (!this.taskToEdit) return;
+    
+    this.taskService.updateTask(this.taskToEdit).subscribe(updatedTask => {
+      console.log("✅ Task updated:", updatedTask);
+      this.allTasks = this.allTasks.map(t => t.id === updatedTask.id ? updatedTask : t);
+      this.applyFilters();
+      this.showEditModal = false;
+    });
+  }
+
+  closeEditModal() {
+    this.showEditModal = false;
+    this.taskToEdit = null;
+  }
+  
     
   
   // -------------------- modal starts here
