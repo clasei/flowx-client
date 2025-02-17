@@ -1,1 +1,17 @@
 <p>done-tasks works!</p>
+
+<button id="delete" class="cancel-btn" (click)="deleteAllDoneTasks()">delete all done</button>
+
+
+<div *ngIf="doneTasks.length > 0; else noTasks">
+  <div *ngFor="let task of doneTasks" class="task-card">
+    <h3>{{ task.title }}</h3>
+    <p>{{ task.description }}</p>
+    <span class="task-date">completed on {{ task.updatedAt | date:'short' }}</span>
+    <button id="delete" class="cancel-btn" (click)="deleteTask(task)">delete</button>
+  </div>
+</div>
+
+<ng-template #noTasks>
+  <p>nothing done. really?</p>
+</ng-template>
