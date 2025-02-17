@@ -30,6 +30,7 @@ export class TaskListComponent implements OnInit {
   newTaskPriority: number = 3; // default priority (pipeline)
   showEditModal = false;
   taskToEdit: Task | null = null;
+  taskSaved: boolean = false;
 
 
   // form validation states
@@ -183,7 +184,7 @@ export class TaskListComponent implements OnInit {
   }
 
   closeModal(): void {
-    if (this.newTaskTitle || this.newTaskDescription) {
+    if (!this.taskSaved && (this.newTaskTitle || this.newTaskDescription)) {
       this.showDiscardModal = true;
     } else {
       this.resetFormAndClose();
@@ -197,7 +198,8 @@ export class TaskListComponent implements OnInit {
   
   resetFormAndClose(): void {
     this.showModal = false;
-    this.showDiscardModal = false; // added to fix create task issue
+    this.showDiscardModal = false;
+    this.taskSaved = false;
     this.newTaskTitle = "";
     this.newTaskDescription = "";
     this.newTaskPriority = 3;
@@ -242,6 +244,8 @@ export class TaskListComponent implements OnInit {
 
         this.allTasks = [...this.allTasks, createdTask]; // create new array
         this.applyFilters(); // reapply filters to refresh
+
+        this.taskSaved = true;
 
         this.closeModal();
       },
