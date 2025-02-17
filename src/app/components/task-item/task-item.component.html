@@ -8,7 +8,6 @@
         <span class="task-date">added {{ task.createdAt | date:'short' }}</span>
       </div>
 
-      <!-- <input type="checkbox" [(ngModel)]="task.completed"> -->
       <label class="checkbox-container">
         <input type="checkbox" [checked]="task.completed" (change)="onCheckboxChange()">
         <span class="checkmark"></span>
@@ -21,24 +20,23 @@
     <p class="task-description"> — {{ task.description }}</p>
 
     <div class="task-footer">
-
       <div class="task-meta-footer">
+
         <button class="delete-btn" (click)="onDeleteClick()">
           edit
         </button>
         <button class="delete-btn" (click)="onDeleteClick()">
           delete
-          <!-- X -->
         </button>
-        <!-- <span class="task-date">added {{ task.createdAt | date:'short' }}</span> -->
+
       </div>
       
       <!-- priority tag -->
       <span class="priority-tag" [ngClass]="getPriorityClass(task.priority)">
         {{ getPriorityText(task.priority) }}
       </span>
-      
 
     </div>
+
   </div>
 </div>

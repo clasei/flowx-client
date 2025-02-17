@@ -80,31 +80,7 @@ export class TaskListComponent implements OnInit {
     });
   }
 
-  // applyFilters(): void {
-  //   let filteredTasks = [...this.allTasks];
-
-  //   // apply filtering
-  //   if (this.selectedFilter !== 'all') {
-  //     filteredTasks = filteredTasks.filter(
-  //       (task) => this.getPriorityLabel(task.priority) === this.selectedFilter
-  //     );
-  //   }
-
-  //   // apply priority sorting (only if all is selected)
-  //   if (this.selectedFilter === 'all') {
-  //     filteredTasks.sort((a, b) => 
-  //       this.isPriorityAscending ? a.priority - b.priority : b.priority - a.priority
-  //     );
-  //   }
-
-  //   // filter out completed tasks
-  //   if (!this.showCompleted) {
-  //     filteredTasks = filteredTasks.filter(task => !task.completed);
-  //   }
-
-  //   // apply "show top 3 tasks" filter
-  //   this.tasks = this.showTopTasks ? filteredTasks.slice(0, 3) : filteredTasks;
-  // }
+  // -------------------- filtering & sorting starts here
 
   applyFilters(): void {
     this.tasks = this.taskService.filterAndSortTasks(
@@ -178,7 +154,6 @@ export class TaskListComponent implements OnInit {
   openNewTaskModal(): void {
     this.showModal = true; // just opens the modal
   }
-
 
   closeModal(): void {
     if (this.newTaskTitle || this.newTaskDescription) {
