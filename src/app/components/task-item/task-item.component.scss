@@ -99,6 +99,9 @@
 
     input:hover + .checkmark {
       transform: scale(1.1);
+      // border: 2.5px solid #0fb5a5;
+      background-color: #0fb5a461;
+      box-shadow: 0px 4px 7px #b3b3b3;
     }
 
     input:active + .checkmark {
@@ -135,7 +138,7 @@
     gap: 0.75rem;
   }
   
-  .delete-btn {
+  .muted-btn {
     background: #434343; 
     border: none;
     color: #707070;
@@ -157,4 +160,8 @@
     }
   }
 
+  #delete:hover {
+    background-color: #7a050594 !important;
+  }
+  
 }

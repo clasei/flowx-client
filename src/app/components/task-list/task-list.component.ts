@@ -197,6 +197,7 @@ export class TaskListComponent implements OnInit {
   
   resetFormAndClose(): void {
     this.showModal = false;
+    this.showDiscardModal = false; // added to fix create task issue
     this.newTaskTitle = "";
     this.newTaskDescription = "";
     this.newTaskPriority = 3;
@@ -221,6 +222,7 @@ export class TaskListComponent implements OnInit {
       console.error("title cannot be empty!");
       return;
     }
+  
   
     const newTask: Task = {
       // id: 0, // backend generates the ID
