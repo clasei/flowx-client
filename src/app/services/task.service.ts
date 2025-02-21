@@ -39,6 +39,12 @@ export class TaskService {
     console.log("📝 updating task:", task);
     return this.http.put<Task>(`${this.apiUrl}/${task.id}`, task);
   }
+
+  // delete all tasks
+  deleteAllDoneTasks(): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/completed`);
+  }
+  
   
 
   // -------------- filtering & sorting --------------
