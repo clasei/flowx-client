@@ -42,7 +42,7 @@ export class TaskService {
 
   // delete all tasks
   deleteAllDoneTasks(): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/done-tasks`);
+    return this.http.delete<void>(`${this.apiUrl}/completed`);
   }
   
   

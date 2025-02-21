@@ -28,7 +28,7 @@ export class DoneTasksComponent implements OnInit {
   deleteAllDoneTasks(): void {
     if (confirm("Are you sure you want to delete all completed tasks?")) {
       this.taskService.deleteAllDoneTasks().subscribe(() => {
-        this.doneTasks = []; // Clear local state
+        this.doneTasks = []; // clear local state aka tasks in ui
       });
     }
   }
