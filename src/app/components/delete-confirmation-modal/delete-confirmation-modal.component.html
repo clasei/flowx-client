@@ -1,1 +1,16 @@
-<p>delete-confirmation-modal works!</p>
+
+<div class="modal-overlay">
+  <div class="modal">
+    <h3>{{ isBulkDelete ? 'delete all done tasks' : 'delete task' }}</h3>
+    <p>
+      are you sure you want to delete 
+      {{ isBulkDelete ? 'all completed tasks' : '"' + taskTitle + '"' }}?
+    </p>
+    <p class="error">this action is permanent, once deleted it cannot be recovered</p>
+
+    <div class="modal-actions">
+      <button class="cancel-btn" (click)="onCancel()">cancel</button>
+      <button class="cancel-btn" id="delete" (click)="onConfirm()">delete</button>
+    </div>
+  </div>
+</div>
