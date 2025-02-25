@@ -1,39 +1,7 @@
 <p>done-tasks works!</p>
 
-<!-- Delete All Done Tasks Button -->
-<button id="delete" class="cancel-btn" (click)="openDeleteAllModal()">delete all done</button>
-
-<!-- List of Done Tasks -->
-<div *ngIf="doneTasks.length > 0; else noTasks">
-  <div *ngFor="let task of doneTasks" class="task-card">
-    <h3>{{ task.title }}</h3>
-    <p>{{ task.description }}</p>
-    <span class="task-date">completed on {{ task.updatedAt | date:'short' }}</span>
-
-    <!-- Delete Single Task Button -->
-    <!-- <button id="delete" class="cancel-btn" (click)="deleteTask(task)">delete</button> -->
-    <button id="delete" class="cancel-btn" (click)="openDeleteModal(task)">delete</button>
-
-  </div>
-</div>
-
-<!-- No Tasks Message -->
-<ng-template #noTasks>
-  <p>nothing done. really?</p>
-</ng-template>
-
-<!-- Delete Single Task Modal -->
-<app-delete-confirmation-modal 
-  *ngIf="showDeleteModal"
-  [taskTitle]="taskToDelete?.title || ''"
-  (confirmDelete)="confirmDelete()"
-  (cancelDelete)="showDeleteModal = false">
-</app-delete-confirmation-modal>
-
-<!-- Delete All Done Tasks Modal -->
-<app-delete-confirmation-modal 
-  *ngIf="showDeleteAllModal"
-  [isBulkDelete]="true"
-  (confirmDelete)="deleteAllDoneTasks()"
-  (cancelDelete)="showDeleteAllModal = false">
-</app-delete-confirmation-modal>
+<app-done-tasks-list 
+  [doneTasks]="doneTasks"
+  (deleteTask)="handleDeleteTask($event)"
+  (deleteAllTasks)="handleDeleteAllTasks()">
+</app-done-tasks-list>
