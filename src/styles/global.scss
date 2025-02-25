@@ -8,6 +8,13 @@ body {
   min-height: 100vh;
 }
 
+.done-task-list .task-card.completed {
+  opacity: 0.8 !important;
+  background: #292929 !important;
+  box-shadow: 0px 2px 5px #850c0c;
+}
+
+
 $primary-color: #ff4081;
 $secondary-color: #2196f3;
 $accent-color: #fbc02d;

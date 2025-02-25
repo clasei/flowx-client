@@ -1,0 +1,63 @@
+@use '../../components/task-list/task-list.component.scss' as *;
+@use '../../components/task-item/task-item.component.scss' as *;
+
+.done-task-list {
+  margin: 1rem;
+  padding: 1rem;
+  background: #e871713a;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+
+  h3 {
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+
+  .controls-panel {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background: #252525ca;
+  }
+
+  .task-card {
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 0.8rem;
+    transition: 0.3s;
+
+    h3 {
+      color: #e2e2e2;
+      font-size: 1.1rem;
+    }
+
+    p {
+      color: #a2a2a2;
+      font-size: 0.9rem;
+    }
+
+    .task-date {
+      font-size: 0.8rem;
+      color: #777;
+    }
+
+    &:hover {
+      background: #323232;
+    }
+  }
+
+  #delete {
+    background-color: #bc0808bc;
+    color: white;
+    font-weight: bold;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: #850c0c !important;
+    }
+  }
+  
+}
