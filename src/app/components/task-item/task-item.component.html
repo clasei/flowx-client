@@ -7,10 +7,11 @@
 
         <h3>{{ task.title }}</h3>
 
-        <span class="task-date">added {{ task.createdAt | date:'short' }}</span>
+        <!-- <span class="task-date">added {{ task.createdAt | date:'short' }}</span> -->
+        <span class="task-date">added {{ task.createdAt | date:'MMM d, yyyy — h:mm a' }}</span>
 
         <span *ngIf="isDoneTasksView" class="task-date completed-date">
-          ➜ done {{ task.updatedAt | date:'short' }} ✔ 
+          ➜ done {{ task.updatedAt | date:'MMM d, yyyy — h:mm a' }} ✔ 
         </span>
 
       </div>
