@@ -35,6 +35,11 @@
     color: #707070; 
   }
 
+  .completed-date {
+    color: #0fb5a48e;
+    font-weight: bold;
+  }
+
   h3 {
     font-size: 1.25rem;
     font-weight: bold;
@@ -163,13 +168,5 @@
   #delete:hover {
     background-color: #7a050594 !important;
   }
-
-
-  .done-task-list {
-    .completed-date {
-      font-weight: bold;
-    }
-  }
-  
   
 }
