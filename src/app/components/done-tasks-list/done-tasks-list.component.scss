@@ -1,9 +1,10 @@
 @use '../../components/task-list/task-list.component.scss' as *;
+@use '../../components/task-item/task-item.component.scss' as *;
 
 .done-task-list {
   margin: 1rem;
   padding: 1rem;
-  background: #e8717131;
+  background: #e871713a;
   border-radius: 8px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 
@@ -20,7 +21,6 @@
   }
 
   .task-card {
-    background: #292929; 
     padding: 1rem;
     border-radius: 5px;
     margin-bottom: 0.8rem;
@@ -43,11 +43,6 @@
 
     &:hover {
       background: #323232;
-    }
-
-    &.completed {
-      background: #292929 !important;
-      opacity: 1 !important;
     }
   }
 
