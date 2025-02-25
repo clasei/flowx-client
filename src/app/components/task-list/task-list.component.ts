@@ -132,6 +132,7 @@ export class TaskListComponent implements OnInit {
     });
   }
 
+
   // -------------------- edit task starts here
 
   openEditModal(task: Task) {

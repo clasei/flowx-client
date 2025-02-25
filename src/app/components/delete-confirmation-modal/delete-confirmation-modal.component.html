@@ -1,7 +1,7 @@
-
+<!-- 
 <div class="modal-overlay">
   <div class="modal">
-    <h3>{{ isBulkDelete ? 'delete all done tasks' : 'delete task' }}</h3>
+    <h3>{{ isBulkDelete ? 'delete all done' : 'delete task' }}</h3>
     <p>
       are you sure you want to delete 
       {{ isBulkDelete ? 'all completed tasks' : '"' + taskTitle + '"' }}?
@@ -11,6 +11,32 @@
     <div class="modal-actions">
       <button class="cancel-btn" (click)="onCancel()">cancel</button>
       <button class="cancel-btn" id="delete" (click)="onConfirm()">delete</button>
+    </div>
+  </div>
+</div> -->
+
+<div class="modal-overlay">
+  <div class="modal">
+    <h3>{{ isUndo ? 'undo task' : (isBulkDelete ? 'delete all done' : 'delete task') }}</h3>
+    
+    <p>
+      are you sure you want to 
+      {{ isUndo ? 'undo this for good' : (isBulkDelete ? 'delete all completed tasks' : '"' + taskTitle + '"') }}?
+    </p>
+
+    <p class="error" *ngIf="!isUndo">
+      this action is permanent, once deleted, it can’t be recovered
+    </p>
+
+    <p id="undo-msg" class="error" *ngIf="isUndo">
+      this will send the task to your main board, so you can do it again
+    </p>
+
+    <div class="modal-actions">
+      <button class="cancel-btn" (click)="onCancel()">cancel</button>
+      <button class="cancel-btn" id="delete" (click)="onConfirm()">
+        {{ isUndo ? 're-do' : 'delete' }}
+      </button>
     </div>
   </div>
 </div>

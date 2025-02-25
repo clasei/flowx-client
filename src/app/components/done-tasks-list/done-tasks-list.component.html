@@ -15,7 +15,8 @@
       [isDoneTasksView]="true"
       (toggleCompleted)="onToggleTask($event)"
       (deleteTask)="openDeleteModal($event)"
-      (editTask)="openEditModal($event)">  
+      (editTask)="openEditModal($event)"
+      (undoTask)="openUndoModal($event)">  
     </app-task-item>
   </div>
   
@@ -30,6 +31,15 @@
     [taskTitle]="taskToDelete?.title || ''"
     (confirmDelete)="confirmDelete()"
     (cancelDelete)="showDeleteModal = false">
+  </app-delete-confirmation-modal>
+
+  <!-- Undo Confirmation Modal -->
+  <app-delete-confirmation-modal 
+    *ngIf="showUndoModal"
+    [isUndo]="true"
+    [taskTitle]="taskToUndo?.title || ''"
+    (confirmDelete)="confirmUndo()"
+    (cancelDelete)="showUndoModal = false">
   </app-delete-confirmation-modal>
 
   <!-- Delete All Done Tasks Modal -->

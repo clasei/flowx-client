@@ -43,12 +43,12 @@
   h3 {
     font-size: 1.25rem;
     font-weight: bold;
-    color: #fff;
+    color: #c1c1c1;
   }
   
   .task-description {
     font-size: 0.9rem;
-    color: #d1d1d1;
+    color: #c1c1c1;
   }
 
   .priority-tag {
@@ -156,13 +156,36 @@
   
     &:hover {
       background: rgba(255, 255, 255, 0.2);
-      color: #fff;
+      color: #bcbcbc;
       transform: scale(1.05);
     }
   
     &:active {
       transform: scale(1);
     }
+  }
+
+  .undo-btn {
+    background: #0fb5a5;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700 !important;
+    color: #434343 !important;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    
+    &:hover {
+      background: #0fb5a461;
+      color: #cbcbcb !important;
+      transform: scale(1.10);
+    }
+
+    input:active + .checkmark {
+      transform: scale(0.95);
+    }
+  
   }
 
   #delete:hover {
