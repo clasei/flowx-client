@@ -4,8 +4,15 @@
     <div class="task-header">
       
       <div class="task-meta-header">
+
         <h3>{{ task.title }}</h3>
+
         <span class="task-date">added {{ task.createdAt | date:'short' }}</span>
+
+        <span *ngIf="isDoneTasksView" class="task-date completed-date">
+          ➜ done {{ task.updatedAt | date:'short' }} ✔ 
+        </span>
+
       </div>
 
       <label class="checkbox-container">

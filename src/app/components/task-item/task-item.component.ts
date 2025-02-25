@@ -15,6 +15,7 @@ import { Task } from '../../models/task.model';
 
 export class TaskItemComponent {
   @Input() task!: Task; // receives data from parent component (task-list)
+  @Input() isDoneTasksView: boolean = false; // receives data from parent component (task-list)
   @Output() toggleCompleted = new EventEmitter<Task>(); // emits event to parent (task-list)
   @Output() deleteTask = new EventEmitter<Task>(); // emit the whole task to parent
   @Output() editTask = new EventEmitter<Task>();

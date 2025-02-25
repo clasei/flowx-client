@@ -22,6 +22,7 @@
     <app-task-item 
       *ngFor="let task of doneTasks"
       [task]="task"
+      [isDoneTasksView]="true"
       (toggleCompleted)="onToggleTask($event)"
       (deleteTask)="openDeleteModal($event)">  
     </app-task-item>
