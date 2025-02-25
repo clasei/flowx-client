@@ -14,7 +14,8 @@
       [task]="task"
       [isDoneTasksView]="true"
       (toggleCompleted)="onToggleTask($event)"
-      (deleteTask)="openDeleteModal($event)">  
+      (deleteTask)="openDeleteModal($event)"
+      (editTask)="openEditModal($event)">  
     </app-task-item>
   </div>
   
@@ -38,5 +39,30 @@
     (confirmDelete)="deleteAllDoneTasks()"
     (cancelDelete)="showDeleteAllModal = false">
   </app-delete-confirmation-modal>
+
+  <!-- Edit Task Modal -->
+<div class="modal-overlay" *ngIf="showEditModal">
+  <div class="modal">
+    <h3>edit task</h3>
+    
+    <label>title</label>
+    <input type="text" [(ngModel)]="taskToEdit!.title">
+    
+    <label>description</label>
+    <textarea [(ngModel)]="taskToEdit!.description"></textarea>
+    
+    <label>priority</label>
+    <select [(ngModel)]="taskToEdit!.priority">
+      <option value="1">critical</option>
+      <option value="2">focus</option>
+      <option value="3">pipeline</option>
+    </select>
+    
+    <div class="modal-actions">
+      <button class="cancel-btn" (click)="closeEditModal()">cancel</button>
+      <button class="save-btn" (click)="saveEditedTask()">save</button>
+    </div>
+  </div>
+</div>
 
 </div>

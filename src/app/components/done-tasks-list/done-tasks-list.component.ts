@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common'; 
+import { FormsModule } from '@angular/forms';
 import { Task } from '../../models/task.model';
 import { TaskService } from '../../services/task.service';
 import { TaskItemComponent } from '../task-item/task-item.component';
@@ -9,7 +10,7 @@ import { DeleteConfirmationModalComponent } from '../../components/delete-confir
 @Component({
   selector: 'app-done-tasks-list',
   standalone: true,
-  imports: [CommonModule, TaskItemComponent, DeleteConfirmationModalComponent],
+  imports: [CommonModule, FormsModule, TaskItemComponent, DeleteConfirmationModalComponent],
   templateUrl: './done-tasks-list.component.html',
   styleUrl: './done-tasks-list.component.scss'
 })
@@ -22,6 +23,9 @@ export class DoneTasksListComponent {
   showDeleteModal: boolean = false;
   showDeleteAllModal: boolean = false;
   taskToDelete: Task | null = null;
+  showEditModal = false;
+  taskToEdit: Task | null = null;
+  taskSaved: boolean = false;
 
   constructor(private taskService: TaskService) {}
 
@@ -86,6 +90,33 @@ export class DoneTasksListComponent {
         this.showDeleteAllModal = false;
       }
     });
+  }
+
+  // -------------------- edit task starts here
+
+  openEditModal(task: Task) {
+    this.taskToEdit = { ...task }; // clone task for editing
+    this.showEditModal = true;
+  }
+
+  saveEditedTask(): void {
+    if (!this.taskToEdit) return;
+  
+    this.taskService.updateTask(this.taskToEdit).subscribe(updatedTask => {
+      // Find the index and update the list
+      const index = this.doneTasks.findIndex(t => t.id === updatedTask.id);
+      if (index !== -1) {
+        this.doneTasks[index] = updatedTask;
+      }
+  
+      this.showEditModal = false;
+      this.taskToEdit = null;
+    });
+  }
+
+  closeEditModal() {
+    this.showEditModal = false;
+    this.taskToEdit = null;
   }
 
 }
