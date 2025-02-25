@@ -74,90 +74,90 @@
   </ng-template>
 
   <!-- new task modal -->
-<div class="modal-overlay" *ngIf="showModal">
-  <div class="modal">
-    <h3>new stuff</h3>
+  <div class="modal-overlay" *ngIf="showModal">
+    <div class="modal">
+      <h3>new stuff</h3>
 
-    <label>what are you gonna do?</label>
-    <input [(ngModel)]="newTaskTitle" 
-      type="text" 
-      placeholder="call batman"
-      (input)="validateForm()">
-    <p class="error" *ngIf="titleError">{{ titleError }}</p>
+      <label>what are you gonna do?</label>
+      <input [(ngModel)]="newTaskTitle" 
+        type="text" 
+        placeholder="call batman"
+        (input)="validateForm()">
+      <p class="error" *ngIf="titleError">{{ titleError }}</p>
 
 
-    <label>add some info if needed</label>
-    <textarea [(ngModel)]="newTaskDescription" 
-      placeholder="tell him to bring robin tonigt" 
-      (input)="validateForm()">
-    </textarea>
-    <p class="error" *ngIf="descriptionError">{{ descriptionError }}</p>
+      <label>add some info if needed</label>
+      <textarea [(ngModel)]="newTaskDescription" 
+        placeholder="tell him to bring robin tonigt" 
+        (input)="validateForm()">
+      </textarea>
+      <p class="error" *ngIf="descriptionError">{{ descriptionError }}</p>
 
-    <label>choose priority</label>
-    <select [(ngModel)]="newTaskPriority">
-      <option value="1">critical</option>
-      <option value="2">focus</option>
-      <option value="3">pipeline</option>
-    </select>
+      <label>choose priority</label>
+      <select [(ngModel)]="newTaskPriority">
+        <option value="1">critical</option>
+        <option value="2">focus</option>
+        <option value="3">pipeline</option>
+      </select>
 
-    <div class="modal-actions">
-      <button class="cancel-btn" (click)="closeModal()">cancel</button>
-      <button class="save-btn" (click)="saveTask()" [disabled]="!isFormValid">create</button>
+      <div class="modal-actions">
+        <button class="cancel-btn" (click)="closeModal()">cancel</button>
+        <button class="save-btn" (click)="saveTask()" [disabled]="!isFormValid">create</button>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- Discard changes modal -->
-<div *ngIf="showDiscardModal" class="modal-overlay">
-  <div class="modal">
-    <h3>let's pause</h3>
-    <p>are you sure you want to close without saving?</p>
-    <div class="modal-actions">
-      <button class="cancel-btn" (click)="showDiscardModal = false">keep editing</button>
-      <button class="cancel-btn" (click)="confirmDiscard()">discard</button>
+  <!-- Discard changes modal -->
+  <div *ngIf="showDiscardModal" class="modal-overlay">
+    <div class="modal">
+      <h3>let's pause</h3>
+      <p>are you sure you want to close without saving?</p>
+      <div class="modal-actions">
+        <button class="cancel-btn" (click)="showDiscardModal = false">keep editing</button>
+        <button class="cancel-btn" (click)="confirmDiscard()">discard</button>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- Delete Confirmation Modal -->
-<div class="modal-overlay" *ngIf="showDeleteModal">
-  <div class="modal">
-    <h3>not into this anymore</h3>
-    <p>are you sure you want to delete "{{ taskToDelete?.title }}"?</p>
-    <p class="error">
-      this action is permanent, once deleted your to-do card cannot be recovered
-    </p>
-    
-    <div class="modal-actions">
-      <button class="cancel-btn" (click)="showDeleteModal = false">cancel</button>
-      <button class="cancel-btn" id="delete" (click)="confirmDelete()">delete</button>
+  <!-- Delete Confirmation Modal -->
+  <div class="modal-overlay" *ngIf="showDeleteModal">
+    <div class="modal">
+      <h3>not into this anymore</h3>
+      <p>are you sure you want to delete "{{ taskToDelete?.title }}"?</p>
+      <p class="error">
+        this action is permanent, once deleted your to-do card cannot be recovered
+      </p>
+      
+      <div class="modal-actions">
+        <button class="cancel-btn" (click)="showDeleteModal = false">cancel</button>
+        <button class="cancel-btn" id="delete" (click)="confirmDelete()">delete</button>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- Edit Task Modal -->
-<div class="modal-overlay" *ngIf="showEditModal">
-  <div class="modal">
-    <h3>edit task</h3>
-    
-    <label>title</label>
-    <input type="text" [(ngModel)]="taskToEdit!.title">
-    
-    <label>description</label>
-    <textarea [(ngModel)]="taskToEdit!.description"></textarea>
-    
-    <label>priority</label>
-    <select [(ngModel)]="taskToEdit!.priority">
-      <option value="1">critical</option>
-      <option value="2">focus</option>
-      <option value="3">pipeline</option>
-    </select>
-    
-    <div class="modal-actions">
-      <button class="cancel-btn" (click)="closeEditModal()">cancel</button>
-      <button class="save-btn" (click)="saveEditedTask()">save</button>
+  <!-- Edit Task Modal -->
+  <div class="modal-overlay" *ngIf="showEditModal">
+    <div class="modal">
+      <h3>edit task</h3>
+      
+      <label>title</label>
+      <input type="text" [(ngModel)]="taskToEdit!.title">
+      
+      <label>description</label>
+      <textarea [(ngModel)]="taskToEdit!.description"></textarea>
+      
+      <label>priority</label>
+      <select [(ngModel)]="taskToEdit!.priority">
+        <option value="1">critical</option>
+        <option value="2">focus</option>
+        <option value="3">pipeline</option>
+      </select>
+      
+      <div class="modal-actions">
+        <button class="cancel-btn" (click)="closeEditModal()">cancel</button>
+        <button class="save-btn" (click)="saveEditedTask()">save</button>
+      </div>
     </div>
   </div>
-</div>
 
 </div>
