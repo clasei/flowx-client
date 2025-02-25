@@ -15,7 +15,8 @@
       [isDoneTasksView]="true"
       (toggleCompleted)="onToggleTask($event)"
       (deleteTask)="openDeleteModal($event)"
-      (editTask)="openEditModal($event)">  
+      (editTask)="openEditModal($event)"
+      (undoTask)="openUndoModal($event)">  
     </app-task-item>
   </div>
   

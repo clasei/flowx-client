@@ -16,12 +16,23 @@
 
       </div>
 
-      <label class="checkbox-container">
+      <!-- checkbox & re-do -->
+
+      <!-- <label class="checkbox-container">
+        <input type="checkbox" [checked]="task.completed" (change)="onCheckboxChange()">
+        <span class="checkmark"></span>
+      </label> -->
+
+      <label *ngIf="!isDoneTasksView" class="checkbox-container">
         <input type="checkbox" [checked]="task.completed" (change)="onCheckboxChange()">
         <span class="checkmark"></span>
       </label>
 
-      
+      <!-- <button *ngIf="isDoneTasksView" id="undo" class="undo-btn" (click)="onUndoClick()"> -->
+      <button *ngIf="isDoneTasksView" id="undo" class="new-task-btn" (click)="onUndoClick()">
+        re-do
+      </button>
+  
 
     </div>
 

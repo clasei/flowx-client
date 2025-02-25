@@ -51,28 +51,29 @@ export class DoneTasksListComponent {
     });
   }
   
-  // onToggleTask(task: Task): void {
-  //   this.taskService.toggleTaskCompletion(task).subscribe(updatedTask => {
-  //     // update ui
-  //     const index = this.doneTasks.findIndex(t => t.id === updatedTask.id);
-  //     if (index !== -1) {
-  //       this.doneTasks.splice(index, 1); // remove task if undone
-  //     }
-  //   });
-  // }
-
   onToggleTask(task: Task): void {
-    if (task.completed) {
-      // normal toggle (task marked as done), no confirmation needed
-      this.taskService.toggleTaskCompletion(task).subscribe(updatedTask => {
-        console.log("✅ task marked as completed:", updatedTask);
-      });
-    } else {
-      // user is trying to undo the task → show the undo confirmation modal
-      this.taskToUndo = task;
-      this.showUndoModal = true;
-    }
+    this.taskService.toggleTaskCompletion(task).subscribe(updatedTask => {
+      // update ui
+      const index = this.doneTasks.findIndex(t => t.id === updatedTask.id);
+      if (index !== -1) {
+        this.doneTasks.splice(index, 1); // remove task if undone
+      }
+    });
   }
+
+
+  // onToggleTask(task: Task): void {
+  //   if (task.completed) {
+  //     // normal toggle (task marked as done), no confirmation needed
+  //     this.taskService.toggleTaskCompletion(task).subscribe(updatedTask => {
+  //       console.log("✅ task marked as completed:", updatedTask);
+  //     });
+  //   } else {
+  //     // user is trying to undo the task → show the undo confirmation modal
+  //     this.taskToUndo = task;
+  //     this.showUndoModal = true;
+  //   }
+  // }
   
   
   openDeleteModal(task: Task): void {
@@ -136,6 +137,11 @@ export class DoneTasksListComponent {
   }
 
   // -------------------- confirm undo 
+
+  openUndoModal(task: Task): void {
+    this.taskToUndo = task;
+    this.showUndoModal = true;
+  }
 
   confirmUndo(): void {
     if (!this.taskToUndo) return;

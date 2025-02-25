@@ -28,14 +28,14 @@
       this action is permanent, once deleted, it can’t be recovered
     </p>
 
-    <p class="error" *ngIf="isUndo">
+    <p id="undo-msg" class="error" *ngIf="isUndo">
       this will send the task to your main board, so you can do it again
     </p>
 
     <div class="modal-actions">
       <button class="cancel-btn" (click)="onCancel()">cancel</button>
       <button class="cancel-btn" id="delete" (click)="onConfirm()">
-        {{ isUndo ? 'undo' : 'delete' }}
+        {{ isUndo ? 're-do' : 'delete' }}
       </button>
     </div>
   </div>
