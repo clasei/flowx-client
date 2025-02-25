@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 export class DeleteConfirmationModalComponent {
   @Input() taskTitle: string = '';
   @Input() isBulkDelete: boolean = false;
+  @Input() isUndo: boolean = false;
 
   @Output() confirmDelete = new EventEmitter<void>();
   @Output() cancelDelete = new EventEmitter<void>();

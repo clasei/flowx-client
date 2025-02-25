@@ -32,6 +32,15 @@
     (cancelDelete)="showDeleteModal = false">
   </app-delete-confirmation-modal>
 
+  <!-- Undo Confirmation Modal -->
+  <app-delete-confirmation-modal 
+    *ngIf="showUndoModal"
+    [isUndo]="true"
+    [taskTitle]="taskToUndo?.title || ''"
+    (confirmDelete)="confirmUndo()"
+    (cancelDelete)="showUndoModal = false">
+  </app-delete-confirmation-modal>
+
   <!-- Delete All Done Tasks Modal -->
   <app-delete-confirmation-modal 
     *ngIf="showDeleteAllModal"

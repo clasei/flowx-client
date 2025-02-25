@@ -26,6 +26,8 @@ export class DoneTasksListComponent {
   showEditModal = false;
   taskToEdit: Task | null = null;
   taskSaved: boolean = false;
+  showUndoModal: boolean = false;
+  taskToUndo: Task | null = null;
 
   constructor(private taskService: TaskService) {}
 
@@ -49,15 +51,29 @@ export class DoneTasksListComponent {
     });
   }
   
+  // onToggleTask(task: Task): void {
+  //   this.taskService.toggleTaskCompletion(task).subscribe(updatedTask => {
+  //     // update ui
+  //     const index = this.doneTasks.findIndex(t => t.id === updatedTask.id);
+  //     if (index !== -1) {
+  //       this.doneTasks.splice(index, 1); // remove task if undone
+  //     }
+  //   });
+  // }
+
   onToggleTask(task: Task): void {
-    this.taskService.toggleTaskCompletion(task).subscribe(updatedTask => {
-      // update ui
-      const index = this.doneTasks.findIndex(t => t.id === updatedTask.id);
-      if (index !== -1) {
-        this.doneTasks.splice(index, 1); // remove task if undone
-      }
-    });
+    if (task.completed) {
+      // normal toggle (task marked as done), no confirmation needed
+      this.taskService.toggleTaskCompletion(task).subscribe(updatedTask => {
+        console.log("✅ task marked as completed:", updatedTask);
+      });
+    } else {
+      // user is trying to undo the task → show the undo confirmation modal
+      this.taskToUndo = task;
+      this.showUndoModal = true;
+    }
   }
+  
   
   openDeleteModal(task: Task): void {
     this.taskToDelete = task;
@@ -118,5 +134,26 @@ export class DoneTasksListComponent {
     this.showEditModal = false;
     this.taskToEdit = null;
   }
+
+  // -------------------- confirm undo 
+
+  confirmUndo(): void {
+    if (!this.taskToUndo) return;
+  
+    this.taskService.toggleTaskCompletion(this.taskToUndo).subscribe(updatedTask => {
+      console.log("⏪ task undone:", updatedTask);
+  
+      // update ui
+      const index = this.doneTasks.findIndex(t => t.id === updatedTask.id);
+      if (index !== -1) {
+        this.doneTasks.splice(index, 1);
+      }
+  
+      // reset modal
+      this.taskToUndo = null;
+      this.showUndoModal = false;
+    });
+  }
+  
 
 }

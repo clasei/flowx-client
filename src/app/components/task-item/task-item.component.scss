@@ -43,12 +43,12 @@
   h3 {
     font-size: 1.25rem;
     font-weight: bold;
-    color: #fff;
+    color: #c1c1c1;
   }
   
   .task-description {
     font-size: 0.9rem;
-    color: #d1d1d1;
+    color: #c1c1c1;
   }
 
   .priority-tag {
@@ -156,7 +156,7 @@
   
     &:hover {
       background: rgba(255, 255, 255, 0.2);
-      color: #fff;
+      color: #bcbcbc;
       transform: scale(1.05);
     }
   

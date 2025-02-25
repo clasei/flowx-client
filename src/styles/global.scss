@@ -8,10 +8,21 @@ body {
   min-height: 100vh;
 }
 
+// done-task-list specific styles
+
 .done-task-list .task-card.completed {
   opacity: 0.8 !important;
   background: #292929 !important;
   box-shadow: 0px 2px 5px #850c0c;
+}
+
+.done-task-list .modal-actions #delete {
+  background: #bcbcbc !important;
+  color: #444444 !important; 
+}
+
+.done-task-list .modal-actions #delete:hover {
+  background: #089f91 !important;
 }
 
 
