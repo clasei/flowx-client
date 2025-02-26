@@ -30,7 +30,8 @@ h3 {
   transition: 0.3s;
   
   &:hover {
-    background: #5a5a5a;
+    // background: #5a5a5a;
+    background: #007bff76;
   }
 
   &:disabled {
@@ -135,6 +136,11 @@ input:checked + .slider:before {
   
   &:hover {
     background: #0fb5a5; // green done
+    // transform: scale(1.1);
+  }
+
+  &:active {
+    // transform: scale(0.95);
   }
 
   &:disabled {
