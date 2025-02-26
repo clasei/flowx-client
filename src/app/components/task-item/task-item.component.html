@@ -10,6 +10,10 @@
         <!-- <span class="task-date">added {{ task.createdAt | date:'short' }}</span> -->
         <span class="task-date">added {{ task.createdAt | date:'MMM d, yyyy • h:mm a' }}</span>
 
+        <span *ngIf="!isDoneTasksView && task.updatedAt" class="task-date updated-date">
+          ➜ updated {{ task.updatedAt | date:'MMM d, yyyy • h:mm a' }} 
+        </span>
+
         <span *ngIf="isDoneTasksView" class="task-date completed-date">
           ➜ done {{ task.updatedAt | date:'MMM d, yyyy • h:mm a' }} ✓ 
         </span>
