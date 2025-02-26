@@ -32,12 +32,11 @@ export class TaskListComponent implements OnInit {
   taskToEdit: Task | null = null;
   taskSaved: boolean = false;
 
-
-  // form validation states
-  // typingTimeout: any; // debounce timeout if needed
   titleError: string = "";
   descriptionError: string = "";
   isFormValid: boolean = false;
+  showDeleteModal = false;
+  taskToDelete: Task | null = null;
 
   constructor(private taskService: TaskService) {}
   
@@ -51,19 +50,25 @@ export class TaskListComponent implements OnInit {
   //   defaultSort: 'oldest',
   // };
 
+
   fetchTasks(): void {
     this.taskService.getTasks().subscribe({
       next: (tasks) => {
         console.log('tasks loaded:', tasks);
-        this.allTasks = tasks ?? []; // ensure it's always an array
+        // this.allTasks = tasks ?? []; // ensure it's always an array
+        this.allTasks = (tasks ?? [])
+          .sort((a, b) => 
+            new Date(b.updatedAt || 0).getTime() - new Date(a.updatedAt || 0).getTime()
+          );
+
         this.applyFilters();
       },
       error: (err) => console.error('error fetching tasks:', err)
     });
   }
+  
 
-  showDeleteModal = false;
-  taskToDelete: Task | null = null;
+  
 
   openDeleteModal(task: Task) {
     this.taskToDelete = task;

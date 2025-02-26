@@ -30,7 +30,12 @@ h3 {
   transition: 0.3s;
   
   &:hover {
-    background: #5a5a5a;
+    // background: #5a5a5a;
+    // background: #007bff76;
+    // background: #007bff;
+    // background: #333;
+    background: #bcbcbc91;
+    color: #c7c7c7;
   }
 
   &:disabled {
@@ -103,6 +108,7 @@ select {
 
 input:checked + .slider {
   background-color: #007bff;
+  // background-color: #333;
 }
 
 input:checked + .slider:before {
@@ -119,6 +125,7 @@ input:checked + .slider:before {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1000;
 }
 
 .new-task-btn {
@@ -135,6 +142,11 @@ input:checked + .slider:before {
   
   &:hover {
     background: #0fb5a5; // green done
+    // transform: scale(1.1);
+  }
+
+  &:active {
+    // transform: scale(0.95);
   }
 
   &:disabled {
