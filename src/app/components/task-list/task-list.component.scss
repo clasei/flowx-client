@@ -134,7 +134,7 @@ input:checked + .slider:before {
   transition: 0.3s;
   
   &:hover {
-    background: #0fb5a5;
+    background: #0fb5a5; // green done
   }
 
   &:disabled {
@@ -201,7 +201,7 @@ input, textarea, select {
   transition: 0.3s;
   
   &:hover {
-    background: #0fb5a5;
+    background: #49b5fd; // blue save
   }
 
   &:disabled {
@@ -212,14 +212,14 @@ input, textarea, select {
 }
 
 .error {
-  color: #d17b7b;
+  color: #d17b7b; // light red error
   font-size: 0.75rem;
   font-weight: bold;
   margin-top: 0.1rem;
 }
 
 #delete {
-  background-color: #7a0505 !important;
+  background-color: #7a0505 !important; // dark red delete
   color: #bcbcbc !important;
 }
 

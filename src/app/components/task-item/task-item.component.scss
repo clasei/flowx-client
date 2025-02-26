@@ -165,25 +165,17 @@
     }
   }
 
-  .undo-btn {
-    background: #0fb5a5;
-    font-family: 'Inter', sans-serif;
-    font-weight: 700 !important;
-    color: #434343 !important;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    #undo {
     transition: 0.3s;
     
     &:hover {
-      background: #0fb5a461;
-      color: #cbcbcb !important;
-      transform: scale(1.10);
+      transform: scale(1.1);
+      box-shadow: 0px 2px 5px #b3b3b3;
     }
 
     input:active + .checkmark {
       transform: scale(0.95);
+      box-shadow: 0px 4px 7px #b3b3b3;
     }
   
   }

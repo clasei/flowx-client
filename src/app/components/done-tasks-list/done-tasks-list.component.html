@@ -3,14 +3,52 @@
   <h3>here comes your done stuff</h3>
 
   <div class="controls-panel">
+
     <!-- Delete All Done Tasks Button -->
     <button id="delete" class="cancel-btn" (click)="openDeleteAllModal()">delete all done</button>
+
+    <!-- filter dropdown -->
+    <div class="filter-container">
+      <label>filter</label>
+      <select (change)="filterTasks($event)">
+        <option value="all">all</option>
+        <option value="critical">critical</option>
+        <option value="focus">focus</option>
+        <option value="pipeline">pipeline</option>
+      </select>
+    </div>
+
   </div>
 
+    <!-- Edit Task Modal -->
+    <div class="modal-overlay" *ngIf="showEditModal">
+      <div class="modal">
+        <h3>edit task</h3>
+        
+        <label>title</label>
+        <input type="text" [(ngModel)]="taskToEdit!.title">
+        
+        <label>description</label>
+        <textarea [(ngModel)]="taskToEdit!.description"></textarea>
+        
+        <label>priority</label>
+        <select [(ngModel)]="taskToEdit!.priority">
+          <option value="1">critical</option>
+          <option value="2">focus</option>
+          <option value="3">pipeline</option>
+        </select>
+        
+        <div class="modal-actions">
+          <button class="cancel-btn" (click)="closeEditModal()">cancel</button>
+          <button class="save-btn" (click)="saveEditedTask()">save</button>
+        </div>
+      </div>
+    </div>
+
   <!-- List of Done Tasks -->
-  <div *ngIf="doneTasks.length > 0; else noTasks">
+  <div *ngIf="getFilteredTasks().length > 0; else noTasks">
     <app-task-item 
-      *ngFor="let task of doneTasks"
+      *ngFor="let task of getFilteredTasks()"
       [task]="task"
       [isDoneTasksView]="true"
       (toggleCompleted)="onToggleTask($event)"
@@ -50,29 +88,5 @@
     (cancelDelete)="showDeleteAllModal = false">
   </app-delete-confirmation-modal>
 
-  <!-- Edit Task Modal -->
-<div class="modal-overlay" *ngIf="showEditModal">
-  <div class="modal">
-    <h3>edit task</h3>
-    
-    <label>title</label>
-    <input type="text" [(ngModel)]="taskToEdit!.title">
-    
-    <label>description</label>
-    <textarea [(ngModel)]="taskToEdit!.description"></textarea>
-    
-    <label>priority</label>
-    <select [(ngModel)]="taskToEdit!.priority">
-      <option value="1">critical</option>
-      <option value="2">focus</option>
-      <option value="3">pipeline</option>
-    </select>
-    
-    <div class="modal-actions">
-      <button class="cancel-btn" (click)="closeEditModal()">cancel</button>
-      <button class="save-btn" (click)="saveEditedTask()">save</button>
-    </div>
-  </div>
-</div>
 
 </div>

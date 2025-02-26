@@ -9,7 +9,7 @@ import { TaskItemComponent } from '../task-item/task-item.component';
   selector: 'app-task-list',
   standalone: true,
   imports: [CommonModule, FormsModule, TaskItemComponent],
-  providers: [TaskService],
+  // providers: [TaskService], // commentend, TaskService provided in root ---
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.scss'
 })
