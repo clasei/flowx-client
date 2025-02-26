@@ -29,6 +29,8 @@ export class DoneTasksListComponent {
   showUndoModal: boolean = false;
   taskToUndo: Task | null = null;
 
+  selectedFilter: string = 'all';
+
   constructor(private taskService: TaskService) {}
 
   ngOnInit(): void {
@@ -120,7 +122,7 @@ export class DoneTasksListComponent {
     if (!this.taskToEdit) return;
   
     this.taskService.updateTask(this.taskToEdit).subscribe(updatedTask => {
-      // Find the index and update the list
+      // find the index and update the list
       const index = this.doneTasks.findIndex(t => t.id === updatedTask.id);
       if (index !== -1) {
         this.doneTasks[index] = updatedTask;
@@ -161,5 +163,26 @@ export class DoneTasksListComponent {
     });
   }
   
+  // -------------------- filtering
+
+  getFilteredTasks(): Task[] {
+    if (this.selectedFilter === 'all') {
+      return this.doneTasks;
+    }
+    
+    const priorityMap: {[key: string]: number} = {
+      'critical': 1,
+      'focus': 2,
+      'pipeline': 3
+    };
+    
+    const priorityValue = priorityMap[this.selectedFilter] || Number(this.selectedFilter);
+    return this.doneTasks.filter(task => task.priority === priorityValue);
+  }
+  
+  // called when filter dropdown changes
+  filterTasks(event: Event): void {
+    this.selectedFilter = (event.target as HTMLSelectElement).value;
+  }
 
 }
