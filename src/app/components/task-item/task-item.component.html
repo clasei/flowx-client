@@ -57,15 +57,22 @@
       <!-- Recurring Task Indicator -->
       <div *ngIf="task.repeating" class="repeat-indicator">
         <span class="repeat-icon"> ↻ </span>
-        <span class="repeat-interval">repeats every {{ getRepeatIntervalText(task.repeatInterval || 1) }}
+        <span class="repeat-interval"> every {{ getRepeatIntervalText(task.repeatInterval || 1) }}
           <span *ngIf="task.nextRepeatDate"> — next: {{ task.nextRepeatDate | date:'MMM d, yyyy' }}</span>
         </span>
       </div>
       
-      <!-- priority tag -->
-      <span class="priority-tag" [ngClass]="getPriorityClass(task.priority)">
-        {{ getPriorityText(task.priority) }}
-      </span>
+      <div class="task-tags">
+        <!-- Repeating tag (Only if task is recurring) -->
+        <span *ngIf="task.repeating" class="repeating-tag">
+          ↻
+        </span>
+      
+        <!-- priority tag -->
+        <span class="priority-tag" [ngClass]="getPriorityClass(task.priority)">
+          {{ getPriorityText(task.priority) }}
+        </span>
+      </div>
 
     </div>
 
