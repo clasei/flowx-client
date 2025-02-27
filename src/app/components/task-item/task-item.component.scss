@@ -12,7 +12,7 @@
   transition: 0.3s;
 
   &.completed {
-    opacity: 0.3;
+    opacity: 0.42;
     // text-decoration: line-through;
   }
 
@@ -33,6 +33,7 @@
   .task-date {
     font-size: 0.75rem;
     color: #707070; 
+    // color: #909090; 
   }
 
   .completed-date {
@@ -43,34 +44,51 @@
   h3 {
     font-size: 1.25rem;
     font-weight: bold;
-    color: #c1c1c1;
+    color: #ededed;
   }
   
   .task-description {
     font-size: 0.9rem;
-    color: #c1c1c1;
+    // color: #c1c1c1;
+    color: #b3b3b3;
+  }
+
+  .repeat-indicator {
+    color: #707070;
+    // color: #909090;
+    font-size: 0.75rem;
+  }
+
+  .repeating-tag {
+    background-color: #70707053;
+    color: #dcdcdc;
+    margin: 0 0.5rem;
+    padding: 4px 12px;
+    border-radius: 25px;
+    font-size: 12px;
+    font-weight: bold;
   }
 
   .priority-tag {
-    padding: 4px 8px;
+    padding: 4px 12px;
     margin-bottom: 0.2rem;
-    border-radius: 4px;
+    border-radius: 25px;
     font-size: 12px;
     font-weight: bold;
 
     &.critical {
       background: #ff4081;
-      color: #fff;
+      color: #dcdcdc;
     }
     &.focus {
       // background: #00bfa5;
       // background: #0fb5a5;
-      background: #bb974b;
-      color: #fff;
+      background: #af8c41;
+      color: #dcdcdc;
     }
     &.pipeline {
       background: #717171;
-      color: #fff;
+      color: #dcdcdc;
     }
   }
 
@@ -185,5 +203,5 @@
   #delete:hover {
     background-color: #7a050594 !important;
   }
-  
+
 }

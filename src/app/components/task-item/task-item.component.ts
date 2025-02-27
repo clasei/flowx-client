@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Task } from '../../models/task.model';
+import { TaskService } from '../../services/task.service';
 
 
 @Component({
@@ -21,6 +22,7 @@ export class TaskItemComponent {
   @Output() editTask = new EventEmitter<Task>();
   @Output() undoTask = new EventEmitter<Task>();
 
+  constructor(private taskService: TaskService) {}
 
   getPriorityClass(priority: number): string {
     switch (priority) {
@@ -58,6 +60,25 @@ export class TaskItemComponent {
   onUndoClick() {
     console.log("🔄 re-do clicked:", this.task);
     this.undoTask.emit(this.task);
+  }
+
+  // getRepeatIntervalText(days: number): string {
+  //   if (!days) return ''; // handle null or undefined
+  //   const intervals: { [key: number]: string } = {
+  //     1: 'day',
+  //     7: 'week',
+  //     14: '2 weeks',
+  //     21: '3 weeks',
+  //     30: 'month',
+  //     90: 'quarter',
+  //     365: 'year',
+  //   };
+  //   return intervals[days] || `${days} days`;
+  // }
+  
+  // using the method from the service
+  getRepeatIntervalText(days: number): string {
+    return this.taskService.getRepeatIntervalText(days);
   }
   
 }

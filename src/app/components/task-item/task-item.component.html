@@ -7,9 +7,6 @@
 
         <h3>{{ task.title }}</h3>
 
-        <!-- <span class="task-date">added {{ task.createdAt | date:'short' }}</span> -->
-        <span class="task-date">added {{ task.createdAt | date:'MMM d, yyyy • h:mm a' }}</span>
-
         <span *ngIf="!isDoneTasksView && task.updatedAt" class="task-date updated-date">
           ➜ updated {{ task.updatedAt | date:'MMM d, yyyy • h:mm a' }} 
         </span>
@@ -17,6 +14,9 @@
         <span *ngIf="isDoneTasksView" class="task-date completed-date">
           ➜ done {{ task.updatedAt | date:'MMM d, yyyy • h:mm a' }} ✓ 
         </span>
+
+        <!-- <span class="task-date">added {{ task.createdAt | date:'short' }}</span> -->
+        <span class="task-date">added {{ task.createdAt | date:'MMM d, yyyy • h:mm a' }}</span>
 
       </div>
 
@@ -45,7 +45,7 @@
     <div class="task-footer">
       <div class="task-meta-footer">
 
-        <button class="muted-btn" (click)="onEditClick()">
+        <button *ngIf="!isDoneTasksView" class="muted-btn" (click)="onEditClick()">
           edit
         </button>
         <button class="muted-btn" id="delete" (click)="onDeleteClick()">
@@ -53,11 +53,26 @@
         </button>
 
       </div>
+
+      <!-- Recurring Task Indicator -->
+      <div *ngIf="task.repeating" class="repeat-indicator">
+        <span class="repeat-icon"> ↻ </span>
+        <span class="repeat-interval"> every {{ getRepeatIntervalText(task.repeatInterval || 1) }}
+          <span *ngIf="task.nextRepeatDate"> — next: {{ task.nextRepeatDate | date:'MMM d, yyyy' }}</span>
+        </span>
+      </div>
       
-      <!-- priority tag -->
-      <span class="priority-tag" [ngClass]="getPriorityClass(task.priority)">
-        {{ getPriorityText(task.priority) }}
-      </span>
+      <div class="task-tags">
+        <!-- Repeating tag (Only if task is recurring) -->
+        <span *ngIf="task.repeating" class="repeating-tag">
+          ↻
+        </span>
+      
+        <!-- priority tag -->
+        <span class="priority-tag" [ngClass]="getPriorityClass(task.priority)">
+          {{ getPriorityText(task.priority) }}
+        </span>
+      </div>
 
     </div>
 

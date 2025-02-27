@@ -23,10 +23,25 @@ export class TaskService {
   }
 
   // toggle comlpetion status
+
   toggleTaskCompletion(task: Task): Observable<Task> {
     console.log("toggled task to backend:", task);
     return this.http.put<Task>(`${this.apiUrl}/${task.id}/toggle`, {}); 
   }
+
+  // toggleTaskCompletion(task: Task): Observable<Task> {
+  //   task.completed = !task.completed;
+  //   task.updatedAt = new Date();
+  
+  //   if (task.repeating && task.completed) {
+  //     task.nextRepeatDate = this.calculateNextRepeatDate(task.repeatInterval || 1);
+  //   } else {
+  //     task.nextRepeatDate = null as any;
+  //   }
+  
+  //   return this.http.put<Task>(`${this.apiUrl}/${task.id}`, task);
+  // }
+
 
   // delete a task
   deleteTask(id: number): Observable<void> {
@@ -79,6 +94,20 @@ export class TaskService {
   getPriorityLabel(priority: number): string {
     const labels: Record<number, string> = { 1: "critical", 2: "focus", 3: "pipeline" };
     return labels[priority] || "queue";
+  }
+
+  getRepeatIntervalText(days: number): string {
+    if (!days) return ''; // handle null or undefined
+    const intervals: { [key: number]: string } = {
+      1: 'day',
+      7: 'week',
+      14: '2 weeks',
+      21: '3 weeks',
+      30: 'month',
+      90: 'quarter',
+      365: 'year',
+    };
+    return intervals[days] || `${days} days`;
   }
 
 }

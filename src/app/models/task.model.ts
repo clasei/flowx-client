@@ -4,6 +4,12 @@ export interface Task {
   description: string;
   priority: number;
   completed?: boolean;
+
+  repeating: boolean; // default: false
+  repeatInterval?: number | null;
+  nextRepeatDate?: Date | null;
+
   createdAt?: Date;
   updatedAt?: Date;
+  
 }
