@@ -58,7 +58,7 @@
 
   <div *ngIf="(tasks ?? []).length > 0; else noTasks">
 
-    <!-- TASK ITEMS IS HERE -->
+    <!------------------------ TASK ITEMS IS HERE -->
     <app-task-item 
       *ngFor="let task of tasks" 
       [task]="task"
@@ -73,53 +73,129 @@
     <p>it's flowx time — find the perfect moment to create your new to-do</p>
   </ng-template>
 
-  <!-- new task modal -->
+  <!------------------------ NEW task modal ------------------------>
   <div class="modal-overlay" *ngIf="showModal">
     <div class="modal">
       <h3>new stuff</h3>
 
-      <label>what are you gonna do?</label>
+      <label class="modal-label">what are you gonna do?</label>
       <input [(ngModel)]="newTaskTitle" 
         type="text" 
         placeholder="call batman"
         (input)="validateForm()">
-      <p class="error" *ngIf="titleError">{{ titleError }}</p>
+        <p class="input-hint">at least 3 characters</p>
+      <!-- <p class="error" *ngIf="titleError">{{ titleError }}</p> -->
 
 
-      <label>add some info if needed</label>
+      <label class="modal-label">add some info if needed</label>
       <textarea [(ngModel)]="newTaskDescription" 
         placeholder="tell him to bring robin tonigt" 
         (input)="validateForm()">
       </textarea>
       <p class="error" *ngIf="descriptionError">{{ descriptionError }}</p>
 
-      <label>choose priority</label>
+      <label class="modal-label">choose priority</label>
       <select [(ngModel)]="newTaskPriority">
         <option value="1">critical</option>
         <option value="2">focus</option>
         <option value="3">pipeline</option>
       </select>
 
+      <div class="recurring-task-container">
+        <!-- Toggle Recurring Task -->
+        <label id="toggle-label"  class="modal-label">
+
+          make it a habit
+          <input type="checkbox" [(ngModel)]="newTask.repeating">
+          
+        </label>
+
+        <!-- Show Frequency Only If Recurring -->
+        <div *ngIf="newTask.repeating" class="repeat-container">
+          <label>repeats every</label>
+          <select [(ngModel)]="newTask.repeatInterval">
+            <option [value]="1">day</option>
+            <option [value]="7">week</option>
+            <option [value]="14">2 weeks</option>
+            <option [value]="21">3 weeks</option>
+            <option [value]="30">month</option>
+            <option [value]="90">quarter</option>
+            <option [value]="365">year</option>
+          </select>
+        </div>
+      </div>
+
       <div class="modal-actions">
         <button class="cancel-btn" (click)="closeModal()">cancel</button>
-        <button class="save-btn" (click)="saveTask()" [disabled]="!isFormValid">create</button>
+        <button class="new-task-btn" (click)="saveTask()" [disabled]="!isFormValid">create</button>
       </div>
     </div>
   </div>
 
-  <!-- Discard changes modal -->
+    <!------------------------ Edit Task Modal ------------------------>
+    <div class="modal-overlay" *ngIf="showEditModal">
+      <div class="modal">
+        <h3>it's edit time</h3>
+        
+        <label>title</label>
+        <input type="text" [(ngModel)]="taskToEdit!.title">
+        
+        <label>description</label>
+        <textarea [(ngModel)]="taskToEdit!.description"></textarea>
+        
+        <label>priority</label>
+        <select [(ngModel)]="taskToEdit!.priority">
+          <option value="1">critical</option>
+          <option value="2">focus</option>
+          <option value="3">pipeline</option>
+        </select>
+  
+        <div class="recurring-task-container">
+          <!-- Toggle Recurring Task -->
+          <label id="toggle-label"  class="modal-label">
+
+            turn this into a habit
+            <input type="checkbox" [(ngModel)]="taskToEdit!.repeating">
+            
+          </label>
+        
+          <!-- Show Frequency Only If Recurring -->
+          <div *ngIf="taskToEdit!.repeating" class="repeat-container">
+            <label>repeats every</label>
+            <select [(ngModel)]="taskToEdit!.repeatInterval">
+              <option [value]="1">day</option>
+              <option [value]="7">week</option>
+              <option [value]="14">2 weeks</option>
+              <option [value]="21">3 weeks</option>
+              <option [value]="30">month</option>
+              <option [value]="90">quarter</option>
+              <option [value]="365">year</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="modal-actions">
+          <button class="cancel-btn" (click)="closeEditModal()">cancel</button>
+          <button class="save-btn" (click)="saveEditedTask()">save</button>
+        </div>
+      </div>
+    </div>
+    
+
+  <!------------------------ Discard changes modal -->
   <div *ngIf="showDiscardModal" class="modal-overlay">
     <div class="modal">
       <h3>let's pause</h3>
       <p>are you sure you want to close without saving?</p>
       <div class="modal-actions">
-        <button class="cancel-btn" (click)="showDiscardModal = false">keep editing</button>
         <button class="cancel-btn" (click)="confirmDiscard()">discard</button>
+        <button class="save-btn" (click)="showDiscardModal = false">keep editing</button>
+        
       </div>
     </div>
   </div>
 
-  <!-- Delete Confirmation Modal -->
+  <!------------------------ Delete Confirmation Modal -->
   <div class="modal-overlay" *ngIf="showDeleteModal">
     <div class="modal">
       <h3>not into this anymore</h3>
@@ -135,29 +211,6 @@
     </div>
   </div>
 
-  <!-- Edit Task Modal -->
-  <div class="modal-overlay" *ngIf="showEditModal">
-    <div class="modal">
-      <h3>it's edit time</h3>
-      
-      <label>title</label>
-      <input type="text" [(ngModel)]="taskToEdit!.title">
-      
-      <label>description</label>
-      <textarea [(ngModel)]="taskToEdit!.description"></textarea>
-      
-      <label>priority</label>
-      <select [(ngModel)]="taskToEdit!.priority">
-        <option value="1">critical</option>
-        <option value="2">focus</option>
-        <option value="3">pipeline</option>
-      </select>
-      
-      <div class="modal-actions">
-        <button class="cancel-btn" (click)="closeEditModal()">cancel</button>
-        <button class="save-btn" (click)="saveEditedTask()">save</button>
-      </div>
-    </div>
-  </div>
+
 
 </div>

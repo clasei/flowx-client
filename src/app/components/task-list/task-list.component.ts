@@ -40,9 +40,40 @@ export class TaskListComponent implements OnInit {
 
   constructor(private taskService: TaskService) {}
   
+  // ngOnInit(): void {
+  //   this.fetchTasks();
+  // }
+
   ngOnInit(): void {
     this.fetchTasks();
+    this.checkForRepeatingTasks();
+  
+    setInterval(() => {
+      this.checkForRepeatingTasks();
+    }, 300000);
   }
+  
+  checkForRepeatingTasks(): void {
+    this.taskService.getTasks().subscribe(tasks => {
+      const now = new Date();
+  
+      const overdueTasks = tasks.filter(task =>
+        task.repeating &&
+        task.completed &&
+        task.nextRepeatDate &&
+        new Date(task.nextRepeatDate) <= now
+      );
+  
+      overdueTasks.forEach(task => {
+        console.log(`🔄 Reactivating task: ${task.title}`);
+        task.completed = false;
+        task.nextRepeatDate = null;
+  
+        this.taskService.updateTask(task).subscribe();
+      });
+    });
+  }
+  
 
   // // PENDING: implement user settings
   // userSettings = {
@@ -66,8 +97,6 @@ export class TaskListComponent implements OnInit {
       error: (err) => console.error('error fetching tasks:', err)
     });
   }
-  
-
   
 
   openDeleteModal(task: Task) {
@@ -136,6 +165,7 @@ export class TaskListComponent implements OnInit {
       this.applyFilters();
     });
   }
+
 
 
   // -------------------- edit task starts here
@@ -225,21 +255,34 @@ export class TaskListComponent implements OnInit {
     });
   }
 
+  newTask: Task = {
+    title: '',
+    description: '',
+    priority: 3,
+    repeating: false,
+    repeatInterval: null,
+    nextRepeatDate: null
+  };
+  
+
   saveTask(): void {
     if (!this.newTaskTitle.trim()) {
       console.error("title cannot be empty!");
       return;
     }
-  
+    
   
     const newTask: Task = {
       // id: 0, // backend generates the ID
       title: this.newTaskTitle,
       description: this.newTaskDescription,
-      priority: this.newTaskPriority
+      priority: this.newTaskPriority,
       // completed: false,
       // createdAt: new Date(),
       // updatedAt: new Date(),
+      repeating: false,
+      repeatInterval: null, 
+      nextRepeatDate: null,
     };
   
     console.log("📤 sending new task to backend:", newTask);

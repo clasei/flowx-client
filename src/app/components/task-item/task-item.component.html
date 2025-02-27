@@ -53,6 +53,12 @@
         </button>
 
       </div>
+
+      <!-- Recurring Task Indicator -->
+      <div *ngIf="task.repeating" class="repeat-indicator">
+        <span class="repeat-icon"> ↻ </span>
+        <span class="repeat-interval">Repeats every {{ getRepeatIntervalText(task.repeatInterval || 1) }}</span>
+      </div>
       
       <!-- priority tag -->
       <span class="priority-tag" [ngClass]="getPriorityClass(task.priority)">

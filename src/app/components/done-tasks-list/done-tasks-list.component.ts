@@ -162,6 +162,7 @@ export class DoneTasksListComponent {
       this.showUndoModal = false;
     });
   }
+
   
   // -------------------- filtering
 
