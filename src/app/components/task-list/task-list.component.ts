@@ -74,6 +74,11 @@ export class TaskListComponent implements OnInit {
     });
   }
   
+  calculateNextRepeatDate(days: number): Date {
+    const nextDate = new Date();
+    nextDate.setDate(nextDate.getDate() + days);
+    return nextDate;
+  }
 
   // // PENDING: implement user settings
   // userSettings = {
@@ -272,30 +277,32 @@ export class TaskListComponent implements OnInit {
     }
     
   
+    // Calculate nextRepeatDate based on the interval, if repeating
+    let nextRepeatDate = null;
+    if (this.newTask.repeating && this.newTask.repeatInterval) {
+      nextRepeatDate = this.calculateNextRepeatDate(this.newTask.repeatInterval);
+    }
+
     const newTask: Task = {
-      // id: 0, // backend generates the ID
       title: this.newTaskTitle,
       description: this.newTaskDescription,
       priority: this.newTaskPriority,
-      // completed: false,
-      // createdAt: new Date(),
-      // updatedAt: new Date(),
-      repeating: false,
-      repeatInterval: null, 
-      nextRepeatDate: null,
+      repeating: this.newTask.repeating,  // ✅ Use user selection
+      repeatInterval: this.newTask.repeatInterval || null,  // ✅ Only set if repeating
+      nextRepeatDate: nextRepeatDate, // ✅ Calculate it only if repeating
     };
+
   
     console.log("📤 sending new task to backend:", newTask);
   
     this.taskService.createTask(newTask).subscribe({
       next: (createdTask) => {
-        // console.log("✅ task successfully created:", createdTask);
+        console.log("✅ task successfully created:", createdTask);
 
         this.allTasks = [...this.allTasks, createdTask]; // create new array
         this.applyFilters(); // reapply filters to refresh
 
         this.taskSaved = true;
-
         this.closeModal();
       },
       error: (err) => console.error("❌ error creating task:", err),
