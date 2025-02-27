@@ -10,7 +10,7 @@ import { DeletedTasksComponent } from './pages/deleted-tasks/deleted-tasks.compo
 
 export const routes: Routes = [
   // { path: '', component: HomeComponent }, // landing page -- public
-  { path: '', redirectTo: 'flowxboard', pathMatch: 'full' },
+  { path: '', redirectTo: 'flowxboard', pathMatch: 'full' }, // ✅ Redirect root to dashboard
   { path: 'login', component: LoginComponent }, // login page
   { path: 'flowxboard', component: DashboardComponent }, // main page after login
   { path: 'settings', component: SettingsComponent }, // settings
