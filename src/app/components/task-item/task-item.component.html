@@ -57,7 +57,9 @@
       <!-- Recurring Task Indicator -->
       <div *ngIf="task.repeating" class="repeat-indicator">
         <span class="repeat-icon"> ↻ </span>
-        <span class="repeat-interval">repeats every {{ getRepeatIntervalText(task.repeatInterval || 1) }}</span>
+        <span class="repeat-interval">repeats every {{ getRepeatIntervalText(task.repeatInterval || 1) }}
+          <span *ngIf="task.nextRepeatDate"> — next: {{ task.nextRepeatDate | date:'MMM d, yyyy' }}</span>
+        </span>
       </div>
       
       <!-- priority tag -->

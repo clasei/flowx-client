@@ -96,22 +96,6 @@ export class TaskService {
     return labels[priority] || "queue";
   }
 
-  // -------------- repetitive tasks --------------
-
-  // getRepeatIntervalText(days: number): string {
-  //   const options: { [key: number]: string } = {
-  //     1: "every day",
-  //     7: "every week",
-  //     14: "every 2 weeks",
-  //     21: "every 3 weeks",
-  //     30: "every month",
-  //     90: "every quarter",
-  //     365: "every year",
-  //   };
-  
-  //   return options[days] || `every ${days} days`;
-  // }
-
   getRepeatIntervalText(days: number): string {
     if (!days) return ''; // handle null or undefined
     const intervals: { [key: number]: string } = {
@@ -125,14 +109,5 @@ export class TaskService {
     };
     return intervals[days] || `${days} days`;
   }
-  
-
-
-  // calculateNextRepeatDate(days: number): Date {
-  //   const nextDate = new Date();
-  //   nextDate.setDate(nextDate.getDate() + days);
-  //   return nextDate;
-  // }
-  
 
 }
