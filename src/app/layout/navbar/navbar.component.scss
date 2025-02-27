@@ -2,27 +2,32 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #2d2d2d;
+  background: #252525;
   padding: 0.8rem 1.5rem;
-  box-shadow: 0px 2px 5px #00000077;
+  // box-shadow: 0px 2px 5px #00000077;
 
   .logo {
     font-family: 'Baloo 2', sans-serif;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #ddd;
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #c1c1c1;
     text-decoration: none;
     text-transform: lowercase;
+    cursor: pointer;
+    text-decoration: none !important;
   }
 
   .nav-links {
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 400;
+    cursor: pointer;
   }
 
   a {
-    color: #ddd;
-    font-size: 0.95rem;
+    color: #c1c1c1;
+    font-size: 1.25rem;
     font-weight: bold;
     text-decoration: none;
     transition: 0.3s;
@@ -34,6 +39,7 @@
 
   .active-link {
     border-bottom: 2px solid #0fb5a5;
+    text-decoration: none;
   }
 
   .nav-btn {
@@ -53,6 +59,15 @@
   }
 }
 
+// .menu-btn {
+//   display: none;
+//   font-size: 1.5rem;
+//   background: none;
+//   border: none;
+//   color: #c1c1c1;
+//   cursor: pointer;
+// }
+
 @media (max-width: 768px) {
   .task-card {
     padding: 0.75rem;
@@ -63,5 +78,9 @@
     flex-direction: column;
     align-items: flex-start;
   }
+
+  // .menu-btn {
+  //   display: block;
+  // }
 }
 

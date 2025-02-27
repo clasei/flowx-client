@@ -5,11 +5,14 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { DoneTasksComponent } from './pages/done-tasks/done-tasks.component';
 import { DeletedTasksComponent } from './pages/deleted-tasks/deleted-tasks.component';
+// import { AuthGuard } from './guards/auth.guard';
+
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent }, // landing page -- public
+  // { path: '', component: HomeComponent }, // landing page -- public
+  { path: '', redirectTo: 'flowxboard', pathMatch: 'full' },
   { path: 'login', component: LoginComponent }, // login page
-  { path: 'taskboard', component: DashboardComponent }, // main page after login
+  { path: 'flowxboard', component: DashboardComponent }, // main page after login
   { path: 'settings', component: SettingsComponent }, // settings
   { path: 'done', component: DoneTasksComponent }, // completed Tasks
   { path: 'deleted', component: DeletedTasksComponent }, // deleted tasks
@@ -17,11 +20,11 @@ export const routes: Routes = [
 ];
 
 // export const routes: Routes = [
-//   { path: '', redirectTo: 'taskboard', pathMatch: 'full' }, // redirect to taskboard if logged in
+//   { path: '', redirectTo: 'flowxboard', pathMatch: 'full' }, // ✅ Redirect root to dashboard
 //   { path: 'login', component: LoginComponent }, 
-//   { path: 'taskboard', component: DashboardComponent, canActivate: [AuthGuard] }, // protected routes
+//   { path: 'flowxboard', component: DashboardComponent, canActivate: [AuthGuard] }, // ✅ Protect route
 //   { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },
 //   { path: 'done', component: DoneTasksComponent, canActivate: [AuthGuard] },
-//   { path: 'about', component: AboutComponent },
-//   { path: '**', redirectTo: '' } // catch-all redirect
+//   { path: 'deleted', component: DeletedTasksComponent, canActivate: [AuthGuard] },
+//   { path: '**', redirectTo: '' } // ✅ Catch-all redirect
 // ];

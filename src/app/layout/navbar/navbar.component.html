@@ -2,7 +2,7 @@
   <a routerLink="/" class="logo">flowx</a>
 
   <div class="nav-links">
-    <a routerLink="/taskboard" routerLinkActive="active-link" *ngIf="isLoggedIn()">Tasks</a>
+    <a routerLink="/flowxboard" routerLinkActive="active-link" *ngIf="isLoggedIn()">Tasks</a>
     <a routerLink="/done" routerLinkActive="active-link" *ngIf="isLoggedIn()">Completed</a>
     <a routerLink="/settings" routerLinkActive="active-link" *ngIf="isLoggedIn()">Settings</a>
     <a routerLink="/about" routerLinkActive="active-link">About</a>
@@ -13,10 +13,14 @@
 </nav> -->
 
 <nav class="navbar">
-  <a routerLink="/" class="logo">flowx</a>
+  <a routerLink="/" routerLinkActive="ignore-active" class="logo">flowx</a>
+
+  <!-- <button class="menu-btn" (click)="toggleMenu()">☰</button>  -->
 
   <div class="nav-links">
-    <a routerLink="/taskboard" routerLinkActive="active-link">flowxboard</a>
+  <!-- <div class="nav-links" [class.show]="menuOpen"></div> -->
+    <a routerLink="/flowxboard" routerLinkActive="active-link">flowxboard</a>
     <a routerLink="/done" routerLinkActive="active-link">done</a>
   </div>
 </nav>
+

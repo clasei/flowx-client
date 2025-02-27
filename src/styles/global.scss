@@ -13,11 +13,18 @@ body {
 
 .logo {
   font-family: 'Baloo 2', sans-serif;
-  font-weight: bold;
+  font-weight: 800;
   font-size: 1.8rem;
-  color: #ddd;
+  color: #c1c1c1;
   text-decoration: none;
   text-transform: lowercase;
+}
+
+// titles
+
+h1, h2, h3 {
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 400;
 }
 
 // task/card specific styles
