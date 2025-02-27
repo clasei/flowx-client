@@ -45,7 +45,7 @@
     <div class="task-footer">
       <div class="task-meta-footer">
 
-        <button class="muted-btn" (click)="onEditClick()">
+        <button *ngIf="!isDoneTasksView" class="muted-btn" (click)="onEditClick()">
           edit
         </button>
         <button class="muted-btn" id="delete" (click)="onDeleteClick()">
@@ -57,7 +57,7 @@
       <!-- Recurring Task Indicator -->
       <div *ngIf="task.repeating" class="repeat-indicator">
         <span class="repeat-icon"> ↻ </span>
-        <span class="repeat-interval">Repeats every {{ getRepeatIntervalText(task.repeatInterval || 1) }}</span>
+        <span class="repeat-interval">repeats every {{ getRepeatIntervalText(task.repeatInterval || 1) }}</span>
       </div>
       
       <!-- priority tag -->

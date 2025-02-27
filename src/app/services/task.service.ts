@@ -126,11 +126,14 @@ export class TaskService {
     return intervals[days] || `${days} days`;
   }
   
-  calculateNextRepeatDate(days: number): Date {
-    const nextDate = new Date();
-    nextDate.setDate(nextDate.getDate() + days);
-    return nextDate;
-  }
+
+  // // handled on backend
+  
+  // calculateNextRepeatDate(days: number): Date {
+  //   const nextDate = new Date();
+  //   nextDate.setDate(nextDate.getDate() + days);
+  //   return nextDate;
+  // }
   
 
 }

@@ -20,7 +20,7 @@
 
   </div>
 
-    <!-- Edit Task Modal -->
+    <!-- Edit Task Modal
     <div class="modal-overlay" *ngIf="showEditModal">
       <div class="modal">
         <h3>edit done stuff</h3>
@@ -43,9 +43,10 @@
           <button class="save-btn" (click)="saveEditedTask()">save</button>
         </div>
       </div>
-    </div>
+    </div> -->
 
   <!-- List of Done Tasks -->
+      <!-- REMOVED:      (editTask)="openEditModal($event)" -->
   <div *ngIf="getFilteredTasks().length > 0; else noTasks">
     <app-task-item 
       *ngFor="let task of getFilteredTasks()"
@@ -53,7 +54,7 @@
       [isDoneTasksView]="true"
       (toggleCompleted)="onToggleTask($event)"
       (deleteTask)="openDeleteModal($event)"
-      (editTask)="openEditModal($event)"
+ 
       (undoTask)="openUndoModal($event)">  
     </app-task-item>
   </div>

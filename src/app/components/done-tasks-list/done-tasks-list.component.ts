@@ -111,32 +111,32 @@ export class DoneTasksListComponent {
     });
   }
 
-  // -------------------- edit task starts here
+  // // -------------------- edit task starts here
 
-  openEditModal(task: Task) {
-    this.taskToEdit = { ...task }; // clone task for editing
-    this.showEditModal = true;
-  }
+  // openEditModal(task: Task) {
+  //   this.taskToEdit = { ...task }; // clone task for editing
+  //   this.showEditModal = true;
+  // }
 
-  saveEditedTask(): void {
-    if (!this.taskToEdit) return;
+  // saveEditedTask(): void {
+  //   if (!this.taskToEdit) return;
   
-    this.taskService.updateTask(this.taskToEdit).subscribe(updatedTask => {
-      // find the index and update the list
-      const index = this.doneTasks.findIndex(t => t.id === updatedTask.id);
-      if (index !== -1) {
-        this.doneTasks[index] = updatedTask;
-      }
+  //   this.taskService.updateTask(this.taskToEdit).subscribe(updatedTask => {
+  //     // find the index and update the list
+  //     const index = this.doneTasks.findIndex(t => t.id === updatedTask.id);
+  //     if (index !== -1) {
+  //       this.doneTasks[index] = updatedTask;
+  //     }
   
-      this.showEditModal = false;
-      this.taskToEdit = null;
-    });
-  }
+  //     this.showEditModal = false;
+  //     this.taskToEdit = null;
+  //   });
+  // }
 
-  closeEditModal() {
-    this.showEditModal = false;
-    this.taskToEdit = null;
-  }
+  // closeEditModal() {
+  //   this.showEditModal = false;
+  //   this.taskToEdit = null;
+  // }
 
   // -------------------- confirm undo 
 
