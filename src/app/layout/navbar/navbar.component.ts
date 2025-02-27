@@ -1,5 +1,6 @@
-import { Component, inject } from '@angular/core';
-import { RouterModule, ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
+import { RouterModule, Router } from '@angular/router';
+// import { AuthWrapperService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,8 +10,8 @@ import { RouterModule, ActivatedRoute } from '@angular/router';
   imports: [RouterModule]
 })
 export class NavbarComponent { 
-  
-  route = inject(ActivatedRoute);
+
+  constructor(private router: Router) {}
 
   menuOpen = false;
 

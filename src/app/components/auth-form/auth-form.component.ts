@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
+import { AuthWrapperService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-auth-form',
@@ -9,10 +9,13 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './auth-form.component.scss'
 })
 export class AuthFormComponent {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthWrapperService) {}
 
   login() {
-    this.authService.loginWithGoogle();
+    this.authService.login();
   }
 
+  logout() {
+    this.authService.logout();
+  }
 }
