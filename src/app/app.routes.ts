@@ -15,3 +15,13 @@ export const routes: Routes = [
   { path: 'deleted', component: DeletedTasksComponent }, // deleted tasks
   { path: '**', redirectTo: '' } // redirect unknown routes
 ];
+
+// export const routes: Routes = [
+//   { path: '', redirectTo: 'taskboard', pathMatch: 'full' }, // redirect to taskboard if logged in
+//   { path: 'login', component: LoginComponent }, 
+//   { path: 'taskboard', component: DashboardComponent, canActivate: [AuthGuard] }, // protected routes
+//   { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },
+//   { path: 'done', component: DoneTasksComponent, canActivate: [AuthGuard] },
+//   { path: 'about', component: AboutComponent },
+//   { path: '**', redirectTo: '' } // catch-all redirect
+// ];

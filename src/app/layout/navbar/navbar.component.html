@@ -1,7 +1,22 @@
-<nav>
-  <!-- <a routerLink="/">Home</a>
-  <a routerLink="/dashboard">Dashboard</a>
-  <a routerLink="/settings">Settings</a>
-  <a routerLink="/done">Completed Tasks</a>
-  <a routerLink="/deleted">Deleted Tasks</a> -->
+<!-- <nav class="navbar">
+  <a routerLink="/" class="logo">flowx</a>
+
+  <div class="nav-links">
+    <a routerLink="/taskboard" routerLinkActive="active-link" *ngIf="isLoggedIn()">Tasks</a>
+    <a routerLink="/done" routerLinkActive="active-link" *ngIf="isLoggedIn()">Completed</a>
+    <a routerLink="/settings" routerLinkActive="active-link" *ngIf="isLoggedIn()">Settings</a>
+    <a routerLink="/about" routerLinkActive="active-link">About</a>
+
+    <button class="nav-btn" *ngIf="!isLoggedIn()" routerLink="/login">Login</button>
+    <button class="nav-btn" *ngIf="isLoggedIn()" (click)="logout()">Logout</button>
+  </div>
+</nav> -->
+
+<nav class="navbar">
+  <a routerLink="/" class="logo">flowx</a>
+
+  <div class="nav-links">
+    <a routerLink="/taskboard" routerLinkActive="active-link">flowxboard</a>
+    <a routerLink="/done" routerLinkActive="active-link">done</a>
+  </div>
 </nav>
