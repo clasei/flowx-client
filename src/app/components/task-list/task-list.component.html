@@ -1,6 +1,6 @@
 <div class="task-list">
 
-  <h3>stuff to do starts here</h3>
+  <h3>flowxboard</h3>
 
   <div class="controls-panel">
     
@@ -103,7 +103,7 @@
 
       <div class="recurring-task-container">
         <!-- Toggle Recurring Task -->
-        <label id="toggle-label"  class="modal-label">
+        <label id="toggle-label" class="modal-label">
 
           make it a habit
           <input type="checkbox" [(ngModel)]="newTask.repeating">
@@ -112,7 +112,7 @@
 
         <!-- Show Frequency Only If Recurring -->
         <div *ngIf="newTask.repeating" class="repeat-container">
-          <label>repeats every</label>
+          <label class="modal-label">repeats every</label>
           <select [(ngModel)]="newTask.repeatInterval">
             <option [value]="1">day</option>
             <option [value]="7">week</option>

@@ -12,7 +12,7 @@
   transition: 0.3s;
 
   &.completed {
-    opacity: 0.42;
+    opacity: 0.5;
     // text-decoration: line-through;
   }
 
@@ -45,7 +45,9 @@
   }
 
   h4 {
-    font-size: 1.25rem;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 600 !important;
+    font-size: 1.45rem;
     font-weight: bold;
     color: #ededed;
     pointer-events: none;

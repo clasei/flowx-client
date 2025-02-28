@@ -9,7 +9,7 @@
   .logo {
     font-family: 'Baloo 2', sans-serif;
     font-size: 1.75rem;
-    font-weight: 800;
+    font-weight: 800 !important;
     color: #c1c1c1;
     text-decoration: none;
     text-transform: lowercase;
@@ -17,22 +17,26 @@
     text-decoration: none !important;
 
     &:hover {
-      color: #fff;
+      color: #fff !important;
     }
   }
 
   .nav-links {
     display: flex;
     gap: 2rem;
-    font-family: 'Baloo 2', sans-serif;
-    font-weight: 400;
+    // font-family: 'Baloo 2', sans-serif;
+    // font-weight: 600;
     cursor: pointer;
   }
 
   a {
     color: #c1c1c1;
+    // color: #d2d2d2;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 600 !important;
     font-size: 1.25rem;
     font-weight: bold;
+    margin-left: 0.25rem;
     text-decoration: none;
     transition: 0.3s;
 
@@ -46,21 +50,21 @@
     text-decoration: none;
   }
 
-  .nav-btn {
-    background: #0fb5a5;
-    color: #c1c1c1;
-    border: none;
-    padding: 8px 12px;
-    font-size: 0.85rem;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: 0.3s;
+  // .nav-btn {
+  //   background: #0fb5a5;
+  //   color: #c1c1c1;
+  //   border: none;
+  //   padding: 8px 12px;
+  //   font-size: 0.85rem;
+  //   font-weight: bold;
+  //   cursor: pointer;
+  //   border-radius: 5px;
+  //   transition: 0.3s;
 
-    &:hover {
-      background: #0da08f;
-    }
-  }
+  //   &:hover {
+  //     background: #0da08f;
+  //   }
+  // }
 
   .logout-btn{
     background: #4a4a4a00;
@@ -68,7 +72,7 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    color: #939393;
+    color: #8c8c8c;
     font-size: 1.25rem;
     font-weight: bold;
     text-decoration: none;
@@ -76,7 +80,7 @@
 
     &:hover {
       // color: #0fb5a5;
-      color: #717171;
+      color: #6c6c6c;
     }
   }
 }
