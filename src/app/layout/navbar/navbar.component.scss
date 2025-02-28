@@ -15,6 +15,10 @@
     text-transform: lowercase;
     cursor: pointer;
     text-decoration: none !important;
+
+    &:hover {
+      color: #fff;
+    }
   }
 
   .nav-links {
@@ -44,7 +48,7 @@
 
   .nav-btn {
     background: #0fb5a5;
-    color: #fff;
+    color: #c1c1c1;
     border: none;
     padding: 8px 12px;
     font-size: 0.85rem;
@@ -55,6 +59,24 @@
 
     &:hover {
       background: #0da08f;
+    }
+  }
+
+  .logout-btn{
+    background: #4a4a4a00;
+    font-family: 'Baloo 2', sans-serif;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #939393;
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+
+    &:hover {
+      // color: #0fb5a5;
+      color: #717171;
     }
   }
 }

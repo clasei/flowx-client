@@ -21,6 +21,10 @@
   <!-- <div class="nav-links" [class.show]="menuOpen"></div> -->
     <a routerLink="/flowxboard" routerLinkActive="active-link">flowxboard</a>
     <a routerLink="/done" routerLinkActive="active-link">done</a>
+    
+    <button *ngIf="authService.isAuthenticated() | async" (click)="logout()" class="logout-btn">logout</button>
+
+
   </div>
 </nav>
 
