@@ -1,4 +1,5 @@
 @use 'bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&display=swap');
 
 body {
   font-family: 'Inter', sans-serif;
@@ -6,6 +7,24 @@ body {
   color: #d2d2d2 !important;
   background-color: #121212 !important; 
   min-height: 100vh;
+}
+
+// logo
+
+.logo {
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 800;
+  font-size: 1.8rem;
+  color: #c1c1c1;
+  text-decoration: none;
+  text-transform: lowercase;
+}
+
+// titles
+
+h1, h2, h3 {
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 400;
 }
 
 // task/card specific styles

@@ -5,7 +5,7 @@
       
       <div class="task-meta-header">
 
-        <h3>{{ task.title }}</h3>
+        <h4>{{ task.title }}</h4>
 
         <span *ngIf="!isDoneTasksView && task.updatedAt" class="task-date updated-date">
           ➜ updated {{ task.updatedAt | date:'MMM d, yyyy • h:mm a' }} 

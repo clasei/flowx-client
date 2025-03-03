@@ -41,7 +41,7 @@
     font-weight: bold;
   }
 
-  h3 {
+  h4 {
     font-size: 1.25rem;
     font-weight: bold;
     color: #ededed;
@@ -67,6 +67,7 @@
     border-radius: 25px;
     font-size: 12px;
     font-weight: bold;
+    pointer-events: none;
   }
 
   .priority-tag {
@@ -74,7 +75,8 @@
     margin-bottom: 0.2rem;
     border-radius: 25px;
     font-size: 12px;
-    font-weight: bold;
+    font-weight: bold; 
+    pointer-events: none;
 
     &.critical {
       background: #ff4081;

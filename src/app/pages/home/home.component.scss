@@ -32,17 +32,17 @@
 }
 
 .right-side .pill {
-  background-color: $secondary-color;
-  color: #fff;
-  padding: 10px 15px;
-  border-radius: 25px;
-  text-align: center;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-}
+  background: #0fb5a5;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
 
-.right-side .pill:hover {
-  background-color: color.adjust($secondary-color, $lightness: 10%);
+    &:hover {
+      background: #065ca8;
+    }
 }
 
 .divider {
@@ -51,6 +51,7 @@
   background: $primary-color;
   margin: 0 1rem;
 }
+
 
 @media (max-width: 768px) {
   .content {
