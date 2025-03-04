@@ -30,7 +30,11 @@
   </div>
 
   <ng-template #loginLink>
-    <a routerLink="/login" routerLinkActive="active-link" class="login-link">login</a>
+    <div class="nav-links">
+      <a routerLink="/login" routerLinkActive="active-link" class="login-link">login</a>
+      <a routerLink="/signup" routerLinkActive="active-link" class="login-link">sign up</a>
+    </div>
+
   </ng-template>
 </nav>
 
