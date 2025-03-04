@@ -28,35 +28,43 @@
     align-items: flex-start;
     gap: 0.1rem;
     padding-bottom: 0.2rem;
+    pointer-events: none !important;
   }
 
   .task-date {
     font-size: 0.75rem;
     color: #707070; 
     // color: #909090; 
+    pointer-events: none !important;
   }
 
   .completed-date {
     color: #0fb5a48e;
     font-weight: bold;
+    pointer-events: none !important;
   }
 
   h4 {
-    font-size: 1.25rem;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 600 !important;
+    font-size: 1.45rem;
     font-weight: bold;
     color: #ededed;
+    pointer-events: none !important;
   }
   
   .task-description {
     font-size: 0.9rem;
     // color: #c1c1c1;
     color: #b3b3b3;
+    pointer-events: none;
   }
 
   .repeat-indicator {
     color: #707070;
     // color: #909090;
     font-size: 0.75rem;
+    pointer-events: none;
   }
 
   .repeating-tag {
