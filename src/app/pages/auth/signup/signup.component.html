@@ -1,0 +1,14 @@
+<p>signup works!</p>
+<form (ngSubmit)="signup()">
+  <label>username</label>
+  <input type="text" [(ngModel)]="username" name="username" required />
+
+  <label>email</label>
+  <input type="email" [(ngModel)]="email" name="email" required />
+
+  <label>password</label>
+  <input type="password" [(ngModel)]="password" name="password" required />
+
+  <button type="submit">sign up</button>
+  <p *ngIf="errorMessage">{{ errorMessage }}</p>
+</form>

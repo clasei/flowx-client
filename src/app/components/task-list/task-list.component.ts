@@ -86,22 +86,36 @@ export class TaskListComponent implements OnInit {
   //   defaultSort: 'oldest',
   // };
 
-
   fetchTasks(): void {
     this.taskService.getTasks().subscribe({
       next: (tasks) => {
-        console.log('tasks loaded:', tasks);
-        // this.allTasks = tasks ?? []; // ensure it's always an array
+        console.log('✅ tasks loaded:', tasks);
         this.allTasks = (tasks ?? [])
           .sort((a, b) => 
             new Date(b.updatedAt || 0).getTime() - new Date(a.updatedAt || 0).getTime()
           );
-
         this.applyFilters();
       },
-      error: (err) => console.error('error fetching tasks:', err)
+      error: (err) => console.error('❌ error fetching tasks:', err)
     });
   }
+  
+
+  // fetchTasks(): void {
+  //   this.taskService.getTasks().subscribe({
+  //     next: (tasks) => {
+  //       console.log('tasks loaded:', tasks);
+  //       // this.allTasks = tasks ?? []; // ensure it's always an array
+  //       this.allTasks = (tasks ?? [])
+  //         .sort((a, b) => 
+  //           new Date(b.updatedAt || 0).getTime() - new Date(a.updatedAt || 0).getTime()
+  //         );
+
+  //       this.applyFilters();
+  //     },
+  //     error: (err) => console.error('error fetching tasks:', err)
+  //   });
+  // }
   
 
   openDeleteModal(task: Task) {
