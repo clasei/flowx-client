@@ -1,1 +1,15 @@
-<p>auth-form works!</p>
+<div class="auth-container">
+  <h3>sign in to continue</h3>
+
+  <label>Email</label>
+  <input type="email" [(ngModel)]="email" placeholder="Enter your email" required />
+
+  <label>Password</label>
+  <input type="password" [(ngModel)]="password" placeholder="Enter your password" required />
+
+  <div class="auth-buttons">
+    <button (click)="login()" class="enter-btn">enter flowx</button>
+  </div>
+
+  <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+</div>
