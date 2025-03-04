@@ -8,14 +8,32 @@
   background-color: #33333397;
   border-radius: 15%;
   margin-top: 3rem;
+  min-width: 300;
 }
 
-h3 {
-  font-size: 1.5rem;
+h2 {
   font-weight: 600;
-  margin-bottom: 2rem;
-  color: #ddd;
+  margin-bottom: 1rem;
+  color: #c1c1c1;
 }
+
+.form-label {
+  align-self: flex-start; 
+  margin-top: 0.75rem;
+  font-weight: 600;
+  color: #c1c1c1;
+  font-family: 'Baloo 2', sans-serif;
+}
+
+input, textarea, select {
+  background: #333;
+  color: #bcbcbc;
+  border: 1px solid #555;
+  padding: 0.5rem;
+  border-radius: 5px;
+  min-width: 250px;
+}
+
 
 .auth-buttons {
   display: flex;
@@ -25,6 +43,9 @@ h3 {
   // margin: 0.5rem;
 
   button {
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 600 !important;
+    font-size: 1.25rem !important;
     background: #0fb5a5;
     color: #ededed;
     border: none;
@@ -34,31 +55,20 @@ h3 {
     font-size: 1rem;
     font-weight: bold;
     transition: background 0.3s ease;
+    margin-top: 3rem;
 
     &:hover {
       background: #077568;
+      // background: #ff4081 !important;
     }
   }
-}
 
-// button {
-//   background: #0fb5a5;
-//   color: white;
-//   border: none;
-//   padding: 0.75rem 1.5rem;
-//   border-radius: 8px;
-//   cursor: pointer;
-//   font-size: 1rem;
-//   font-weight: bold;
-//   transition: background 0.3s ease;
+  .flowx-word {
+    color: #ededed !important;
+    transition: color 0.3s ease;
 
-//   &:hover {
-//     background: #0a8c7d;
-//   }
-// }
-
-.enter-btn {
-  font-family: 'Baloo 2', sans-serif;
-  font-weight: 600 !important;
-  font-size: 1.25rem !important;
+    &:hover {
+      color: #ff4081 !important;
+    }
+  }
 }

@@ -91,6 +91,31 @@ h1, h2, h3 {
   }
 }
 
+// login + signup + auth-form specific styles
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 1.5rem;
+  margin-top: 3rem;
+
+}
+
+.flowx-word {
+  color: #ff4081 !important;
+  font-weight: bold;
+}
+
+
+
+.login-title {
+  font-size: 3rem !important;
+}
+
+// -----------------------------
 
 $primary-color: #ff4081;
 $secondary-color: #2196f3;
