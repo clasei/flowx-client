@@ -4,8 +4,12 @@
 
 h3 {
   margin-bottom: 1rem;
-  color: #d1d1d1;
   font-size: 2rem;
+  pointer-events: none;
+}
+
+.label {
+  pointer-events: none;
 }
 
 .controls-panel {

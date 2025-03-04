@@ -3,8 +3,9 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  font-weight: 700 !important;
-  color: #d2d2d2 !important;
+  font-weight: 600 !important;
+  // color: #d2d2d2 !important;
+  // color: #c1c1c1 !important;
   background-color: #121212 !important; 
   min-height: 100vh;
 }
@@ -15,7 +16,8 @@ body {
   font-family: 'Baloo 2', sans-serif;
   font-weight: 800;
   font-size: 1.8rem;
-  color: #c1c1c1;
+  color: #c1c1c1 !important;
+  // color: #d2d2d2 !important;
   text-decoration: none;
   text-transform: lowercase;
 }
@@ -24,7 +26,9 @@ body {
 
 h1, h2, h3 {
   font-family: 'Baloo 2', sans-serif;
-  font-weight: 400;
+  font-weight: 600 !important;
+  // color: #d2d2d2 !important;
+  color: #c1c1c1 !important;
 }
 
 // task/card specific styles
