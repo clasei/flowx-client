@@ -21,7 +21,11 @@
 </nav> -->
 
 <nav class="navbar">
-  <a routerLink="/" routerLinkActive="ignore-active" class="logo">flowx</a>
+  <!-- <a routerLink="/" routerLinkActive="ignore-active" class="logo">flowx</a> -->
+
+  <a [routerLink]="isLoggedIn() ? '/flowxboard' : '/'" routerLinkActive="ignore-active" class="logo">
+    flowx
+  </a>
 
   <div class="nav-links" *ngIf="isLoggedIn(); else loginLink">
     <a routerLink="/flowxboard" routerLinkActive="active-link">flowxboard</a>
