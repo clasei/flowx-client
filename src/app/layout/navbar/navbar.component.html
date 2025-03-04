@@ -12,15 +12,26 @@
   </div>
 </nav> -->
 
-<nav class="navbar">
+<!-- <nav class="navbar">
   <a routerLink="/" routerLinkActive="ignore-active" class="logo">flowx</a>
-
-  <!-- <button class="menu-btn" (click)="toggleMenu()">☰</button>  -->
-
   <div class="nav-links">
-  <!-- <div class="nav-links" [class.show]="menuOpen"></div> -->
     <a routerLink="/flowxboard" routerLinkActive="active-link">flowxboard</a>
     <a routerLink="/done" routerLinkActive="active-link">done</a>
   </div>
+</nav> -->
+
+<nav class="navbar">
+  <a routerLink="/" routerLinkActive="ignore-active" class="logo">flowx</a>
+
+  <div class="nav-links" *ngIf="isLoggedIn(); else loginLink">
+    <a routerLink="/flowxboard" routerLinkActive="active-link">flowxboard</a>
+    <a routerLink="/done" routerLinkActive="active-link">done</a>
+    <button (click)="logout()" class="logout-btn">logout</button>
+  </div>
+
+  <ng-template #loginLink>
+    <a routerLink="/login" routerLinkActive="active-link" class="login-link">login</a>
+  </ng-template>
 </nav>
+
 

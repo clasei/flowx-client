@@ -1,20 +1,27 @@
 import { Component, inject } from '@angular/core';
-import { RouterModule, ActivatedRoute } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
-  imports: [RouterModule]
+  imports: [RouterModule, CommonModule]
 })
+
 export class NavbarComponent { 
-  
-  route = inject(ActivatedRoute);
+  authService = inject(AuthService);
 
-  menuOpen = false;
+  constructor(private router: Router) {}
 
-  toggleMenu() {
-    this.menuOpen = !this.menuOpen;
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
+  }
+
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
   }
 }

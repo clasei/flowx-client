@@ -12,7 +12,7 @@ export class AuthFormComponent {
   constructor(private authService: AuthService) {}
 
   login() {
-    this.authService.loginWithGoogle();
+    // this.authService.loginWithGoogle();
   }
 
 }
