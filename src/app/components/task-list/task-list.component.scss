@@ -8,8 +8,20 @@ h3 {
   pointer-events: none;
 }
 
+.modal-title {
+  margin-top: 2.5rem;
+  color: #c1c1c1;
+
+}
+
+.modal-label {
+  margin-top: 0.75rem;
+  color: #c1c1c1;
+}
+
 .label-title {
   pointer-events: none !important;
+  color: #c1c1c1;
 }
 
 .controls-panel {
@@ -254,10 +266,7 @@ input, textarea, select {
   background-color: #7a050594 !important;
 }
 
-.modal-label {
-  margin-top: 0.75rem;
-  color: #d2d2d2;
-}
+
 
 #toggle-label {
   display: flex;

@@ -70,13 +70,13 @@
   </div>
 
   <ng-template #noTasks>
-    <p>it's flowx time — find the perfect moment to create your new to-do</p>
+    <p>it's flowx time — build your next to-do</p>
   </ng-template>
 
   <!------------------------ NEW task modal ------------------------>
   <div class="modal-overlay" *ngIf="showModal">
     <div class="modal">
-      <h3>new stuff</h3>
+      <h3 class="modal-title">ready to do</h3>
 
       <label class="modal-label">what are you gonna do?</label>
       <input [(ngModel)]="newTaskTitle" 
@@ -135,7 +135,7 @@
     <!------------------------ Edit Task Modal ------------------------>
     <div class="modal-overlay" *ngIf="showEditModal">
       <div class="modal">
-        <h3>ready to change</h3>
+        <h3 class="modal-title">ready to change</h3>
         
         <label class="modal-label">title</label>
         <input type="text" [(ngModel)]="taskToEdit!.title">
@@ -185,8 +185,8 @@
   <!------------------------ Discard changes modal -->
   <div *ngIf="showDiscardModal" class="modal-overlay">
     <div class="modal">
-      <h3>let's pause</h3>
-      <p>are you sure you want to close without saving?</p>
+      <h3 class="modal-title">let's pause</h3>
+      <p class="label-title">are you sure you want to close without saving?</p>
       <div class="modal-actions">
         <button class="cancel-btn" (click)="confirmDiscard()">discard</button>
         <button class="save-btn" (click)="showDiscardModal = false">keep editing</button>
@@ -198,8 +198,8 @@
   <!------------------------ Delete Confirmation Modal -->
   <div class="modal-overlay" *ngIf="showDeleteModal">
     <div class="modal">
-      <h3>not into this anymore</h3>
-      <p>are you sure you want to delete "{{ taskToDelete?.title }}"?</p>
+      <h3 class="modal-title">not into this anymore?</h3>
+      <p class="label-title">are you sure you want to delete "{{ taskToDelete?.title }}"?</p>
       <p class="error">
         this action is permanent, once deleted your to-do card cannot be recovered
       </p>
