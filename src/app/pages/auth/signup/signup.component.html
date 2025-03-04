@@ -5,9 +5,9 @@
 
   <div class="auth-container">
 
-    <h2>sign up to enter <span class="flowx-word">flowx</span></h2>
+    <h2>sign up now</h2>
 
-    <form (ngSubmit)="signup()">
+    <!-- <form (ngSubmit)="signup()"> -->
       <label class="form-label">username</label>
       <input type="text" [(ngModel)]="username" name="username" required />
 
@@ -18,11 +18,13 @@
       <input type="password" [(ngModel)]="password" name="password" required />
 
       <div class="auth-buttons">
-        <button type="submit" class="enter-btn">join <span class="flowx-word">flowx</span></button>
+        <!-- <button type="submit" class="enter-btn">join <span class="flowx-word">flowx</span></button> -->
+        <button (click)="signup()" > join <span class="flowx-word">flowx</span></button>
       </div>
 
       <p *ngIf="errorMessage">{{ errorMessage }}</p>
-    </form>
+
+    <!-- </form> -->
   </div>
 
 </div>
