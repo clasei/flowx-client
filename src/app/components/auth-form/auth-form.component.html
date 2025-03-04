@@ -1,15 +1,20 @@
-<div class="auth-container">
-  <h2>sign in to continue</h2>
+<div class="login-container">
+  <h1 class="login-title">welcome to <span class="flowx-word">flowx</span></h1>
+  <h1 class="login-title">it's to-do time</h1>
 
-  <label class="form-label">email</label>
-  <input type="email" [(ngModel)]="email" placeholder="your email" required />
-
-  <label class="form-label">password</label>
-  <input type="password" [(ngModel)]="password" placeholder="your password" required />
-
-  <div class="auth-buttons">
-    <button (click)="login()" >enter <span class="flowx-word">flowx</span></button>
+  <div class="auth-container">
+    <h3 class="login-subtitle">sign in to continue</h3>
+  
+    <label class="form-label">email</label>
+    <input type="email" [(ngModel)]="email" placeholder="your email" required />
+  
+    <label class="form-label">password</label>
+    <input type="password" [(ngModel)]="password" placeholder="your password" required />
+  
+    <div class="auth-buttons">
+      <button (click)="login()" >enter <span class="flowx-word">flowx</span></button>
+    </div>
+  
+    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
   </div>
-
-  <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
 </div>

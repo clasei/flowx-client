@@ -1,26 +1,27 @@
-@use '../../../styles/global.scss' as *;
-@use 'bootstrap/scss/bootstrap';
-@use 'sass:color';
 
 .main {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding: 2rem;
+  padding: 2.5rem;
 }
 
 .content {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   max-width: 800px;
   margin-bottom: 2rem;
 }
 
+.login-title {
+  pointer-events: none;
+}
 
 .left-side h1 {
-  color: $primary-color;
+  color: #ff4081;
   font-size: 3rem;
   margin-bottom: 1rem;
 }
@@ -48,13 +49,56 @@
 .divider {
   width: 1px;
   height: 100%;
-  background: $primary-color;
+  background: #ff4081;
   margin: 0 1rem;
+}
+
+.home-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.home-buttons {
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 600 !important;
+  font-size: 1.25rem !important;
+  text-decoration: none; 
+  background: #0fb5a5;
+  color: #ededed;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  width: 200px;
+  // text-align: center;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    background: #077568;
+    // background: #ff4081 !important;
+    // color: #ff4081;
+    color: #ededed;
+    transform: scale(1.05);
+  }
 }
 
 
 @media (max-width: 768px) {
   .content {
     flex-direction: column;
+    align-items: center;
+  }
+
+  // .home-panel {
+  //   align-items: center;
+  // }
+
+  .home-buttons {
+    width: 180px;
   }
 }

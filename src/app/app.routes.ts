@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-// import { HomeComponent } from './pages/home/home.component';
+import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { SignupComponent } from './pages/auth/signup/signup.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -10,7 +10,10 @@ import { AuthGuard } from './guards/auth.guard';
 
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'flowxboard', pathMatch: 'full' }, // Redirect root to dashboard
+  // { path: '', redirectTo: 'flowxboard', pathMatch: 'full' }, // Redirect root to dashboard
+  // { path: '', redirectTo: 'home', pathMatch: 'full' }, // Redirect root to home page
+  // { path: 'home', component: HomeComponent }, // Home page
+  { path: '', component: HomeComponent }, // Home page
   { path: 'login', component: LoginComponent }, // Login page
   { path: 'signup', component: SignupComponent }, // Signup page
   { path: 'flowxboard', component: DashboardComponent, canActivate: [AuthGuard] }, // Protected dashboard

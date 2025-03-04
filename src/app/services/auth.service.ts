@@ -10,7 +10,10 @@ interface AuthResponse {
   providedIn: 'root'
 })
 export class AuthService {
-  private http = inject(HttpClient);
+
+  // private http = inject(HttpClient);
+  constructor(private http: HttpClient) {} // CHANGED to normal constructor for testing
+
   private baseUrl = 'http://localhost:8080/auth';
 
   // Track authentication state (true = logged in, false = logged out)
