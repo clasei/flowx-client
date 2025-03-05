@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { TaskService } from '../../services/task.service';
 import { Task } from '../../models/task.model';
 import { TaskItemComponent } from '../task-item/task-item.component';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-task-list',
@@ -38,7 +39,11 @@ export class TaskListComponent implements OnInit {
   showDeleteModal = false;
   taskToDelete: Task | null = null;
 
-  constructor(private taskService: TaskService) {}
+  username: string = '';
+
+  // constructor(private taskService: TaskService) {}
+  constructor(private taskService: TaskService, private authService: AuthService) {}
+
   
   // ngOnInit(): void {
   //   this.fetchTasks();
@@ -51,6 +56,12 @@ export class TaskListComponent implements OnInit {
     setInterval(() => {
       this.checkForRepeatingTasks();
     }, 300000);
+
+    // Load the username from localStorage
+    const storedUsername = this.authService.getUsername();
+    if (storedUsername) {
+      this.username = storedUsername;
+    }
   }
   
   checkForRepeatingTasks(): void {
