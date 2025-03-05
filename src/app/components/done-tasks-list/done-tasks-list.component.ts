@@ -56,7 +56,7 @@ export class DoneTasksListComponent {
   onToggleTask(task: Task): void {
     this.taskService.toggleTaskCompletion(task).subscribe(updatedTask => {
       // update ui
-      const index = this.doneTasks.findIndex(t => t.id === updatedTask.id);
+      const index = this.doneTasks.findIndex(t => t.task_id === updatedTask.task_id);
       if (index !== -1) {
         this.doneTasks.splice(index, 1); // remove task if undone
       }
@@ -85,7 +85,7 @@ export class DoneTasksListComponent {
 
   confirmDelete(): void {
     if (!this.taskToDelete) return;
-    this.deleteTask.emit(this.taskToDelete.id!);
+    this.deleteTask.emit(this.taskToDelete.task_id!);
     this.showDeleteModal = false;
   }
 
@@ -123,7 +123,7 @@ export class DoneTasksListComponent {
   
   //   this.taskService.updateTask(this.taskToEdit).subscribe(updatedTask => {
   //     // find the index and update the list
-  //     const index = this.doneTasks.findIndex(t => t.id === updatedTask.id);
+  //     const index = this.doneTasks.findIndex(t => t.task_id === updatedTask.task_id);
   //     if (index !== -1) {
   //       this.doneTasks[index] = updatedTask;
   //     }
@@ -152,7 +152,7 @@ export class DoneTasksListComponent {
       console.log("⏪ task undone:", updatedTask);
   
       // update ui
-      const index = this.doneTasks.findIndex(t => t.id === updatedTask.id);
+      const index = this.doneTasks.findIndex(t => t.task_id === updatedTask.task_id);
       if (index !== -1) {
         this.doneTasks.splice(index, 1);
       }

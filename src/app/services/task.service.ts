@@ -38,12 +38,12 @@ export class TaskService {
 
   /** ✅ PUT - Update task */
   updateTask(task: Task): Observable<Task> {
-    return this.http.put<Task>(`${this.baseUrl}/${task.id}`, task, this.getAuthHeaders());
+    return this.http.put<Task>(`${this.baseUrl}/${task.task_id}`, task, this.getAuthHeaders());
   }
 
   /** ✅ PUT - Toggle task completion */
   toggleTaskCompletion(task: Task): Observable<Task> {
-    return this.http.put<Task>(`${this.baseUrl}/${task.id}/toggle`, {}, this.getAuthHeaders());
+    return this.http.put<Task>(`${this.baseUrl}/${task.task_id}/toggle`, {}, this.getAuthHeaders());
   }
 
   /** ✅ DELETE - Remove a task */

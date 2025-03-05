@@ -28,7 +28,7 @@ export class DoneTasksComponent implements OnInit {
 
   handleDeleteTask(taskId: number): void {
     this.taskService.deleteTask(taskId).subscribe(() => {
-      this.doneTasks = this.doneTasks.filter(t => t.id !== taskId);
+      this.doneTasks = this.doneTasks.filter(t => t.task_id !== taskId);
     });
   }
 

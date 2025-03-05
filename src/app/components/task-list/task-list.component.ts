@@ -126,10 +126,10 @@ export class TaskListComponent implements OnInit {
   confirmDelete() {
     if (!this.taskToDelete) return;
   
-    this.taskService.deleteTask(this.taskToDelete.id!).subscribe({
+    this.taskService.deleteTask(this.taskToDelete.task_id!).subscribe({
       next: () => {
         console.log(`✅ Task deleted: ${this.taskToDelete!.title}`);
-        this.allTasks = this.allTasks.filter(t => t.id !== this.taskToDelete!.id);
+        this.allTasks = this.allTasks.filter(t => t.task_id !== this.taskToDelete!.task_id);
         this.applyFilters();
         this.showDeleteModal = false; // Close modal after delete
       },
@@ -180,7 +180,7 @@ export class TaskListComponent implements OnInit {
   
   toggleTaskCompletion(task: Task): void {
     this.taskService.toggleTaskCompletion(task).subscribe(taskUpdated => {
-      this.allTasks = this.allTasks.map(t => t.id === taskUpdated.id ? taskUpdated : t);
+      this.allTasks = this.allTasks.map(t => t.task_id === taskUpdated.task_id ? taskUpdated : t);
       this.applyFilters();
     });
   }
@@ -199,7 +199,7 @@ export class TaskListComponent implements OnInit {
     
     this.taskService.updateTask(this.taskToEdit).subscribe(updatedTask => {
       console.log("✅ Task updated:", updatedTask);
-      this.allTasks = this.allTasks.map(t => t.id === updatedTask.id ? updatedTask : t);
+      this.allTasks = this.allTasks.map(t => t.task_id === updatedTask.task_id ? updatedTask : t);
       this.applyFilters();
       this.showEditModal = false;
     });
