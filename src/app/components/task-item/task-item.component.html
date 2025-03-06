@@ -2,9 +2,7 @@
   <div class="task-card" [ngClass]="{'completed': task.completed}">
 
     <div class="task-header">
-      
       <div class="task-meta-header">
-
         <!-- DEBUG INFO -->
         <!-- <div class="debug-info">
           <p>DEBUG: Task ID: {{ task.id }}</p>
@@ -13,79 +11,62 @@
           <p>Next Repeat Date: {{ task.nextRepeatDate }}</p>
         </div> -->
 
-
         <h4>{{ task.title }}</h4>
 
-        <span *ngIf="!isDoneTasksView && task.updatedAt" class="task-date updated-date">
+        <!-- NOT NEEDED -------------------------------- -->
+        <!-- <span *ngIf="!isDoneTasksView && task.updatedAt" class="task-date updated-date">
           ➜ updated {{ task.updatedAt | date:'MMM d, yyyy • h:mm a' }} 
         </span>
-
         <span *ngIf="isDoneTasksView" class="task-date completed-date">
           ➜ done {{ task.updatedAt | date:'MMM d, yyyy • h:mm a' }} ✓ 
         </span>
-
+        <span class="task-date">added {{ task.createdAt | date:'MMM d, yyyy • h:mm a' }}</span> -->
         <!-- <span class="task-date">added {{ task.createdAt | date:'short' }}</span> -->
-        <span class="task-date">added {{ task.createdAt | date:'MMM d, yyyy • h:mm a' }}</span>
-
       </div>
-
       <!-- checkbox & re-do -->
-
       <!-- <label class="checkbox-container">
         <input type="checkbox" [checked]="task.completed" (change)="onCheckboxChange()">
         <span class="checkmark"></span>
       </label> -->
-
       <label *ngIf="!isDoneTasksView" class="checkbox-container">
         <input type="checkbox" [checked]="task.completed" (change)="onCheckboxChange()">
         <span class="checkmark"></span>
       </label>
-
       <!-- <button *ngIf="isDoneTasksView" id="undo" class="undo-btn" (click)="onUndoClick()"> -->
       <button *ngIf="isDoneTasksView" id="undo" class="new-task-btn" (click)="onUndoClick()">
         re-do
       </button>
-  
-
     </div>
 
     <p class="task-description"> — {{ task.description }}</p>
 
-    <div class="task-footer">
-      <div class="task-meta-footer">
+    <!-- Recurring Task Indicator -->
+    <div *ngIf="task.repeating" class="repeat-indicator">
+      <span class="repeat-icon"> ↻ </span>
+      <span class="repeat-interval"> every {{ getRepeatIntervalText(task.repeatInterval || 1) }}
+        <span *ngIf="task.nextRepeatDate"> — next: {{ task.nextRepeatDate | date:'MMM d, yyyy' }}</span>
+      </span>
+    </div>
 
+    <div class="task-footer">
+      <div class="task-tags">
+        <!-- priority tag -->
+        <span class="priority-tag" [ngClass]="getPriorityClass(task.priority)">
+          {{ getPriorityText(task.priority) }}
+        </span>
+        <!-- Repeating tag (Only if task is recurring) -->
+        <!-- <span *ngIf="task.repeating" class="repeating-tag">
+          ↻
+        </span> -->
+      </div>
+      <div class="task-meta-footer">
         <button *ngIf="!isDoneTasksView" class="muted-btn" (click)="onEditClick()">
           edit
         </button>
         <button class="muted-btn" id="delete" (click)="onDeleteClick()">
           delete
         </button>
-
       </div>
-
-      <!-- Recurring Task Indicator -->
-      <div *ngIf="task.repeating" class="repeat-indicator">
-        <span class="repeat-icon"> ↻ </span>
-        <span class="repeat-interval"> every {{ getRepeatIntervalText(task.repeatInterval || 1) }}
-          <span *ngIf="task.nextRepeatDate"> — next: {{ task.nextRepeatDate | date:'MMM d, yyyy' }}</span>
-        </span>
-      </div>
-      
-      <div class="task-tags">
-      <!-- Repeating tag (Only if task is recurring) -->
-      <span *ngIf="task.repeating" class="repeating-tag">
-        ↻
-      </span>
-      
-      <!-- DEBUGGING -->
-      
-      
-        <!-- priority tag -->
-        <span class="priority-tag" [ngClass]="getPriorityClass(task.priority)">
-          {{ getPriorityText(task.priority) }}
-        </span>
-      </div>
-
     </div>
 
   </div>
