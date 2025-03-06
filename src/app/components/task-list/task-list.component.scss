@@ -37,7 +37,7 @@ h3 {
   background: #4a4a4a;
   font-family: 'Inter', sans-serif;
   font-weight: 700 !important;
-  color: #d2d2d2 !important;
+  color: #c1c1c1 !important;
   padding: 8px 12px;
   border: none;
   border-radius: 5px;
@@ -49,7 +49,7 @@ h3 {
     // background: #007bff76;
     // background: #007bff;
     // background: #333;
-    background: #bcbcbc91;
+    background: #a3a3a391;
     color: #c7c7c7;
   }
 
@@ -64,12 +64,12 @@ h3 {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: #d2d2d2 !important;
+  color: #c1c1c1 !important;
 }
 
 select {
   background: #333;
-  color: #fff;
+  color: #c1c1c1;
   border: 1px solid #555;
   padding: 0.3rem;
   border-radius: 5px;
@@ -264,8 +264,6 @@ input, textarea, select {
 #delete:hover {
   background-color: #7a050594 !important;
 }
-
-
 
 #toggle-label {
   display: flex;

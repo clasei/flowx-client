@@ -1,10 +1,11 @@
 .task-card {
   background: #3b3b3b;
   // max-width: 1000px;
+  padding-top: 0.75rem !important;
   padding: 1rem;
   margin: 1rem;
   border-radius: 0.5rem;
-  box-shadow: 0px 2px 5px #b3b3b3;
+  // box-shadow: 0px 2px 5px #b3b3b3;
   display: flex;
   flex-direction: column;
   // align-content: center;
@@ -27,20 +28,6 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 0.1rem;
-    padding-bottom: 0.2rem;
-    pointer-events: none !important;
-  }
-
-  .task-date {
-    font-size: 0.75rem;
-    color: #707070; 
-    // color: #909090; 
-    pointer-events: none !important;
-  }
-
-  .completed-date {
-    color: #0fb5a48e;
-    font-weight: bold;
     pointer-events: none !important;
   }
 
@@ -50,6 +37,15 @@
     font-size: 1.45rem;
     font-weight: bold;
     color: #ededed;
+    margin-bottom: 0;
+    pointer-events: none !important;
+  }
+
+  .task-date {
+    font-size: 0.75rem;
+    color: #707070; 
+    // color: #909090; 
+    margin-top: 0;
     pointer-events: none !important;
   }
   
@@ -57,7 +53,14 @@
     font-size: 0.9rem;
     // color: #c1c1c1;
     color: #b3b3b3;
+    margin-top: 0.2rem;
     pointer-events: none;
+  }
+
+  .completed-date {
+    color: #0fb5a48e;
+    font-weight: bold;
+    pointer-events: none !important;
   }
 
   .repeat-indicator {
@@ -80,7 +83,7 @@
 
   .priority-tag {
     padding: 4px 12px;
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.5rem;
     border-radius: 25px;
     font-size: 12px;
     font-weight: bold; 
@@ -120,21 +123,24 @@
       background-color: #a7a7a770;
       width: 2.5rem;
       height: 2.5rem;
-      border-radius: 4px;
+      border-radius: 50%;
       // border: 1.5px solid #2afaaa;      
-      border: 1.5px solid #0fb5a5;      
-      box-shadow: 0px 2px 5px #b3b3b3;
+      // border: 1.5px solid #0fb5a5;      
+      border: 1.5px solid #ededed;      
+      // box-shadow: 0px 2px 5px #b3b3b3;
       display: inline-block;
       position: relative;
       transition: all 0.5s ease;
-      margin-top: -0.5rem;
+      margin: 0.5rem;
     }
 
     input:hover + .checkmark {
       transform: scale(1.1);
       // border: 2.5px solid #0fb5a5;
-      background-color: #0fb5a461;
-      box-shadow: 0px 4px 7px #b3b3b3;
+      // background-color: #0fb5a461;
+      background-color: #ededed;
+      // background-color: #b3b3b3;
+      // box-shadow: 0px 4px 7px #b3b3b3;
     }
 
     input:active + .checkmark {
@@ -143,7 +149,9 @@
   
     input:checked + .checkmark {
       // background-color: #2979ff;
-      background-color: #0fb5a5;
+      // background-color: #0fb5a5;
+      background-color: #e1e1e1;
+
     }
   
     input:checked + .checkmark::after {
@@ -162,6 +170,8 @@
     align-items: center;
     font-size: 0.7rem;
     color: #b2b2b2;
+    margin-top: 0.5rem;
+    margin-bottom: 0.25rem;
   }
 
   .task-meta-footer {
