@@ -22,10 +22,15 @@ export class SignupComponent {
 
   signup() {
     this.authService.signup(this.email, this.password, this.username).subscribe({
-      next: () => this.router.navigate(['/flowxboard']), // redirect after signup
-      error: (err) => this.errorMessage = err.error.message || 'Signup failed'
+      next: () => this.router.navigate(['/flowxboard']),
+      error: (err) => {
+        console.error('❌ Signup error:', err);
+        this.errorMessage = err; // receives a clean error message
+      }
     });
   }
+  
+
   
 
   // signup() {

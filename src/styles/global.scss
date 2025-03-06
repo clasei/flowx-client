@@ -130,6 +130,28 @@ h1, h2, h3 {
 
 // -----------------------------
 
+.error-container {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  // background-color: #4a0b0b6f;
+  border-radius: 25px;
+  max-width: 250px;
+  text-align: center;
+}
+
+.error-msg {
+  color: #d17b7b;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin: 5px; 
+  display: block; 
+  // max-width: 80%; 
+  text-align: center;
+  padding: 0.2rem;
+}
+
+// -----------------------------
+
 $primary-color: #ff4081;
 $secondary-color: #2196f3;
 $accent-color: #fbc02d;

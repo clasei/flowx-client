@@ -57,65 +57,6 @@ export class TaskService {
   }
 
 
-// @Injectable({
-//   providedIn: 'root',
-// })
-// export class TaskService {
-//   private apiUrl = 'http://localhost:8080/tasks';
-
-//   constructor(private http: HttpClient) {}
-
-//   // fetch all tasks
-//   getTasks(): Observable<Task[]> {
-//     return this.http.get<Task[]>(this.apiUrl); // return the array of tasks
-//   }
-
-//   // create new task
-//   createTask(task: Task): Observable<Task> {
-//     console.log("new task to backend:", task);
-//     return this.http.post<Task>(this.apiUrl, task);
-//   }
-
-//   // toggle comlpetion status
-
-//   toggleTaskCompletion(task: Task): Observable<Task> {
-//     console.log("toggled task to backend:", task);
-//     return this.http.put<Task>(`${this.apiUrl}/${task.id}/toggle`, {}); 
-//   }
-
-//   // toggleTaskCompletion(task: Task): Observable<Task> {
-//   //   task.completed = !task.completed;
-//   //   task.updatedAt = new Date();
-  
-//   //   if (task.repeating && task.completed) {
-//   //     task.nextRepeatDate = this.calculateNextRepeatDate(task.repeatInterval || 1);
-//   //   } else {
-//   //     task.nextRepeatDate = null as any;
-//   //   }
-  
-//   //   return this.http.put<Task>(`${this.apiUrl}/${task.id}`, task);
-//   // }
-
-
-//   // delete a task
-//   deleteTask(id: number): Observable<void> {
-//     console.log("🔴 deleting task from backend, ID:", id);
-//     return this.http.delete<void>(`${this.apiUrl}/${id}`);
-//   }
-
-//   // update a task
-//   updateTask(task: Task): Observable<Task> {
-//     console.log("📝 updating task:", task);
-//     return this.http.put<Task>(`${this.apiUrl}/${task.id}`, task);
-//   }
-
-//   // delete all done tasks
-//   deleteAllDoneTasks(): Observable<void> {
-//     return this.http.delete<void>(`${this.apiUrl}/completed`);
-//   }
-  
-  
-
   // -------------- filtering & sorting --------------
   filterAndSortTasks(
     tasks: Task[],

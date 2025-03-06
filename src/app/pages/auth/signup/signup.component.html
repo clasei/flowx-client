@@ -23,7 +23,9 @@
         <button (click)="signup()" > join <span class="flowx-word">flowx</span></button>
       </div>
 
-      <p *ngIf="errorMessage">{{ errorMessage }}</p>
+      <div *ngIf="errorMessage" class="error-container">
+        <p class="error-msg" *ngFor="let msg of errorMessage.split('|')">{{ msg.trim() }}</p>
+      </div>
 
     <!-- </form> -->
   </div>

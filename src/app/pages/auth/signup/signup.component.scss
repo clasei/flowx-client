@@ -69,6 +69,7 @@ input, textarea, select {
     // transition: background 0.3s ease;
     transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
     margin-top: 3rem;
+    width: 180px;
 
     &:hover {
       background: #077568;
@@ -85,5 +86,21 @@ input, textarea, select {
     &:hover {
       color: #ff4081 !important;
     }
+  }
+}
+
+
+@media (max-width: 768px) {
+  // .content {
+  //   flex-direction: column;
+  //   align-items: center;
+  // }
+
+  // .home-panel {
+  //   align-items: center;
+  // }
+
+  .home-buttons {
+    width: 180px;
   }
 }
