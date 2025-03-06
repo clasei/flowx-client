@@ -20,19 +20,18 @@ export class AuthFormComponent {
 
   login() {
     if (!this.email || !this.password) {
-      console.error("⚠️ Email and password are required");
+      this.errorMessage = "email and password are required";
       return;
     }
-
+  
     this.authService.login(this.email, this.password).subscribe({
-      next: () => {
-        console.log('✅ Login successful! Redirecting to /flowxboard');
-        this.router.navigate(['/flowxboard']);
-      },
+      next: () => this.router.navigate(['/flowxboard']),
       error: (err) => {
-        this.errorMessage = err.error.message || 'Login failed';
         console.error('❌ Login error:', err);
+        this.errorMessage = err; // receives a clean error message
       }
     });
   }
+  
+
 }

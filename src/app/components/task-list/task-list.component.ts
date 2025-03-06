@@ -112,23 +112,6 @@ export class TaskListComponent implements OnInit {
   }
   
 
-  // fetchTasks(): void {
-  //   this.taskService.getTasks().subscribe({
-  //     next: (tasks) => {
-  //       console.log('tasks loaded:', tasks);
-  //       // this.allTasks = tasks ?? []; // ensure it's always an array
-  //       this.allTasks = (tasks ?? [])
-  //         .sort((a, b) => 
-  //           new Date(b.updatedAt || 0).getTime() - new Date(a.updatedAt || 0).getTime()
-  //         );
-
-  //       this.applyFilters();
-  //     },
-  //     error: (err) => console.error('error fetching tasks:', err)
-  //   });
-  // }
-  
-
   openDeleteModal(task: Task) {
     this.taskToDelete = task;
     this.showDeleteModal = true;
@@ -312,9 +295,9 @@ export class TaskListComponent implements OnInit {
       title: this.newTaskTitle,
       description: this.newTaskDescription,
       priority: this.newTaskPriority,
-      repeating: this.newTask.repeating,  // ✅ Use user selection
-      repeatInterval: this.newTask.repeatInterval || null,  // ✅ Only set if repeating
-      nextRepeatDate: nextRepeatDate, // ✅ Calculate it only if repeating
+      repeating: this.newTask.repeating,  // user selection
+      repeatInterval: this.newTask.repeatInterval || null,  // only set if repeating
+      nextRepeatDate: nextRepeatDate, // calculate it only if repeating
     };
 
   

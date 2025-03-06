@@ -15,6 +15,9 @@
       <button (click)="login()" >enter <span class="flowx-word">flowx</span></button>
     </div>
   
-    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+    <div *ngIf="errorMessage" class="error-container">
+      <p class="error-msg" *ngFor="let msg of errorMessage.split('|')">{{ msg.trim() }}</p>
+    </div>
+
   </div>
 </div>
