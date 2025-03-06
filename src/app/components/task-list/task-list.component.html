@@ -1,6 +1,6 @@
 <div class="task-list">
 
-  <h3>stuff to do starts here</h3>
+  <h3>{{ username }}'s flowxboard</h3>
 
   <div class="controls-panel">
     
@@ -22,7 +22,7 @@
 
     <!-- filter dropdown -->
     <div class="filter-container">
-      <label>filter</label>
+      <label class="label-title">filter</label>
       <select (change)="filterTasks($event)">
         <option value="all">all</option>
         <option value="critical">critical</option>
@@ -33,7 +33,7 @@
 
     <!-- slider for "show only top 3 tasks" -->
     <div class="sort-container">
-      <span>top 3 </span>
+      <span class="label-title">top 3 </span>
       <label class="switch">
         <input id="topTasksToggle" type="checkbox" (change)="toggleTopTasks()">
         <span class="slider"></span>
@@ -42,7 +42,7 @@
 
     <!-- slider for "show comlpleted" -->
     <div class="sort-container">
-      <span>view done </span>
+      <span class="label-title">view done </span>
       <label class="switch">
         <input id="completedTasksToggle" type="checkbox" (change)="toggleShowCompleted()">
         <span class="slider"></span>
@@ -70,13 +70,13 @@
   </div>
 
   <ng-template #noTasks>
-    <p>it's flowx time — find the perfect moment to create your new to-do</p>
+    <p>it's flowx time — build your next to-do</p>
   </ng-template>
 
   <!------------------------ NEW task modal ------------------------>
   <div class="modal-overlay" *ngIf="showModal">
     <div class="modal">
-      <h3>new stuff</h3>
+      <h3 class="modal-title">ready to do</h3>
 
       <label class="modal-label">what are you gonna do?</label>
       <input [(ngModel)]="newTaskTitle" 
@@ -112,7 +112,7 @@
 
         <!-- Show Frequency Only If Recurring -->
         <div *ngIf="newTask.repeating" class="repeat-container">
-          <label>repeats every</label>
+          <label  class="modal-label">repeats every</label>
           <select [(ngModel)]="newTask.repeatInterval">
             <option [value]="1">day</option>
             <option [value]="7">week</option>
@@ -135,15 +135,15 @@
     <!------------------------ Edit Task Modal ------------------------>
     <div class="modal-overlay" *ngIf="showEditModal">
       <div class="modal">
-        <h3>it's edit time</h3>
+        <h3 class="modal-title">ready to change</h3>
         
-        <label>title</label>
+        <label class="modal-label">title</label>
         <input type="text" [(ngModel)]="taskToEdit!.title">
         
-        <label>description</label>
+        <label class="modal-label">description</label>
         <textarea [(ngModel)]="taskToEdit!.description"></textarea>
         
-        <label>priority</label>
+        <label class="modal-label">priority</label>
         <select [(ngModel)]="taskToEdit!.priority">
           <option value="1">critical</option>
           <option value="2">focus</option>
@@ -161,7 +161,7 @@
         
           <!-- Show Frequency Only If Recurring -->
           <div *ngIf="taskToEdit!.repeating" class="repeat-container">
-            <label>repeats every</label>
+            <label class="modal-label">repeats every</label>
             <select [(ngModel)]="taskToEdit!.repeatInterval">
               <option [value]="1">day</option>
               <option [value]="7">week</option>
@@ -185,8 +185,8 @@
   <!------------------------ Discard changes modal -->
   <div *ngIf="showDiscardModal" class="modal-overlay">
     <div class="modal">
-      <h3>let's pause</h3>
-      <p>are you sure you want to close without saving?</p>
+      <h3 class="modal-title">let's pause</h3>
+      <p class="label-title">are you sure you want to close without saving?</p>
       <div class="modal-actions">
         <button class="cancel-btn" (click)="confirmDiscard()">discard</button>
         <button class="save-btn" (click)="showDiscardModal = false">keep editing</button>
@@ -198,8 +198,8 @@
   <!------------------------ Delete Confirmation Modal -->
   <div class="modal-overlay" *ngIf="showDeleteModal">
     <div class="modal">
-      <h3>not into this anymore</h3>
-      <p>are you sure you want to delete "{{ taskToDelete?.title }}"?</p>
+      <h3 class="modal-title">not into this anymore?</h3>
+      <p class="label-title">are you sure you want to delete "{{ taskToDelete?.title }}"?</p>
       <p class="error">
         this action is permanent, once deleted your to-do card cannot be recovered
       </p>

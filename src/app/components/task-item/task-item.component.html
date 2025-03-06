@@ -5,6 +5,15 @@
       
       <div class="task-meta-header">
 
+        <!-- DEBUG INFO -->
+        <!-- <div class="debug-info">
+          <p>DEBUG: Task ID: {{ task.id }}</p>
+          <p>Repeating: {{ task.repeating }}</p>
+          <p>Repeat Interval: {{ task.repeatInterval }}</p>
+          <p>Next Repeat Date: {{ task.nextRepeatDate }}</p>
+        </div> -->
+
+
         <h4>{{ task.title }}</h4>
 
         <span *ngIf="!isDoneTasksView && task.updatedAt" class="task-date updated-date">
@@ -63,10 +72,13 @@
       </div>
       
       <div class="task-tags">
-        <!-- Repeating tag (Only if task is recurring) -->
-        <span *ngIf="task.repeating" class="repeating-tag">
-          ↻
-        </span>
+      <!-- Repeating tag (Only if task is recurring) -->
+      <span *ngIf="task.repeating" class="repeating-tag">
+        ↻
+      </span>
+      
+      <!-- DEBUGGING -->
+      
       
         <!-- priority tag -->
         <span class="priority-tag" [ngClass]="getPriorityClass(task.priority)">

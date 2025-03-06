@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { TaskService } from '../../services/task.service';
 import { Task } from '../../models/task.model';
 import { TaskItemComponent } from '../task-item/task-item.component';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-task-list',
@@ -38,7 +39,11 @@ export class TaskListComponent implements OnInit {
   showDeleteModal = false;
   taskToDelete: Task | null = null;
 
-  constructor(private taskService: TaskService) {}
+  username: string = '';
+
+  // constructor(private taskService: TaskService) {}
+  constructor(private taskService: TaskService, private authService: AuthService) {}
+
   
   // ngOnInit(): void {
   //   this.fetchTasks();
@@ -51,6 +56,12 @@ export class TaskListComponent implements OnInit {
     setInterval(() => {
       this.checkForRepeatingTasks();
     }, 300000);
+
+    // Load the username from localStorage
+    const storedUsername = this.authService.getUsername();
+    if (storedUsername) {
+      this.username = storedUsername;
+    }
   }
   
   checkForRepeatingTasks(): void {
@@ -86,22 +97,36 @@ export class TaskListComponent implements OnInit {
   //   defaultSort: 'oldest',
   // };
 
-
   fetchTasks(): void {
     this.taskService.getTasks().subscribe({
       next: (tasks) => {
-        console.log('tasks loaded:', tasks);
-        // this.allTasks = tasks ?? []; // ensure it's always an array
+        console.log('✅ tasks loaded:', tasks);
         this.allTasks = (tasks ?? [])
           .sort((a, b) => 
             new Date(b.updatedAt || 0).getTime() - new Date(a.updatedAt || 0).getTime()
           );
-
         this.applyFilters();
       },
-      error: (err) => console.error('error fetching tasks:', err)
+      error: (err) => console.error('❌ error fetching tasks:', err)
     });
   }
+  
+
+  // fetchTasks(): void {
+  //   this.taskService.getTasks().subscribe({
+  //     next: (tasks) => {
+  //       console.log('tasks loaded:', tasks);
+  //       // this.allTasks = tasks ?? []; // ensure it's always an array
+  //       this.allTasks = (tasks ?? [])
+  //         .sort((a, b) => 
+  //           new Date(b.updatedAt || 0).getTime() - new Date(a.updatedAt || 0).getTime()
+  //         );
+
+  //       this.applyFilters();
+  //     },
+  //     error: (err) => console.error('error fetching tasks:', err)
+  //   });
+  // }
   
 
   openDeleteModal(task: Task) {
@@ -112,10 +137,10 @@ export class TaskListComponent implements OnInit {
   confirmDelete() {
     if (!this.taskToDelete) return;
   
-    this.taskService.deleteTask(this.taskToDelete.id!).subscribe({
+    this.taskService.deleteTask(this.taskToDelete.task_id!).subscribe({
       next: () => {
         console.log(`✅ Task deleted: ${this.taskToDelete!.title}`);
-        this.allTasks = this.allTasks.filter(t => t.id !== this.taskToDelete!.id);
+        this.allTasks = this.allTasks.filter(t => t.task_id !== this.taskToDelete!.task_id);
         this.applyFilters();
         this.showDeleteModal = false; // Close modal after delete
       },
@@ -166,7 +191,7 @@ export class TaskListComponent implements OnInit {
   
   toggleTaskCompletion(task: Task): void {
     this.taskService.toggleTaskCompletion(task).subscribe(taskUpdated => {
-      this.allTasks = this.allTasks.map(t => t.id === taskUpdated.id ? taskUpdated : t);
+      this.allTasks = this.allTasks.map(t => t.task_id === taskUpdated.task_id ? taskUpdated : t);
       this.applyFilters();
     });
   }
@@ -185,7 +210,7 @@ export class TaskListComponent implements OnInit {
     
     this.taskService.updateTask(this.taskToEdit).subscribe(updatedTask => {
       console.log("✅ Task updated:", updatedTask);
-      this.allTasks = this.allTasks.map(t => t.id === updatedTask.id ? updatedTask : t);
+      this.allTasks = this.allTasks.map(t => t.task_id === updatedTask.task_id ? updatedTask : t);
       this.applyFilters();
       this.showEditModal = false;
     });

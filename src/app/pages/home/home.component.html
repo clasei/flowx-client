@@ -1,25 +1,43 @@
+<!-- <main class="main">
+  <div class="content">
+    <div class="left-side">
+      <h1 class="login-title">hi there</h1>
+      <h1 class="login-title">welcome to <span class="flowx-word">flowx</span></h1>
+      <h1 class="login-title">your next fav app</h1>
+
+      <div class="home-panel">
+        <a *ngIf="!isLoggedIn()" class="home-buttons" routerLink="/login">
+          <span>login</span>
+        </a>
+        <a *ngIf="!isLoggedIn()" class="home-buttons" routerLink="/signup">
+          <span>sign up</span>
+        </a>
+        
+        <a *ngIf="isLoggedIn()" class="pill" (click)="goToDashboard()">
+          <span>flowxboard</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</main> -->
+
 <main class="main">
   <div class="content">
     <div class="left-side">
-      <h1>hi there</h1>
-      <p>this is flowx, your next fav app</p>
-    </div>
-    <div class="divider" role="separator" aria-label="Divider"></div>
-    <div class="right-side">
-      <div class="pill-group">
-        <a
-          class="pill"
-          outerLink="/flowxboard"
-        >
-          <span>flowxboard</span>
+      <!-- <h1 class="login-title">hi</h1>  -->
+      <h1 class="login-title">welcome to <span class="flowx-word">flowx</span></h1>
+      <h1 class="login-title">your next fav app</h1>
+
+      <div class="home-panel">
+        <a class="home-buttons" routerLink="/login">
+          <span>login</span>
         </a>
-        <a
-          class="pill"
-          routerLink="/done"
-        >
-          <span>done</span>
+        <a class="home-buttons" routerLink="/signup">
+          <span>sign up</span>
         </a>
       </div>
+
     </div>
   </div>
 </main>

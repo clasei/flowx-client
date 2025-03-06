@@ -17,19 +17,19 @@
 
 <div class="modal-overlay">
   <div class="modal">
-    <h3>{{ isUndo ? 'undo task' : (isBulkDelete ? 'delete all done' : 'delete task') }}</h3>
+    <h3 class="modal-title">{{ isUndo ? 'ready to re-do' : (isBulkDelete ? 'clean your done-board' : 'not into this?') }}</h3>
     
-    <p>
-      are you sure you want to 
-      {{ isUndo ? 'undo this for good' : (isBulkDelete ? 'delete all completed tasks' : '"' + taskTitle + '"') }}?
+    <p class="label-title">
+      are you sure you want to delete
+      {{ isUndo ? 'do this again' : (isBulkDelete ? 'all done' : '"' + taskTitle + '"') }}?
     </p>
 
     <p class="error" *ngIf="!isUndo">
-      this action is permanent, once deleted, it can’t be recovered
+      this action is permanent, once deleted it cannot be recovered
     </p>
 
     <p id="undo-msg" class="error" *ngIf="isUndo">
-      this will send the task to your main board, so you can do it again
+      this will send the to-do to your flowxboard, so you can do it again
     </p>
 
     <div class="modal-actions">

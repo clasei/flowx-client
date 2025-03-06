@@ -1,0 +1,31 @@
+<div class="login-container">
+  <h1 class="login-title">welcome to <span class="flowx-word">flowx</span></h1>
+  <!-- <h1 class="login-title">your next fav app</h1> -->
+  <h1 class="login-title">smart your progress</h1>
+
+
+  <div class="auth-container">
+
+    <h3 class="login-subtitle">sign up here</h3>
+
+    <!-- <form (ngSubmit)="signup()"> -->
+      <label class="form-label">username</label>
+      <input type="text" [(ngModel)]="username" name="username" required />
+
+      <label class="form-label">email</label>
+      <input type="email" [(ngModel)]="email" name="email" required />
+
+      <label class="form-label">password</label>
+      <input type="password" [(ngModel)]="password" name="password" required />
+
+      <div class="auth-buttons">
+        <!-- <button type="submit" class="enter-btn">join <span class="flowx-word">flowx</span></button> -->
+        <button (click)="signup()" > join <span class="flowx-word">flowx</span></button>
+      </div>
+
+      <p *ngIf="errorMessage">{{ errorMessage }}</p>
+
+    <!-- </form> -->
+  </div>
+
+</div>

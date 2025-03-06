@@ -15,6 +15,10 @@
     text-transform: lowercase;
     cursor: pointer;
     text-decoration: none !important;
+
+    &:hover {
+      color: #fff !important;
+    }
   }
 
   .nav-links {
@@ -42,22 +46,41 @@
     text-decoration: none;
   }
 
-  .nav-btn {
-    background: #0fb5a5;
-    color: #fff;
+  // .nav-btn {
+  //   background: #0fb5a5;
+  //   color: #fff;
+  //   border: none;
+  //   padding: 8px 12px;
+  //   font-size: 0.85rem;
+  //   font-weight: bold;
+  //   cursor: pointer;
+  //   border-radius: 5px;
+  //   transition: 0.3s;
+
+  //   &:hover {
+  //     background: #0da08f;
+  //   }
+  // }
+
+  .logout-btn{
+    background: #4a4a4a00;
+    font-family: 'Baloo 2', sans-serif;
     border: none;
-    padding: 8px 12px;
-    font-size: 0.85rem;
-    font-weight: bold;
-    cursor: pointer;
     border-radius: 5px;
+    cursor: pointer;
+    color: #8c8c8c;
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-decoration: none;
     transition: 0.3s;
 
     &:hover {
-      background: #0da08f;
+      // color: #0fb5a5;
+      color: #6c6c6c;
     }
   }
 }
+
 
 // .menu-btn {
 //   display: none;

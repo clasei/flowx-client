@@ -1,5 +1,7 @@
+import { User } from './user.model';
+
 export interface Task {
-  id?: number; // added in the backend
+  task_id?: number; // added in the backend
   title: string;
   description: string;
   priority: number;
@@ -11,5 +13,7 @@ export interface Task {
 
   createdAt?: Date;
   updatedAt?: Date;
+
+  createdBy?: User; 
   
 }

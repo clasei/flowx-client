@@ -4,8 +4,23 @@
 
 h3 {
   margin-bottom: 1rem;
-  color: #d1d1d1;
   font-size: 2rem;
+  pointer-events: none;
+}
+
+.modal-title {
+  margin-top: 2.5rem;
+  color: #c1c1c1;
+}
+
+.modal-label {
+  margin-top: 0.75rem;
+  color: #c1c1c1;
+}
+
+.label-title {
+  pointer-events: none !important;
+  color: #c1c1c1;
 }
 
 .controls-panel {
@@ -49,6 +64,7 @@ h3 {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  color: #d2d2d2 !important;
 }
 
 select {
@@ -249,9 +265,7 @@ input, textarea, select {
   background-color: #7a050594 !important;
 }
 
-.modal-label {
-  margin-top: 0.75rem;
-}
+
 
 #toggle-label {
   display: flex;

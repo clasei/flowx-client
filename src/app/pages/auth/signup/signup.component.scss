@@ -1,12 +1,5 @@
-.login-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 3rem 1.5rem;
-  margin-top: 5rem;
-}
+@use '../login/login.component.scss';
+@use '../../../components/auth-form/auth-form.component.scss';
 
 .auth-container {
   display: flex;
@@ -22,23 +15,18 @@
 }
 
 .login-title {
-  pointer-events: none !important;
-}
-
-.login-subtitle {
-  pointer-events: none !important;
+  pointer-events: none;
 }
 
 h2 {
   font-weight: 600;
   margin-bottom: 1rem;
   color: #c1c1c1;
+  pointer-events: none;
 }
 
-
-.flowx-word {
-  color: #ff4081 !important;
-  font-weight: bold;
+.login-subtitle {
+  pointer-events: none !important;
 }
 
 .form-label {
@@ -47,7 +35,6 @@ h2 {
   font-weight: 600;
   color: #c1c1c1;
   font-family: 'Baloo 2', sans-serif;
-  pointer-events: none !important;
 }
 
 input, textarea, select {
