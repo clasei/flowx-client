@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://flowx-server.onrender.com/'
+  apiUrl: process.env['API_URL'] || 'https://flowx-server.onrender.com/'
 };
