@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable, tap, catchError, throwError } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 interface AuthResponse {
   token: string;
@@ -14,7 +15,8 @@ export class AuthService {
   // private http = inject(HttpClient);
   constructor(private http: HttpClient) {} // CHANGED to normal constructor for testing
 
-  private baseUrl = 'http://localhost:8080/auth';
+  // private baseUrl = 'http://localhost:8080/auth';
+  private baseUrl = `${environment.apiUrl}/auth`; 
 
   // Track authentication state (true = logged in, false = logged out)
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(this.hasToken());

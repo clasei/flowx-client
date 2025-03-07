@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Task } from '../models/task.model';
 import { AuthService } from './auth.service'; 
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,9 @@ import { AuthService } from './auth.service';
 export class TaskService {
   private http = inject(HttpClient);
   private authService = inject(AuthService);
-  private baseUrl = 'http://localhost:8080/tasks';
+  
+  // private baseUrl = 'http://localhost:8080/tasks';
+  private baseUrl = `${environment.apiUrl}/tasks`; 
 
   private getAuthHeaders() {
     const token = this.authService.getToken();
