@@ -11,9 +11,10 @@ import { environment } from '../../environments/environment';
 export class TaskService {
   private http = inject(HttpClient);
   private authService = inject(AuthService);
-  
+
   // private baseUrl = 'http://localhost:8080/tasks';
-  private baseUrl = `${environment.apiUrl}/tasks`; 
+  // private baseUrl = `${environment.apiUrl}/tasks`; 
+  private baseUrl = `https://flowx-server.onrender.com/tasks`; 
 
   private getAuthHeaders() {
     const token = this.authService.getToken();

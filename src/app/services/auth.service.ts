@@ -16,7 +16,8 @@ export class AuthService {
   constructor(private http: HttpClient) {} // CHANGED to normal constructor for testing
 
   // private baseUrl = 'http://localhost:8080/auth';
-  private baseUrl = `${environment.apiUrl}/auth`; 
+  // private baseUrl = `${environment.apiUrl}/auth`; 
+  private baseUrl = `https://flowx-server.onrender.com/auth`; 
 
   // Track authentication state (true = logged in, false = logged out)
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(this.hasToken());
