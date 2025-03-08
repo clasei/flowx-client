@@ -64,14 +64,14 @@
   margin-top: 3rem;
 }
 
-.home-buttons {
+.signup-btn {
   font-family: 'Baloo 2', sans-serif;
   font-weight: 600 !important;
   font-size: 1.25rem !important;
   text-decoration: none; 
   background: #0fb5a5;
+  border: 1px solid #0fb5a5;
   color: #ededed;
-  border: none;
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
   cursor: pointer;
@@ -79,6 +79,36 @@
   font-weight: bold;
   width: 180px;
   text-align: center;
+  z-index: 2;
+
+  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    background: #077568;
+    // background: #ff4081 !important;
+    // color: #ff4081;
+    color: #ededed;
+    transform: scale(1.05);
+  }
+}
+
+.login-btn {
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 600 !important;
+  font-size: 1.25rem !important;
+  text-decoration: none; 
+  // background: #0fb5a5;
+  background: transparent;
+  border: 1px solid #0fb5a5;
+  color: #ededed;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  width: 180px;
+  text-align: center;
+  z-index: 2;
 
   transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
 
@@ -108,7 +138,8 @@
   animation: blobAnimation 10s infinite alternate ease-in-out;
   transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease, background 0.5s ease;
   transition: transform 0.8s ease-in-out, box-shadow 0.8s ease-in-out;
-  z-index: 1000;
+  // z-index: 1000;
+  z-index: -1;
 }
 
 .glass-blob:hover {
