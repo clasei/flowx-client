@@ -225,3 +225,30 @@
   }
 
 }
+
+@media (max-width: 768px) {
+  .task-card {
+    padding: 0.75rem;
+    // font-size: 0.9rem;
+    margin: 0.5rem;
+  }
+
+  h4 {
+    font-size: 1rem;
+  }
+
+  .checkmark {
+    width: 1.75rem;
+    height: 1.5rem;
+  }
+
+  .controls-panel {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .sort-btn, .new-task-btn {
+    padding: 5px 8px;
+  }
+
+}
