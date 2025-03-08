@@ -333,4 +333,15 @@ input, textarea, select {
 }
 
 
+@media (max-width: 768px) {
 
+  .controls-panel {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .sort-btn, .new-task-btn {
+    padding: 5px 8px;
+  }
+
+}
