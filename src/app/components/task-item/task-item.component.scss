@@ -187,10 +187,11 @@
     color: #707070;
     font-size: 0.75rem;
     font-weight: bold;
-    padding: 2px 6px;
+    padding: 2px 7px;
     border-radius: 4px;
     cursor: pointer;
     transition: background 0.3s ease, transform 0.2s ease;
+    min-width: 50px;
   
     &:hover {
       // background: rgba(255, 255, 255, 0.2);
