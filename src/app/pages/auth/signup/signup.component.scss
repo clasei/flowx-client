@@ -1,4 +1,3 @@
-@use '../login/login.component.scss';
 @use '../../../components/auth-form/auth-form.component.scss';
 
 .auth-container {
@@ -103,4 +102,7 @@ input, textarea, select {
   .home-buttons {
     width: 180px;
   }
+
+
+
 }

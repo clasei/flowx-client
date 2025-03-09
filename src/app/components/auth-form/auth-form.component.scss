@@ -103,16 +103,14 @@ input, textarea, select {
 }
 
 @media (max-width: 768px) {
-  // .content {
-  //   flex-direction: column;
-  //   align-items: center;
-  // }
 
-  // .home-panel {
-  //   align-items: center;
-  // }
+  .login-container {
+    padding: 1.5rem 1.5rem;
+  }
 
   .home-buttons {
     width: 180px;
   }
 }
+
+  
