@@ -96,14 +96,14 @@
 
 
       <label class="modal-label">add some info if needed</label>
-      <textarea [(ngModel)]="newTaskDescription" 
+      <textarea class="text-area" [(ngModel)]="newTaskDescription" 
         placeholder="tell him to bring robin tonigt" 
         (input)="validateForm()">
       </textarea>
       <p class="error" *ngIf="descriptionError">{{ descriptionError }}</p>
 
       <label class="modal-label">choose priority</label>
-      <select [(ngModel)]="newTaskPriority">
+      <select class="modal-dropdown" [(ngModel)]="newTaskPriority">
         <option value="1">critical</option>
         <option value="2">focus</option>
         <option value="3">pipeline</option>
@@ -149,10 +149,10 @@
         <input type="text" [(ngModel)]="taskToEdit!.title">
         
         <label class="modal-label">description</label>
-        <textarea [(ngModel)]="taskToEdit!.description"></textarea>
+        <textarea class="text-area" [(ngModel)]="taskToEdit!.description"></textarea>
         
         <label class="modal-label">priority</label>
-        <select [(ngModel)]="taskToEdit!.priority">
+        <select class="modal-dropdown" [(ngModel)]="taskToEdit!.priority">
           <option value="1">critical</option>
           <option value="2">focus</option>
           <option value="3">pipeline</option>

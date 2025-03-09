@@ -8,16 +8,6 @@ h3 {
   pointer-events: none;
 }
 
-.modal-title {
-  margin-top: 2.5rem;
-  color: #c1c1c1;
-}
-
-.modal-label {
-  margin-top: 0.75rem;
-  color: #c1c1c1;
-}
-
 .label-title {
   pointer-events: none !important;
   color: #c1c1c1;
@@ -149,6 +139,17 @@ input:checked + .slider:before {
   align-items: center;
   justify-content: center;
   z-index: 1000;
+}
+
+
+.modal-title {
+  margin-top: 2.5rem;
+  color: #c1c1c1;
+}
+
+.modal-label {
+  margin-top: 0.75rem;
+  color: #c1c1c1;
 }
 
 .new-task-container {
@@ -341,14 +342,13 @@ input, textarea, select {
 @media (max-width: 768px) {
 
 
-h3 {
-  margin-bottom: 0.75rem;
-  font-size: 1.75rem;
-}
-
+  h3 {
+    margin-bottom: 0.75rem;
+    font-size: 1.75rem;
+  }
 
   .controls-panel {
-    padding: 0.5rem;
+    padding: 0.6rem 0.3rem;
     font-size: 0.75rem;
     align-items: stretch;
   }
@@ -366,6 +366,7 @@ h3 {
   }
 
  .new-task-btn {
+  font-size: 0.95rem;
     padding: 0.25rem 0.50rem;
     margin: 0.25rem;
     margin-bottom: 0.75rem;
@@ -413,6 +414,38 @@ h3 {
 
   input:checked + .slider:before {
     transform: translate(11px, -50%); 
+  }
+
+  .modal-title {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+  }
+  
+  .modal-label {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+  }
+
+  input {
+    font-size: 0.85rem !important;
+  }
+
+  textarea {
+    min-height: 80px !important;
+  }
+
+  .text-area {
+    font-size: 0.95rem;
+  }
+
+  .modal-dropdown {
+    width: 100%;
+    min-height: 35px;
+  }
+
+  .modal-actions {
+    padding-top: 1.5rem;
   }
 
 }
