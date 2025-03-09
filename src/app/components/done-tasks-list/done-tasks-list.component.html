@@ -1,22 +1,24 @@
 <div class="done-task-list">
   
-  <h3 class="board-title">here comes your done stuff</h3>
+  <!-- <h3 class="board-title">your done stuff</h3> -->
 
   <div class="controls-panel">
 
-    <!-- Delete All Done Tasks Button -->
-    <button id="delete" class="cancel-btn" (click)="openDeleteAllModal()">delete all done</button>
 
     <!-- filter dropdown -->
     <div class="filter-container">
-      <label>filter</label>
-      <select (change)="filterTasks($event)">
+      <label class="done-controls" >filter</label>
+      <select class="done-dropdown" (change)="filterTasks($event)">
         <option value="all">all</option>
         <option value="critical">critical</option>
         <option value="focus">focus</option>
         <option value="pipeline">pipeline</option>
       </select>
     </div>
+
+    <!-- Delete All Done Tasks Button -->
+    <button id="delete" class="cancel-btn" (click)="openDeleteAllModal()">delete all done</button>
+
 
   </div>
 

@@ -231,7 +231,7 @@
   .task-card {
     padding: 0.5rem 0.75rem;
     // font-size: 0.9rem;
-    margin: 0.25rem 0.1rem;
+    margin: 0.75rem 0.1rem;
     padding-top: 0.25rem !important;
   }
 
@@ -251,5 +251,15 @@
   input:checked + .checkmark::after {
     font-size: 1.5rem !important;
   }
+
+  #undo {
+    font-size: 0.95rem;
+    padding: 0.3rem 0.75rem !important;
+    margin: 0.25rem;
+    margin-top: 0.75rem;
+    min-width: 90px;
+
+  }
+
 
 }

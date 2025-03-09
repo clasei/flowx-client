@@ -1,7 +1,14 @@
 <div class="task-list">
 
   <!-- <h3>{{ username }}'s flowxboard</h3> -->
-  <h3 class="board-title">flowxboard</h3>
+  <!-- <h3 class="board-title">flowxboard</h3> -->
+
+
+  <div class="new-task-container">
+    <button class="new-task-btn" (click)="openNewTaskModal()">
+      + new
+    </button>
+  </div>
 
   <div class="controls-panel">
     
@@ -64,11 +71,6 @@
     </button>
   </div> -->
 
-  <div class="new-task-container">
-    <button class="new-task-btn" (click)="openNewTaskModal()">
-      + new
-    </button>
-  </div>
 
   <div *ngIf="(tasks ?? []).length > 0; else noTasks">
 

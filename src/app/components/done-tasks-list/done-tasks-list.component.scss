@@ -15,6 +15,14 @@
     background: #252525ca;
   }
 
+  .done-controls {
+    margin-left: 0.75rem !important;
+  }
+
+  .done-dropdown {
+    min-width: 100px;
+  }
+
   .task-card {
     padding: 1rem;
     border-radius: 5px;
@@ -51,9 +59,16 @@
     border-radius: 5px;
     cursor: pointer;
     transition: 0.3s;
+    margin-right: 0.75rem;
 
     &:hover {
       background-color: #580000 !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    #delete {
+      font-size: 0.90rem;
     }
   }
   
