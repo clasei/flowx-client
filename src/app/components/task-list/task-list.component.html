@@ -11,7 +11,7 @@
       (click)="toggleSortOrder()"
       [disabled]="selectedFilter !== 'all'">
       <!-- priority {{ isPriorityAscending ? '⬇️' : '⬆️' }} -->
-       priority ↑↓ 
+       priority↑↓ 
     </button>
 
     <!-- date sort button PENDING -- MAYBE -->
@@ -58,9 +58,15 @@
   </div>
 
   <!-- uncluttered view -->
-  <div class="new-task-container">
+  <!-- <div class="new-task-container">
     <button class="new-task-btn" (click)="openNewTaskModal()">
       ➕ new
+    </button>
+  </div> -->
+
+  <div class="new-task-container">
+    <button class="new-task-btn" (click)="openNewTaskModal()">
+      + new
     </button>
   </div>
 
