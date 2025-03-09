@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   background: #252525;
-  padding: 0.8rem 1.5rem;
+  padding: 1rem 1.5rem;
   // box-shadow: 0px 2px 5px #00000077;
 
   .logo {
@@ -23,7 +23,8 @@
 
   .nav-links {
     display: flex;
-    gap: 2rem;
+    align-items: center;
+    gap: 2.5rem;
     font-family: 'Baloo 2', sans-serif;
     font-weight: 400;
     cursor: pointer;
@@ -46,22 +47,6 @@
     text-decoration: none;
   }
 
-  // .nav-btn {
-  //   background: #0fb5a5;
-  //   color: #fff;
-  //   border: none;
-  //   padding: 8px 12px;
-  //   font-size: 0.85rem;
-  //   font-weight: bold;
-  //   cursor: pointer;
-  //   border-radius: 5px;
-  //   transition: 0.3s;
-
-  //   &:hover {
-  //     background: #0da08f;
-  //   }
-  // }
-
   .logout-btn{
     background: #4a4a4a00;
     font-family: 'Baloo 2', sans-serif;
@@ -73,6 +58,8 @@
     font-weight: bold;
     text-decoration: none;
     transition: 0.3s;
+    margin-left: 0 !important;
+    padding: 0;
 
     &:hover {
       // color: #0fb5a5;
@@ -80,7 +67,6 @@
     }
   }
 }
-
 
 // .menu-btn {
 //   display: none;
@@ -92,16 +78,28 @@
 // }
 
 @media (max-width: 768px) {
-  .nav-links {
-    gap: 1rem;
+
+  .navbar {
+    align-items: center;
+    padding: 0.75rem 0.75rem;
+
+    .nav-links {
+      gap: 1rem;
+    }
+
+      
+    .logo {
+      font-size: 1.2rem;
+    }
+  
+    a {
+      font-size: 0.85rem;
+    }
+
+    .logout-btn {
+      font-size: 0.85rem;
+    }
   }
 
-  a {
-    font-size: 0.75rem;
-  }
-
-  .logo {
-    font-size: 1rem;
-  }
 }
 

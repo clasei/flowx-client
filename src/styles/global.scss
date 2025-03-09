@@ -46,7 +46,7 @@ h1, h2, h3 {
 
 .done-task-list .task-card.completed {
   opacity: 0.8 !important;
-  background: #292929 !important;
+  background: #1f1a1ad1 !important;
   // box-shadow: 0px 2px 5px #850c0c;
 }
 
@@ -154,6 +154,25 @@ h1, h2, h3 {
   // max-width: 80%; 
   text-align: center;
   padding: 0.2rem;
+}
+
+@media (max-width: 768px) {
+
+  .done-task-list {
+    margin: 0.5rem !important;
+    padding: 0.5rem !important;
+  }
+
+  #delete {
+    font-size: 0.90rem;
+  }
+
+  .new-task-btn {
+    font-size: 0.9rem !important;
+    padding: 0.25rem 0.50rem;
+    margin-right: 0.2rem !important;
+  }
+  
 }
 
 // -----------------------------
