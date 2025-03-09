@@ -1,5 +1,7 @@
 .task-list {
-  margin: 1rem;
+  margin: 1rem auto;
+  padding: 0 1rem;
+  max-width: 940px;
 }
 
 h3 {
@@ -15,6 +17,7 @@ h3 {
 
 .controls-panel {
   display: flex;
+  // justify-content: space-around;
   justify-content: space-between;
   align-items: center;
   background: #252525;
@@ -33,6 +36,7 @@ h3 {
   border-radius: 5px;
   cursor: pointer;
   transition: 0.3s;
+  // min-width: 125px;
   
   &:hover {
     // background: #5a5a5a;
@@ -56,6 +60,10 @@ h3 {
   gap: 0.5rem;
   color: #c1c1c1 !important;
 }
+
+// .filter-dropdown {
+//   min-width: 125px;
+// }
 
 select {
   background: #333;
@@ -168,6 +176,7 @@ input:checked + .slider:before {
   border-radius: 5px;
   cursor: pointer;
   transition: 0.3s;
+  margin-bottom: 0.5rem;
   
   &:hover {
     background: #0fb5a5; // green done
@@ -338,9 +347,17 @@ input, textarea, select {
   margin-top: 0.8rem;
 }
 
+.cancel-btn, .new-task-btn, .save-btn {
+  min-width: 125px;
+}
+
 
 @media (max-width: 768px) {
 
+  .task-list {
+    margin: 1rem 0.5rem !important;
+    padding: 0 !important;
+  }
 
   h3 {
     margin-bottom: 0.75rem;
@@ -351,6 +368,7 @@ input, textarea, select {
     padding: 0.6rem 0.3rem;
     font-size: 0.75rem;
     align-items: stretch;
+    justify-content: space-between;
   }
 
   .label-title {
@@ -369,7 +387,8 @@ input, textarea, select {
     font-size: 0.95rem;
     padding: 0.25rem 0.50rem;
     margin: 0.25rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.85rem !important;
+    margin-top: 0.15rem !important;
   }
 
   .sort-btn {

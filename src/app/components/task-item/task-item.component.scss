@@ -3,7 +3,7 @@
   // max-width: 1000px;
   padding-top: 0.75rem !important;
   padding: 1rem;
-  margin: 1rem;
+  margin: 1rem 0.1rem;
   border-radius: 0.5rem;
   // box-shadow: 0px 2px 5px #b3b3b3;
   display: flex;
@@ -228,9 +228,9 @@
 
 @media (max-width: 768px) {
   .task-card {
-    padding: 0.5rem 0.6rem;
+    padding: 0.5rem 0.75rem;
     // font-size: 0.9rem;
-    margin: 0.25rem;
+    margin: 0.25rem 0.1rem;
     padding-top: 0.25rem !important;
   }
 
