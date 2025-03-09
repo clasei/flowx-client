@@ -43,7 +43,7 @@
 
     <!-- slider for "show comlpleted" -->
     <div class="sort-container">
-      <span class="label-title">view done </span>
+      <span class="label-title">done </span>
       <label class="switch">
         <input id="completedTasksToggle" type="checkbox" (change)="toggleShowCompleted()">
         <span class="slider"></span>
@@ -51,10 +51,17 @@
     </div>
 
     <!-- new task button -->
+    <!-- <button class="new-task-btn" (click)="openNewTaskModal()">
+      ➕ new
+    </button> -->
+
+  </div>
+
+  <!-- uncluttered view -->
+  <div class="new-task-container">
     <button class="new-task-btn" (click)="openNewTaskModal()">
       ➕ new
     </button>
-
   </div>
 
   <div *ngIf="(tasks ?? []).length > 0; else noTasks">
