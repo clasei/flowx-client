@@ -185,7 +185,7 @@
     background: #434343; 
     border: none;
     color: #707070;
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     font-weight: bold;
     padding: 2px 7px;
     border-radius: 4px;
@@ -208,6 +208,7 @@
 
     #undo {
     transition: 0.3s;
+    min-width: 100px;
     
     &:hover {
       transform: scale(1.1);
@@ -246,6 +247,7 @@
     width: 2rem !important;
     height: 2rem !important;;
     margin-right: 0.25rem !important;
+    margin-top: 0.75rem !important;
   }
 
   input:checked + .checkmark::after {
@@ -258,6 +260,14 @@
     margin: 0.25rem;
     margin-top: 0.75rem;
     min-width: 90px;
+
+  }
+
+  .muted-btn, #delete {
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 2px 7px;
+    min-width: 5dvb;
 
   }
 

@@ -60,7 +60,7 @@
         </span> -->
       </div>
       <div class="task-meta-footer">
-        <button *ngIf="!isDoneTasksView" class="muted-btn" (click)="onEditClick()">
+        <button class="muted-btn" *ngIf="!isDoneTasksView" (click)="onEditClick()">
           edit
         </button>
         <button class="muted-btn" id="delete" (click)="onDeleteClick()">
