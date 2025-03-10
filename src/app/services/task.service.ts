@@ -109,4 +109,10 @@ export class TaskService {
     return intervals[days] || `${days} days`;
   }
 
+  // reactivating tasks --------------------- TEST & DEBUG
+  reactivateTasks(): Observable<string> {
+    return this.http.put<string>(`https://flowx-server.onrender.com/tasks/reactivate`, {});
+  }
+  
+
 }

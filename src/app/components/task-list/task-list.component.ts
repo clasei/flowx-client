@@ -64,26 +64,35 @@ export class TaskListComponent implements OnInit {
     }
   }
   
+  // checkForRepeatingTasks(): void {
+  //   this.taskService.getTasks().subscribe(tasks => {
+  //     const now = new Date();
+  
+  //     const overdueTasks = tasks.filter(task =>
+  //       task.repeating &&
+  //       task.completed &&
+  //       task.nextRepeatDate &&
+  //       new Date(task.nextRepeatDate) <= now
+  //     );
+  
+  //     overdueTasks.forEach(task => {
+  //       console.log(`🔄 Reactivating task: ${task.title}`);
+  //       task.completed = false;
+  //       task.nextRepeatDate = null;
+  
+  //       this.taskService.updateTask(task).subscribe();
+  //     });
+  //   });
+  // }
+
+  // reactivating tasks --------------------- TEST & DEBUG
   checkForRepeatingTasks(): void {
-    this.taskService.getTasks().subscribe(tasks => {
-      const now = new Date();
-  
-      const overdueTasks = tasks.filter(task =>
-        task.repeating &&
-        task.completed &&
-        task.nextRepeatDate &&
-        new Date(task.nextRepeatDate) <= now
-      );
-  
-      overdueTasks.forEach(task => {
-        console.log(`🔄 Reactivating task: ${task.title}`);
-        task.completed = false;
-        task.nextRepeatDate = null;
-  
-        this.taskService.updateTask(task).subscribe();
-      });
+    this.taskService.reactivateTasks().subscribe(response => {
+      console.log('🔄 Repeating tasks updated:', response);
+      this.fetchTasks(); // ✅ Refresh the task list after updating
     });
   }
+  
   
   calculateNextRepeatDate(days: number): Date {
     const nextDate = new Date();
