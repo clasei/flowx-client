@@ -3,7 +3,6 @@
   <!-- <h3>{{ username }}'s flowxboard</h3> -->
   <!-- <h3 class="board-title">flowxboard</h3> -->
 
-
   <div class="new-task-container">
     <button class="new-task-btn" (click)="openNewTaskModal()">
       + new
@@ -117,16 +116,13 @@
         <option value="3">pipeline</option>
       </select>
 
-      <div class="recurring-task-container">
-        <!-- Toggle Recurring Task -->
+      <!-- Recurring Task Indicator ------- REMOVED TO DEPLOY MVP --------------------------- !!!! -->
+      <!-- <div class="recurring-task-container">
         <label id="toggle-label"  class="modal-label">
-
           make it a habit
           <input type="checkbox" [(ngModel)]="newTask.repeating">
-          
         </label>
 
-        <!-- Show Frequency Only If Recurring -->
         <div *ngIf="newTask.repeating" class="repeat-container">
           <label  class="modal-label">repeats every</label>
           <select [(ngModel)]="newTask.repeatInterval">
@@ -139,7 +135,9 @@
             <option [value]="365">year</option>
           </select>
         </div>
-      </div>
+      </div> -->
+      <!-- ---------------------------------------------------------------------------------------- -->
+
 
       <div class="modal-actions">
         <button class="cancel-btn" (click)="closeModal()">cancel</button>
@@ -166,16 +164,14 @@
           <option value="3">pipeline</option>
         </select>
   
-        <div class="recurring-task-container">
-          <!-- Toggle Recurring Task -->
-          <label id="toggle-label"  class="modal-label">
 
+        <!-- Recurring Task Indicator ------- REMOVED TO DEPLOY MVP --------------------------- !!!! -->
+        <!-- <div class="recurring-task-container">
+          <label id="toggle-label"  class="modal-label">
             turn this into a habit
             <input type="checkbox" [(ngModel)]="taskToEdit!.repeating">
-            
           </label>
         
-          <!-- Show Frequency Only If Recurring -->
           <div *ngIf="taskToEdit!.repeating" class="repeat-container">
             <label class="modal-label">repeats every</label>
             <select [(ngModel)]="taskToEdit!.repeatInterval">
@@ -188,7 +184,9 @@
               <option [value]="365">year</option>
             </select>
           </div>
-        </div>
+        </div> -->
+        <!-- ---------------------------------------------------------------------------------------- -->
+
         
         <div class="modal-actions">
           <button class="cancel-btn" (click)="closeEditModal()">cancel</button>
@@ -226,7 +224,5 @@
       </div>
     </div>
   </div>
-
-
 
 </div>

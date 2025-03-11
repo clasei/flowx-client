@@ -2,18 +2,27 @@
 @use '../../components/task-item/task-item.component.scss' as *;
 
 .done-task-list {
-  margin: 1rem;
-  padding: 1rem;
+  margin: 1rem auto;
+  padding: 0 1rem;
+  max-width: 940px;
+}
+
+.done-task-list {
   background: #90030362;
   border-radius: 8px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  // box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+}
 
   .controls-panel {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 0.5rem;
-    // background: #252525;
+    background: #252525;
+    padding: 1rem 0.25rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
   }
 
   .done-controls {
@@ -68,7 +77,7 @@
     &:hover {
       background-color: #580000 !important;
     }
-  }
+  
 
   @media (max-width: 768px) {
 
