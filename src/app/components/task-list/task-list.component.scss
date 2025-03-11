@@ -179,7 +179,8 @@ input:checked + .slider:before {
   margin-bottom: 1.5rem;
   
   &:hover {
-    background: #0fb5a5; // green done
+    // background: #0fb5a5; // green done
+    background: #49b5fd; // blue done & save & etc
     // transform: scale(1.1);
   }
 
