@@ -348,7 +348,7 @@ input, textarea, select {
 }
 
 .cancel-btn, .new-task-btn, .save-btn {
-  min-width: 125px;
+  min-width: 110px;
 }
 
 
@@ -450,13 +450,13 @@ input, textarea, select {
     font-size: 0.85rem !important;
   }
 
-  textarea {
-    min-height: 80px !important;
+  .text-area {
+    min-height: 180px !important;
   }
 
-  .text-area {
-    font-size: 0.95rem;
-  }
+  // .text-area {
+  //   font-size: 0.95rem;
+  // }
 
   .modal-dropdown {
     width: 100%;
@@ -465,6 +465,10 @@ input, textarea, select {
 
   .modal-actions {
     padding-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 2rem;
   }
 
   .cancel-btn, .new-task-btn, .save-btn {
