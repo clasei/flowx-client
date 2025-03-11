@@ -62,21 +62,6 @@ export class DoneTasksListComponent {
       }
     });
   }
-
-
-  // onToggleTask(task: Task): void {
-  //   if (task.completed) {
-  //     // normal toggle (task marked as done), no confirmation needed
-  //     this.taskService.toggleTaskCompletion(task).subscribe(updatedTask => {
-  //       console.log("✅ task marked as completed:", updatedTask);
-  //     });
-  //   } else {
-  //     // user is trying to undo the task → show the undo confirmation modal
-  //     this.taskToUndo = task;
-  //     this.showUndoModal = true;
-  //   }
-  // }
-  
   
   openDeleteModal(task: Task): void {
     this.taskToDelete = task;

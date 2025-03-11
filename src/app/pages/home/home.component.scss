@@ -5,7 +5,6 @@
   justify-content: center;
   align-items: center;
   // min-height: 100vh;
-  // padding: 2.5rem;
   padding: 3rem 1.5rem;
   margin-top: 5rem;
 }
@@ -85,8 +84,6 @@
 
   &:hover {
     background: #077568;
-    // background: #ff4081 !important;
-    // color: #ff4081;
     color: #ededed;
     transform: scale(1.05);
   }
@@ -97,7 +94,6 @@
   font-weight: 600 !important;
   font-size: 1.25rem !important;
   text-decoration: none; 
-  // background: #0fb5a5;
   background: transparent;
   border: 1px solid #0fb5a5;
   color: #ededed;
@@ -114,8 +110,6 @@
 
   &:hover {
     background: #077568;
-    // background: #ff4081 !important;
-    // color: #ff4081;
     color: #ededed;
     transform: scale(1.05);
   }
@@ -128,12 +122,10 @@
   right: 20%;
   width: 240px;
   height: 240px;
-  // background: linear-gradient(135deg, rgba(79, 180, 253, 0.25), rgba(255, 64, 128, 0.25));
   background: linear-gradient(135deg, #49b5fd25, #ff40800c);
   border-radius: 50%;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(15px);
-  // border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 42px #c1c1c154;
   animation: blobAnimation 10s infinite alternate ease-in-out;
   transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease, background 0.5s ease;
@@ -164,10 +156,6 @@
     flex-direction: column;
     align-items: center;
   }
-
-  // .home-panel {
-  //   align-items: center;
-  // }
 
   .home-buttons {
     width: 180px;

@@ -30,17 +30,4 @@ export class SignupComponent {
     });
   }
   
-
-  
-
-  // signup() {
-  //   this.authService.signup(this.email, this.password, this.username).subscribe({
-  //     next: () => this.router.navigate(['/dashboard']),
-  //     error: (err) => {
-  //       console.error("Signup error:", err); // ✅ Debugging line
-  //       this.errorMessage = err.error?.message || 'Signup failed'; // ✅ Safer error handling
-  //     }
-  //   });
-  // }
-  
 }

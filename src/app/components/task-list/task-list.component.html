@@ -98,8 +98,9 @@
         type="text" 
         placeholder="call batman"
         (input)="validateForm()">
-        <p class="input-hint">at least 3 characters</p>
-      <!-- <p class="error" *ngIf="titleError">{{ titleError }}</p> -->
+        <p class="input-hint">at least 3 chars.</p>
+
+      <p class="error-msg" *ngIf="titleError">{{ titleError }}</p>
 
 
       <label class="modal-label">add some info if needed</label>
@@ -107,7 +108,8 @@
         placeholder="tell him to bring robin tonigt" 
         (input)="validateForm()">
       </textarea>
-      <p class="error" *ngIf="descriptionError">{{ descriptionError }}</p>
+
+      <p class="error-msg" *ngIf="descriptionError">{{ descriptionError }}</p>
 
       <label class="modal-label">choose priority</label>
       <select class="modal-dropdown" [(ngModel)]="newTaskPriority">

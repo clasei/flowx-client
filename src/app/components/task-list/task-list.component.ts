@@ -208,25 +208,53 @@ export class TaskListComponent implements OnInit {
   
   // -------------------- modal starts here
 
+  // validateForm(): void {
+  //   console.log("Validating form...");
+  //   this.titleError = "";
+  //   this.descriptionError = "";
+  //   this.isFormValid = true; 
+  //   // clearTimeout(this.typingTimeout); // reset timeout on each keypress
+
+  //   if (this.newTaskTitle.trim().length < 3) {
+  //     this.titleError = "title must be at least 3 characters";
+  //     this.isFormValid = false;
+  //   } else if (this.newTaskTitle.trim().length > 120) {
+  //     this.titleError = "title must be less than 120 characters";
+  //     this.isFormValid = false;
+  //   }
+
+  //   if (this.newTaskDescription.trim().length > 490) {
+  //     this.descriptionError = "description must be less than 490 characters";
+  //     this.isFormValid = false;
+  //   }
+  // }
+
   validateForm(): void {
     this.titleError = "";
     this.descriptionError = "";
     this.isFormValid = true; 
-    // clearTimeout(this.typingTimeout); // reset timeout on each keypress
-
+  
+    console.log("Validating form...");
+  
     if (this.newTaskTitle.trim().length < 3) {
       this.titleError = "title must be at least 3 characters";
       this.isFormValid = false;
+      console.log("❌ Error title:", this.titleError);
     } else if (this.newTaskTitle.trim().length > 120) {
       this.titleError = "title must be less than 120 characters";
       this.isFormValid = false;
+      console.log("❌ Error title:", this.titleError);
     }
-
+  
     if (this.newTaskDescription.trim().length > 490) {
       this.descriptionError = "description must be less than 490 characters";
       this.isFormValid = false;
+      console.log("❌ Error description:", this.descriptionError);
     }
+  
+    console.log("isFormValid:", this.isFormValid);
   }
+  
 
   openNewTaskModal(): void {
     this.showModal = true; // just opens the modal
