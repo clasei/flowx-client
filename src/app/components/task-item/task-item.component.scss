@@ -1,20 +1,16 @@
 .task-card {
   background: #3b3b3b;
-  // max-width: 1000px;
   padding-top: 0.75rem !important;
   padding: 1rem;
   margin: 1rem 0.1rem;
   border-radius: 0.5rem;
-  // box-shadow: 0px 2px 5px #b3b3b3;
   display: flex;
   flex-direction: column;
-  // align-content: center;
   gap: 0.5rem;
   transition: 0.3s;
 
   &.completed {
     opacity: 0.42;
-    // text-decoration: line-through;
   }
 
   .task-header {
@@ -44,17 +40,18 @@
   .task-date {
     font-size: 0.75rem;
     color: #707070; 
-    // color: #909090; 
     margin-top: 0;
     pointer-events: none !important;
   }
   
   .task-description {
     font-size: 0.9rem;
-    // color: #c1c1c1;
     color: #b3b3b3;
     margin-top: 0.2rem;
     pointer-events: none;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal; 
   }
 
   .completed-date {
@@ -65,7 +62,6 @@
 
   .repeat-indicator {
     color: #707070;
-    // color: #909090;
     font-size: 0.75rem;
     pointer-events: none;
   }
@@ -94,8 +90,6 @@
       color: #dcdcdc;
     }
     &.focus {
-      // background: #00bfa5;
-      // background: #0fb5a5;
       background: #af8c41;
       color: #dcdcdc;
     }
@@ -108,7 +102,6 @@
   .checkbox-container {
     display: flex;
     align-items: center;
-    // align-self: flex-start;
     cursor: pointer;
     user-select: none;
   
@@ -123,11 +116,8 @@
       background-color: #a7a7a770;
       width: 2.75rem;
       height: 2.75rem;
-      border-radius: 50%;
-      // border: 1.5px solid #2afaaa;      
-      // border: 1.5px solid #0fb5a5;      
+      border-radius: 50%;    
       border: 1px solid #ededed;      
-      // box-shadow: 0px 2px 5px #b3b3b3;
       display: inline-block;
       position: relative;
       transition: all 0.5s ease;
@@ -137,11 +127,7 @@
 
     input:hover + .checkmark {
       transform: scale(1.1);
-      // border: 2.5px solid #0fb5a5;
-      // background-color: #0fb5a461;
       background-color: #ededed;
-      // background-color: #b3b3b3;
-      // box-shadow: 0px 4px 7px #b3b3b3;
     }
 
     input:active + .checkmark {
@@ -149,8 +135,6 @@
     }
   
     input:checked + .checkmark {
-      // background-color: #2979ff;
-      // background-color: #0fb5a5;
       background-color: #e1e1e1;
 
     }
@@ -195,8 +179,6 @@
     min-width: 50px;
   
     &:hover {
-      // background: rgba(255, 255, 255, 0.2);
-      // color: #bcbcbc;
       background: #bcbcbc91;
       color: #c7c7c7;
       transform: scale(1.05);
@@ -213,12 +195,10 @@
     
     &:hover {
       transform: scale(1.1);
-      // box-shadow: 0px 2px 5px #b3b3b3;
     }
 
     input:active + .checkmark {
       transform: scale(0.95);
-      // box-shadow: 0px 4px 7px #b3b3b3;
     }
   
   }

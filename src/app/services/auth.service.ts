@@ -19,7 +19,6 @@ export class AuthService {
   // private baseUrl = `${environment.apiUrl}/auth`; 
   private baseUrl = `https://flowx-server.onrender.com/auth`; 
 
-  // Track authentication state (true = logged in, false = logged out)
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(this.hasToken());
   isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
 
@@ -47,6 +46,8 @@ export class AuthService {
   //     })
   //   );
   // }
+
+  // error messages from backend response ------- starts here
 
   login(email: string, password: string): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(`${this.baseUrl}/login`, { email, password }).pipe(
@@ -79,7 +80,7 @@ export class AuthService {
     );
   }
   
-  // ✅ Extract error messages from backend response
+  // error messages from backend response
   private extractErrorMessage(error: HttpErrorResponse): string {
     if (error.status === 400 && error.error) {
       // If backend sends multiple validation errors as an object
@@ -94,15 +95,12 @@ export class AuthService {
     return "something went wrong, try again";
   }
   
-
-  
-
   // ---------------------------------------
 
   logout() {
     localStorage.removeItem('authToken');
     localStorage.removeItem('username');
-    this.isAuthenticatedSubject.next(false); // Notify components that user is logged out
+    this.isAuthenticatedSubject.next(false);
   }
 
   isLoggedIn(): boolean {
